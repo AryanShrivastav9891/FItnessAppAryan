@@ -274,7 +274,10 @@ function StatTile({
   color: string;
 }) {
   return (
-    <div className="rounded-3xl border border-line bg-surface p-4 shadow-sm">
+    <div
+      className="rounded-3xl bg-surface p-4 shadow-md"
+      style={{ background: `linear-gradient(135deg, ${color}14, transparent 65%)`, backgroundColor: "var(--color-surface)" }}
+    >
       <span style={{ color }}>{icon}</span>
       <p className="num mt-2 text-2xl font-bold leading-none">
         {value}
