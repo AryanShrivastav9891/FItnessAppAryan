@@ -92,8 +92,15 @@ export default function SetLogger({
         return (
           <div
             key={i}
-            className="rounded-2xl bg-surface2 p-2.5"
-            style={row.done ? { boxShadow: `inset 3px 0 0 ${color}`, backgroundColor: `${color}14` } : undefined}
+            className="rounded-2xl bg-surface2 p-2.5 shadow-sm"
+            style={
+              row.done
+                ? {
+                    background: `linear-gradient(135deg, ${color}15, ${color}08)`,
+                    border: `2px solid ${color}30`,
+                  }
+                : undefined
+            }
           >
             <div className="grid grid-cols-[24px_1fr_1fr_48px] items-center gap-2.5">
               <span className="num text-center text-sm font-bold text-muted">
@@ -106,9 +113,11 @@ export default function SetLogger({
                 aria-pressed={row.done}
                 aria-label={`Set ${i + 1} done`}
                 onClick={() => toggleDone(i)}
-                className="flex h-12 w-12 items-center justify-center rounded-xl transition-transform active:scale-95"
+                className="flex h-12 w-12 items-center justify-center rounded-xl shadow-sm transition-transform active:scale-95"
                 style={{
-                  backgroundColor: row.done ? color : "var(--color-surface)",
+                  background: row.done
+                    ? `linear-gradient(135deg, ${color}, ${color}dd)`
+                    : "var(--color-surface)",
                   border: row.done ? "none" : "2px solid var(--color-line)",
                   color: row.done ? "#0a0e14" : "#9aa3b2",
                 }}

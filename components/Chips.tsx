@@ -1,6 +1,6 @@
 import { MuscleGlyph, shortMuscle } from "./MuscleGlyph";
 
-/** Flat chip — tinted for primary (day color), quiet surface for secondary. */
+/** Bento chip — soft gradient tint for primary, quiet surface for secondary. */
 export function Chip({
   label,
   color,
@@ -13,15 +13,19 @@ export function Chip({
   if (filled && color) {
     return (
       <span
-        className="inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold"
-        style={{ backgroundColor: `${color}1f`, color }}
+        className="inline-flex items-center rounded-full px-3 py-1.5 text-xs font-semibold shadow-sm"
+        style={{
+          background: `linear-gradient(135deg, ${color}30, ${color}20)`,
+          color,
+          border: `1px solid ${color}40`,
+        }}
       >
         {label}
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center rounded-full bg-surface2 px-2.5 py-1 text-xs font-medium text-muted">
+    <span className="inline-flex items-center rounded-full bg-surface2/60 px-3 py-1.5 text-xs font-medium text-muted backdrop-blur-sm">
       {label}
     </span>
   );
@@ -36,16 +40,21 @@ export function MuscleChips({
   secondary: string[];
   color?: string;
 }) {
+  const c = color ?? "#9aa3b2";
   return (
     <div className="flex flex-wrap items-center gap-1.5">
       {primary.map((m) => (
         <span
           key={`p-${m}`}
           title={m}
-          className="inline-flex items-center gap-1.5 rounded-full py-1 pl-1 pr-2.5 text-xs font-semibold"
-          style={{ backgroundColor: `${color ?? "#8e95a3"}1f`, color: color ?? "#e8eaed" }}
+          className="inline-flex items-center gap-1.5 rounded-full py-1 pl-1 pr-3 text-xs font-semibold shadow-sm"
+          style={{
+            background: `linear-gradient(135deg, ${c}28, ${c}18)`,
+            color: c,
+            border: `1px solid ${c}38`,
+          }}
         >
-          <MuscleGlyph name={m} color={color ?? "#8e95a3"} size={18} />
+          <MuscleGlyph name={m} color={c} size={18} />
           {shortMuscle(m)}
         </span>
       ))}
@@ -73,9 +82,7 @@ export function MuscleGlyphRow({
       {shown.map((m) => (
         <MuscleGlyph key={m} name={m} color={color} size={26} />
       ))}
-      {extra > 0 && (
-        <span className="num text-xs text-muted">+{extra}</span>
-      )}
+      {extra > 0 && <span className="num text-xs text-muted">+{extra}</span>}
     </div>
   );
 }

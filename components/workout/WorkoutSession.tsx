@@ -145,10 +145,13 @@ export default function WorkoutSession({
                 key={t.id}
                 type="button"
                 onClick={() => setPhase(t.id)}
-                className="flex min-h-[46px] flex-1 flex-col items-center justify-center rounded-2xl text-sm font-semibold transition-colors"
+                className="flex min-h-[46px] flex-1 flex-col items-center justify-center rounded-2xl text-sm font-semibold shadow-sm transition-all active:scale-95"
                 style={{
-                  backgroundColor: active ? `${color}1f` : "var(--color-surface2)",
+                  background: active
+                    ? `linear-gradient(135deg, ${color}30, ${color}20)`
+                    : "var(--color-surface2)",
                   color: active ? "#e8eaed" : "#9aa3b2",
+                  border: active ? `1px solid ${color}40` : "1px solid transparent",
                 }}
               >
                 <span>{t.label}</span>

@@ -102,10 +102,10 @@ function ToggleRow({
         <span className="block text-xs text-muted">{sub}</span>
       </span>
       <span
-        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full"
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full shadow-sm"
         style={
           checked
-            ? { backgroundColor: color, color: "#0a0e14" }
+            ? { background: `linear-gradient(135deg, ${color}, ${color}dd)`, color: "#0a0e14" }
             : { border: "2px solid var(--color-surface3)" }
         }
       >

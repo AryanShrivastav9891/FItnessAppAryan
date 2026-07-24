@@ -10,8 +10,12 @@ export default function DayCard({ day }: { day: Day }) {
   return (
     <Link
       href={`/workout/${day.id}`}
-      className="block rounded-3xl border border-line bg-surface p-4 shadow-sm transition-transform active:scale-[0.99]"
-      style={{ borderLeft: `3px solid ${color}` }}
+      className="block rounded-3xl bg-surface p-4 shadow-md transition-all hover:shadow-lg active:scale-[0.99]"
+      style={{
+        background: `linear-gradient(135deg, ${color}18, ${color}0a)`,
+        backgroundColor: "var(--color-surface)",
+        border: `1.5px solid ${color}33`,
+      }}
     >
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">

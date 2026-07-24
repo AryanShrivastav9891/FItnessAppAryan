@@ -46,7 +46,7 @@ export default function StreakStrip() {
                   className="flex h-7 w-7 items-center justify-center rounded-full"
                   style={
                     state === "done"
-                      ? { backgroundColor: color, color: "#0a0e14" }
+                      ? { background: `linear-gradient(135deg, ${color}, ${color}dd)`, color: "#0a0e14" }
                       : state === "missed"
                         ? { border: "2px solid #ff6b6b66" }
                         : state === "rest"

@@ -39,7 +39,12 @@ export function Disclosure({
         className="pb-3 text-sm leading-relaxed text-muted"
         style={
           accent
-            ? { borderLeft: `3px solid ${accent}`, paddingLeft: 12 }
+            ? {
+                borderLeft: `3px solid ${accent}`,
+                background: `linear-gradient(to right, ${accent}0f, transparent)`,
+                paddingLeft: 12,
+                borderRadius: "0 10px 10px 0",
+              }
             : undefined
         }
       >

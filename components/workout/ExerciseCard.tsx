@@ -103,8 +103,8 @@ export default function ExerciseCard({
     >
       <div className="flex items-start gap-3">
         <span
-          className="num mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-base font-bold"
-          style={{ backgroundColor: color, color: "#0a0e14" }}
+          className="num mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-base font-bold shadow-sm"
+          style={{ background: `linear-gradient(135deg, ${color}, ${color}dd)`, color: "#0a0e14" }}
         >
           {exercise.order}
         </span>
@@ -125,8 +125,12 @@ export default function ExerciseCard({
           <button
             type="button"
             onClick={() => setShowRule(true)}
-            className="animate-chip-pulse inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold"
-            style={{ backgroundColor: "#51cf661f", color: "#51cf66" }}
+            className="animate-chip-pulse inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold shadow-sm"
+            style={{
+              background: "linear-gradient(135deg, #51cf6630, #51cf6620)",
+              color: "#51cf66",
+              border: "1px solid #51cf6640",
+            }}
           >
             <TrendingUp size={14} strokeWidth={2.5} aria-hidden />
             +2.5 kg

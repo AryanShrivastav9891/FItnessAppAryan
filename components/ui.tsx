@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-/** Flat card. `accent` shows only as a 3px left bar — the app-wide accent rule. */
+/** Bento card — soft accent gradient wash + shadow. */
 export function Card({
   children,
   className = "",
@@ -12,8 +12,15 @@ export function Card({
 }) {
   return (
     <div
-      className={`rounded-3xl border border-line bg-surface shadow-sm ${className}`}
-      style={accent ? { borderLeft: `3px solid ${accent}` } : undefined}
+      className={`rounded-3xl bg-surface shadow-md ${className}`}
+      style={
+        accent
+          ? {
+              background: `linear-gradient(135deg, ${accent}15 0%, transparent 60%)`,
+              backgroundColor: "var(--color-surface)",
+            }
+          : undefined
+      }
     >
       {children}
     </div>
@@ -89,7 +96,8 @@ export function TileLink({
   return (
     <Link
       href={href}
-      className="flex min-h-[92px] flex-col justify-between rounded-3xl border border-line bg-surface p-4 shadow-sm transition-transform active:scale-[0.98]"
+      className="flex min-h-[92px] flex-col justify-between rounded-3xl bg-surface p-4 shadow-md transition-all hover:shadow-lg active:scale-[0.98]"
+      style={{ background: `linear-gradient(135deg, ${accent}12 0%, transparent 60%)`, backgroundColor: "var(--color-surface)" }}
     >
       <span style={{ color: accent }}>{icon}</span>
       <span>

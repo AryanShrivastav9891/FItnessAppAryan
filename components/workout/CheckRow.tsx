@@ -29,10 +29,10 @@ export default function CheckRow({
         className="flex min-h-[48px] flex-1 items-start gap-3 text-left transition-transform active:scale-[0.99]"
       >
         <span
-          className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg"
+          className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg shadow-sm"
           style={
             checked
-              ? { backgroundColor: color, color: "#0a0e14" }
+              ? { background: `linear-gradient(135deg, ${color}, ${color}dd)`, color: "#0a0e14" }
               : { border: "2px solid var(--color-surface3)", color: "transparent" }
           }
         >
