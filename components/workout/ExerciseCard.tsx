@@ -73,13 +73,13 @@ export default function ExerciseCard({
         ref={setRef}
         type="button"
         onClick={onExpand}
-        className="flex w-full items-center gap-3 rounded-2xl border border-line bg-surface p-3.5 text-left transition-transform active:scale-[0.99]"
+        className="flex w-full items-center gap-3 rounded-2xl bg-surface p-3.5 text-left shadow-sm transition-all active:scale-[0.99]"
       >
         <span
           className="num flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold"
           style={
             complete
-              ? { backgroundColor: color, color: "#0a0e14" }
+              ? { background: `linear-gradient(135deg, ${color}, ${color}dd)`, color: "#0a0e14" }
               : { border: `2px solid ${color}`, color }
           }
         >
