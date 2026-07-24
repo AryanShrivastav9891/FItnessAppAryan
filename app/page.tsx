@@ -130,8 +130,12 @@ function WorkoutHero({
             </p>
           </div>
           <span
-            className="num rounded-full px-2.5 py-1 text-xs font-bold"
-            style={{ backgroundColor: `${color}1f`, color }}
+            className="num rounded-full px-3 py-1.5 text-xs font-bold shadow-sm"
+            style={{
+              background: `linear-gradient(135deg, ${color}40, ${color}20)`,
+              color,
+              border: `1px solid ${color}30`,
+            }}
           >
             {DAY_PLATE_KG[dayId]}kg
           </span>
