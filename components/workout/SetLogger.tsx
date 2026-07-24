@@ -1,5 +1,6 @@
 "use client";
 
+import { Check } from "lucide-react";
 import { lsGet, useLocalState, useStorageTick } from "@/lib/storage";
 import { keys } from "@/lib/keys";
 import type { LoggedSession, LoggedSet } from "@/lib/types";
@@ -13,29 +14,29 @@ function normalize(rows: LoggedSet[], count: number): LoggedSet[] {
   const out = makeRows(count);
   for (let i = 0; i < count; i++) {
     if (rows[i]) {
-      out[i] = {
-        w: rows[i].w ?? 0,
-        r: rows[i].r ?? 0,
-        done: !!rows[i].done,
-      };
+      out[i] = { w: rows[i].w ?? 0, r: rows[i].r ?? 0, done: !!rows[i].done };
     }
   }
   return out;
 }
 
-/** Prefill weight/reps from the LAST completed session of this exercise. */
+function lastSession(exerciseId: string): LoggedSet[] | null {
+  const log = lsGet<LoggedSession[]>(keys.log(exerciseId), []);
+  const last = log[log.length - 1];
+  return last && last.sets.length ? last.sets : null;
+}
+
 function seedFromLast(
   exerciseId: string,
   count: number,
   repHigh: number | null,
 ): LoggedSet[] {
-  const log = lsGet<LoggedSession[]>(keys.log(exerciseId), []);
-  const last = log[log.length - 1];
-  if (!last || !last.sets.length) return makeRows(count);
-  const fallbackWeight = last.sets[last.sets.length - 1]?.w ?? 0;
+  const last = lastSession(exerciseId);
+  if (!last) return makeRows(count);
+  const fallbackWeight = last[last.length - 1]?.w ?? 0;
   return Array.from({ length: count }, (_, i) => ({
-    w: last.sets[i]?.w ?? fallbackWeight,
-    r: last.sets[i]?.r ?? repHigh ?? 0,
+    w: last[i]?.w ?? fallbackWeight,
+    r: last[i]?.r ?? repHigh ?? 0,
     done: false,
   }));
 }
@@ -51,25 +52,26 @@ export default function SetLogger({
   date: string;
   parsed: ParsedSets;
   color: string;
-  onSetChecked: () => void;
+  onSetChecked: (allDone: boolean) => void;
 }) {
   const count = parsed.count;
   const key = keys.setlog(date, exerciseId);
   const { hydrated } = useStorageTick();
-  // Seed only after hydration so server HTML and first client paint match.
   const seed = hydrated
     ? seedFromLast(exerciseId, count, parsed.repHigh)
     : makeRows(count);
   const [saved, setSaved] = useLocalState<LoggedSet[]>(key, seed);
   const rows = normalize(saved, count);
+  const last = hydrated ? lastSession(exerciseId) : null;
 
   const patch = (i: number, p: Partial<LoggedSet>) =>
     setSaved(rows.map((r, idx) => (idx === i ? { ...r, ...p } : r)));
 
   const toggleDone = (i: number) => {
     const nowDone = !rows[i].done;
-    patch(i, { done: nowDone });
-    if (nowDone) onSetChecked();
+    const next = rows.map((r, idx) => (idx === i ? { ...r, done: nowDone } : r));
+    setSaved(next);
+    if (nowDone) onSetChecked(next.every((r) => r.done));
   };
 
   const prefillNote =
@@ -80,61 +82,54 @@ export default function SetLogger({
       : "";
 
   return (
-    <div className="mt-4 flex flex-col gap-3">
-      <div className="flex items-center justify-between text-xs uppercase tracking-wider text-muted">
+    <div className="mt-4 flex flex-col gap-2.5">
+      <div className="t-cap flex items-center justify-between">
         <span>Set logger</span>
         {prefillNote && <span>target {prefillNote}</span>}
       </div>
-      {rows.map((row, i) => (
-        <div
-          key={i}
-          className="grid grid-cols-[28px_1fr_1fr_48px] items-center gap-3 rounded-2xl bg-surface2/50 p-3 shadow-sm backdrop-blur-sm"
-          style={row.done ? { 
-            background: `linear-gradient(135deg, ${color}15, ${color}08)`,
-            border: `2px solid ${color}30`
-          } : undefined}
-        >
-          <span className="text-center text-sm font-bold text-muted tabnum">
-            {i + 1}
-          </span>
-          <Stepper
-            value={row.w}
-            unit="kg"
-            step={2.5}
-            min={0}
-            onChange={(v) => patch(i, { w: v })}
-          />
-          <Stepper
-            value={row.r}
-            unit="reps"
-            step={1}
-            min={0}
-            onChange={(v) => patch(i, { r: v })}
-          />
-          <button
-            type="button"
-            aria-pressed={row.done}
-            aria-label={`Set ${i + 1} done`}
-            onClick={() => toggleDone(i)}
-            className="flex h-12 w-12 items-center justify-center rounded-xl shadow-sm transition-all active:scale-95"
-            style={{
-              background: row.done ? `linear-gradient(135deg, ${color}, ${color}dd)` : 'var(--color-surface)',
-              border: row.done ? 'none' : '2px solid rgba(255,255,255,0.08)',
-              color: row.done ? '#0a0e14' : '#8e95a3',
-            }}
+      {rows.map((row, i) => {
+        const ghost = last?.[i];
+        return (
+          <div
+            key={i}
+            className="rounded-2xl bg-surface2 p-2.5"
+            style={row.done ? { boxShadow: `inset 3px 0 0 ${color}`, backgroundColor: `${color}14` } : undefined}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-              <path
-                d="m5 12 5 5 9-11"
-                stroke="currentColor"
-                strokeWidth="2.6"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </div>
-      ))}
+            <div className="grid grid-cols-[24px_1fr_1fr_48px] items-center gap-2.5">
+              <span className="num text-center text-sm font-bold text-muted">
+                {i + 1}
+              </span>
+              <Stepper value={row.w} unit="KG" step={2.5} min={0} onChange={(v) => patch(i, { w: v })} />
+              <Stepper value={row.r} unit="REPS" step={1} min={0} onChange={(v) => patch(i, { r: v })} />
+              <button
+                type="button"
+                aria-pressed={row.done}
+                aria-label={`Set ${i + 1} done`}
+                onClick={() => toggleDone(i)}
+                className="flex h-12 w-12 items-center justify-center rounded-xl transition-transform active:scale-95"
+                style={{
+                  backgroundColor: row.done ? color : "var(--color-surface)",
+                  border: row.done ? "none" : "2px solid var(--color-line)",
+                  color: row.done ? "#0a0e14" : "#9aa3b2",
+                }}
+              >
+                {row.done ? (
+                  <span className="animate-check-pop">
+                    <Check size={22} strokeWidth={3} aria-hidden />
+                  </span>
+                ) : (
+                  <Check size={22} strokeWidth={2.4} aria-hidden />
+                )}
+              </button>
+            </div>
+            {ghost && !row.done && (
+              <p className="num mt-1.5 pl-[34px] text-xs text-muted">
+                pichli baar {ghost.w} × {ghost.r}
+              </p>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -153,33 +148,44 @@ function Stepper({
   onChange: (v: number) => void;
 }) {
   const clamp = (v: number) => Math.max(min, Math.round(v * 2) / 2);
+  const onKey = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      onChange(clamp(value + step));
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      onChange(clamp(value - step));
+    }
+  };
   return (
-    <div className="flex items-center overflow-hidden rounded-xl bg-surface shadow-sm">
+    <div className="relative flex h-12 items-center overflow-hidden rounded-xl bg-surface">
+      <span className="pointer-events-none absolute left-0 right-0 top-1 text-center text-[10px] font-semibold tracking-wider text-muted">
+        {unit}
+      </span>
       <button
         type="button"
         aria-label={`decrease ${unit}`}
         onClick={() => onChange(clamp(value - step))}
-        className="flex h-10 w-10 items-center justify-center text-lg text-muted transition-all hover:bg-surface2 active:scale-90"
+        className="flex h-full w-9 items-center justify-center text-xl text-muted active:bg-surface2"
       >
         −
       </button>
-      <label className="flex min-w-0 flex-1 flex-col items-center">
-        <input
-          type="number"
-          inputMode="decimal"
-          step={0.5}
-          min={min}
-          value={Number.isFinite(value) ? value : 0}
-          onChange={(e) => onChange(clamp(parseFloat(e.target.value) || 0))}
-          className="w-full bg-transparent text-center text-base font-semibold tabnum outline-none"
-        />
-        <span className="-mt-0.5 text-[10px] text-muted">{unit}</span>
-      </label>
+      <input
+        type="number"
+        inputMode="decimal"
+        step={0.5}
+        min={min}
+        value={Number.isFinite(value) ? value : 0}
+        onChange={(e) => onChange(clamp(parseFloat(e.target.value) || 0))}
+        onKeyDown={onKey}
+        aria-label={unit}
+        className="num min-w-0 flex-1 bg-transparent pt-3 text-center text-base font-semibold outline-none"
+      />
       <button
         type="button"
         aria-label={`increase ${unit}`}
         onClick={() => onChange(clamp(value + step))}
-        className="flex h-10 w-10 items-center justify-center text-lg text-muted transition-all hover:bg-surface2 active:scale-90"
+        className="flex h-full w-9 items-center justify-center text-xl text-muted active:bg-surface2"
       >
         +
       </button>

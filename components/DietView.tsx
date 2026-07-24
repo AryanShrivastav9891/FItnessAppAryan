@@ -1,5 +1,6 @@
 "use client";
 
+import { Droplets, Pill } from "lucide-react";
 import { useLocalState } from "@/lib/storage";
 import { keys } from "@/lib/keys";
 import { todayKey } from "@/lib/date";
@@ -25,9 +26,9 @@ export default function DietView({
   const totalProtein = diet.meals.reduce((n, m) => n + proteinNum(m.protein), 0);
 
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-6">
       {/* toggle */}
-      <div className="grid grid-cols-2 gap-1 rounded-2xl border border-line bg-surface p-1">
+      <div className="grid grid-cols-2 gap-1 rounded-2xl bg-surface p-1">
         {(Object.keys(diets) as DietMode[]).map((m) => {
           const active = mode === m;
           return (
@@ -47,65 +48,58 @@ export default function DietView({
       </div>
 
       <Card className="p-4">
-        <p className="text-[13px] leading-relaxed text-muted">{diet.targets}</p>
+        <p className="text-sm leading-relaxed text-muted">{diet.targets}</p>
       </Card>
 
-      {/* meal timeline */}
-      <section className="flex flex-col gap-2">
+      {/* meals */}
+      <section className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <SectionTitle>Din ka khana</SectionTitle>
-          <span className="text-[11px] text-muted tabnum">
-            ~{totalProtein} g protein
-          </span>
+          <span className="num text-xs text-muted">~{totalProtein} g protein</span>
         </div>
         <Card className="divide-y divide-line">
           {diet.meals.map((meal, i) => (
-            <div key={i} className="flex items-start gap-3 p-3">
-              <div className="w-[74px] shrink-0">
-                <p className="text-[11px] font-semibold leading-tight text-ink">
+            <div key={i} className="flex items-start gap-3 p-4">
+              <div className="w-[76px] shrink-0">
+                <p className="text-xs font-semibold leading-tight text-ink">
                   {meal.time}
                 </p>
               </div>
-              <p className="min-w-0 flex-1 text-[13px] leading-snug text-muted">
+              <p className="min-w-0 flex-1 text-sm leading-snug text-muted">
                 {meal.food}
               </p>
-              <span className="shrink-0 rounded-full bg-surface2 px-2 py-1 text-[11px] font-semibold tabnum text-ink">
+              <span className="num shrink-0 rounded-full bg-surface2 px-2.5 py-1 text-xs font-semibold text-ink">
                 {meal.protein}
               </span>
             </div>
           ))}
-          <div className="flex items-center justify-between p-3">
-            <span className="text-[12px] font-semibold uppercase tracking-wider text-muted">
-              Total (bina extra)
-            </span>
-            <span className="font-display text-xl tabnum text-success">
+          <div className="flex items-center justify-between p-4">
+            <span className="t-cap">Total (bina extra)</span>
+            <span className="num text-xl font-bold" style={{ color: "#51cf66" }}>
               ~{totalProtein} g
             </span>
           </div>
         </Card>
-        <p className="text-[12px] leading-relaxed text-muted">{diet.note}</p>
+        <p className="text-sm leading-relaxed text-muted">{diet.note}</p>
       </section>
 
       <WaterTracker />
 
       {/* budget */}
-      <section className="flex flex-col gap-2">
+      <section className="flex flex-col gap-3">
         <SectionTitle>Monthly budget (Delhi approx)</SectionTitle>
         <Card className="divide-y divide-line">
           {diet.budget.map((row, i) => {
             const strong = /total/i.test(row.item);
             return (
-              <div
-                key={i}
-                className="flex items-start justify-between gap-3 p-3"
-              >
+              <div key={i} className="flex items-start justify-between gap-3 p-3.5">
                 <span
-                  className={`text-[13px] leading-snug ${strong ? "font-bold text-ink" : "text-muted"}`}
+                  className={`text-sm leading-snug ${strong ? "font-bold text-ink" : "text-muted"}`}
                 >
                   {row.item}
                 </span>
                 <span
-                  className={`shrink-0 text-[13px] tabnum ${strong ? "font-bold text-ink" : "text-muted"}`}
+                  className={`num shrink-0 text-sm ${strong ? "font-bold text-ink" : "text-muted"}`}
                 >
                   {row.cost}
                 </span>
@@ -113,24 +107,30 @@ export default function DietView({
             );
           })}
         </Card>
-        <p className="rounded-xl bg-surface2 p-3 text-[12px] font-medium leading-relaxed text-ink">
+        <p className="rounded-2xl bg-surface2 p-4 text-sm font-medium leading-relaxed text-ink">
           {diet.priority}
         </p>
       </section>
 
       {/* supplements */}
-      <section className="flex flex-col gap-2">
+      <section className="flex flex-col gap-3">
         <SectionTitle>Supplements</SectionTitle>
-        <Card className="flex flex-col gap-3 p-4">
+        <Card className="flex flex-col gap-4 p-4">
           {supplements.map((s) => (
-            <div key={s.name}>
-              <p className="text-sm font-semibold text-ink">{s.name}</p>
-              <p className="mt-0.5 text-[12px] leading-relaxed text-muted">
-                {s.detail}
-              </p>
+            <div key={s.name} className="flex gap-3">
+              <span
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+                style={{ backgroundColor: "#b197fc1f", color: "#b197fc" }}
+              >
+                <Pill size={18} strokeWidth={2} />
+              </span>
+              <div>
+                <p className="text-[15px] font-semibold text-ink">{s.name}</p>
+                <p className="mt-0.5 text-sm leading-relaxed text-muted">{s.detail}</p>
+              </div>
             </div>
           ))}
-          <p className="rounded-lg bg-surface2 p-2.5 text-[12px] font-medium text-ink">
+          <p className="rounded-xl bg-surface2 p-3 text-sm font-medium text-ink">
             {supplementsPriority}
           </p>
         </Card>
@@ -145,12 +145,15 @@ function WaterTracker() {
   const GLASSES = 8;
 
   return (
-    <section className="flex flex-col gap-2">
+    <section className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
         <SectionTitle>Paani — aaj (3–4 L)</SectionTitle>
-        <span className="text-[11px] text-muted tabnum">{water}/{GLASSES} glass</span>
+        <span className="num inline-flex items-center gap-1 text-xs text-muted">
+          <Droplets size={13} strokeWidth={2} className="text-[#4dabf7]" />
+          {water}/{GLASSES} glass
+        </span>
       </div>
-      <Card className="flex items-center justify-between gap-1.5 p-3">
+      <Card className="flex items-center gap-1.5 p-4">
         {Array.from({ length: GLASSES }).map((_, i) => {
           const filled = i < water;
           return (
@@ -159,17 +162,12 @@ function WaterTracker() {
               type="button"
               aria-label={`${i + 1} glass`}
               onClick={() => setWater((w) => (w === i + 1 ? i : i + 1))}
-              className="flex h-11 flex-1 items-end justify-center"
-            >
-              <span
-                className="flex w-6 flex-col justify-end overflow-hidden rounded-b-md rounded-t-sm border transition-colors"
-                style={{
-                  height: 34,
-                  borderColor: filled ? "#3B6FD6" : "#2b3742",
-                  backgroundColor: filled ? "#3B6FD6" : "transparent",
-                }}
-              />
-            </button>
+              className="h-11 flex-1 rounded-lg transition-colors"
+              style={{
+                backgroundColor: filled ? "#4dabf7" : "var(--color-surface2)",
+                border: filled ? "none" : "1px solid var(--color-line)",
+              }}
+            />
           );
         })}
       </Card>

@@ -13,4 +13,5 @@ export const keys = {
   start: (date: string, dayId: string) => `start:${date}:${dayId}`, // session start ms
   water: (date: string) => `water:${date}`, // number of glasses
   creatine: (date: string) => `creatine:${date}`, // boolean
+  sleep: (date: string) => `sleep:${date}`, // boolean (Neend 11:30)
 } as const;

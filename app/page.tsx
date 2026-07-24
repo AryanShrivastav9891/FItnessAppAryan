@@ -1,44 +1,64 @@
 import Link from "next/link";
-import { plan, getDay, dayColor, DAY_PLATE_KG } from "@/lib/plan";
+import {
+  Play,
+  Dumbbell,
+  Clock,
+  CalendarDays,
+  UtensilsCrossed,
+  TrendingUp,
+  ScrollText,
+  Footprints,
+  Pill,
+} from "lucide-react";
+import { plan, getDay, dayColor, DAY_PLATE_KG, musclesForDay } from "@/lib/plan";
 import { dayIdForToday, todayKey } from "@/lib/date";
 import { parseSets } from "@/lib/sets";
 import { Card, SectionTitle, TileLink } from "@/components/ui";
+import { MuscleGlyphRow } from "@/components/Chips";
 import StreakStrip from "@/components/StreakStrip";
-import ReminderChips from "@/components/ReminderChips";
+import Daily3 from "@/components/Daily3";
 import TodayProgressBar from "@/components/TodayProgressBar";
 import MissTwiceBanner from "@/components/MissTwiceBanner";
+import HelpSheet from "@/components/HelpSheet";
 
 // Day detection must reflect the real current day, not build time.
 export const dynamic = "force-dynamic";
 
-function istLongDate(): string {
+function ist(opts: Intl.DateTimeFormatOptions): string {
   return new Intl.DateTimeFormat("en-GB", {
     timeZone: "Asia/Kolkata",
-    weekday: "long",
-    day: "numeric",
-    month: "long",
+    ...opts,
   }).format(new Date());
+}
+
+function greetWord(): string {
+  const h = Number(ist({ hour: "numeric", hour12: false }));
+  if (h < 12) return "Subah";
+  if (h < 17) return "Dopahar";
+  return "Shaam";
 }
 
 export default function Home() {
   const dayId = dayIdForToday();
   const today = todayKey();
-  const dateLabel = istLongDate();
+  const dateLabel = ist({ weekday: "long", day: "numeric", month: "long" });
 
   return (
     <div className="flex flex-col gap-6 animate-fade-in-up">
-      {/* wordmark */}
-      <div className="flex items-center justify-between pt-2">
+      {/* wordmark + help */}
+      <div className="flex items-center justify-between pt-1">
         <div>
-          <p className="font-display text-3xl leading-none">COACH</p>
+          <p className="font-display text-2xl leading-none">COACH</p>
           <p className="text-xs text-muted">6-mahine ka mission</p>
         </div>
-        <Link
-          href="/rules"
-          className="rounded-full bg-surface px-4 py-2 text-xs font-medium text-ink shadow-sm transition-all hover:shadow-md active:scale-95"
-        >
-          Rules
-        </Link>
+        <HelpSheet
+          title="Aaj ka plan"
+          bullets={[
+            "Aaj ka workout upar hai — 'Workout Shuru Karo' dabao aur seedha session mein.",
+            "Daily 3 mark karo: creatine, paani, neend. Ye teen roz ka base hai.",
+            "Hafte ki ring strip pe tap karke poora split dekho.",
+          ]}
+        />
       </div>
 
       {dayId ? (
@@ -50,44 +70,24 @@ export default function Home() {
       <MissTwiceBanner mindset={plan.tracking.mindset} />
 
       <section className="flex flex-col gap-3">
-        <SectionTitle>Pichle 14 din</SectionTitle>
+        <SectionTitle>Is hafte</SectionTitle>
         <Card className="p-4">
           <StreakStrip />
         </Card>
       </section>
 
       <section className="flex flex-col gap-3">
-        <SectionTitle>Aaj ke reminders</SectionTitle>
-        <ReminderChips />
+        <SectionTitle>Daily 3 — roz ka base</SectionTitle>
+        <Daily3 />
       </section>
 
       <section className="flex flex-col gap-3">
         <SectionTitle>Jaldi se</SectionTitle>
         <div className="grid grid-cols-2 gap-3">
-          <TileLink
-            href="/week"
-            label="Poora Hafta"
-            sub="5-day split"
-            icon={<GridIcon />}
-          />
-          <TileLink
-            href="/diet"
-            label="Khana"
-            sub="Diet + paani"
-            icon={<PlateIcon />}
-          />
-          <TileLink
-            href="/progress"
-            label="Progress"
-            sub="Weight + waist"
-            icon={<ChartIcon />}
-          />
-          <TileLink
-            href="/rules"
-            label="Rules"
-            sub="Coach ke usool"
-            icon={<BookIcon />}
-          />
+          <TileLink href="/week" label="Poora Hafta" sub="5-day split" accent="#4dabf7" icon={<CalendarDays size={20} strokeWidth={2} />} />
+          <TileLink href="/diet" label="Khana" sub="Diet + paani" accent="#51cf66" icon={<UtensilsCrossed size={20} strokeWidth={2} />} />
+          <TileLink href="/progress" label="Progress" sub="Weight + waist" accent="#b197fc" icon={<TrendingUp size={20} strokeWidth={2} />} />
+          <TileLink href="/rules" label="Rules" sub="Coach ke usool" accent="#ffd43b" icon={<ScrollText size={20} strokeWidth={2} />} />
         </div>
       </section>
     </div>
@@ -105,164 +105,130 @@ function WorkoutHero({
 }) {
   const day = getDay(dayId)!;
   const color = dayColor(dayId);
+  const shortTitle = day.title.split(/[ (]/)[0];
   const plates = day.exercises.map((e) => ({
     id: e.id,
     count: parseSets(e.sets).count,
   }));
 
   return (
-    <Card accent={color} className="overflow-hidden p-5">
-      <div className="flex items-start justify-between">
-        <div>
-          <p className="text-xs font-medium text-muted">{dateLabel}</p>
-          <p
-            className="text-xs font-bold uppercase tracking-wider"
-            style={{ color }}
-          >
-            Aaj · {day.day}
-          </p>
-        </div>
-        <span
-          className="rounded-full px-3 py-1.5 text-xs font-bold shadow-sm"
-          style={{ 
-            background: `linear-gradient(135deg, ${color}40, ${color}20)`,
-            color,
-            border: `1px solid ${color}30`
-          }}
-        >
-          {DAY_PLATE_KG[dayId]}kg
+    <div className="flex flex-col gap-4">
+      <p className="text-[15px] leading-snug text-muted">
+        Chal, {greetWord().toLowerCase()} —{" "}
+        <span className="font-semibold" style={{ color }}>
+          aaj {shortTitle} hai
         </span>
-      </div>
-
-      <h1 className="mt-2 font-display text-5xl leading-tight">{day.title}</h1>
-
-      <p className="mt-4 rounded-2xl bg-surface2/50 p-4 text-sm leading-relaxed text-muted backdrop-blur-sm">
-        <span className="font-semibold text-ink">Crowd-dodge: </span>
-        {day.crowdNote}
+        . Ek session, poora focus.
       </p>
 
-      <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted">
-        <Meta>{day.exercises.length} exercises</Meta>
-        <Meta>~60–75 min</Meta>
-        <Meta>7:00–8:15 PM</Meta>
-      </div>
+      <Card accent={color} className="overflow-hidden p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-xs font-medium text-muted">{dateLabel}</p>
+            <p className="t-cap mt-0.5" style={{ color }}>
+              Aaj · {day.day}
+            </p>
+          </div>
+          <span
+            className="num rounded-full px-2.5 py-1 text-xs font-bold"
+            style={{ backgroundColor: `${color}1f`, color }}
+          >
+            {DAY_PLATE_KG[dayId]}kg
+          </span>
+        </div>
 
-      <div className="mt-5">
-        <TodayProgressBar date={date} plates={plates} color={color} />
-      </div>
+        <h1 className="t-display mt-2">{day.title}</h1>
 
-      <Link
-        href={`/workout/${dayId}`}
-        className="mt-5 flex min-h-[56px] items-center justify-center rounded-2xl text-base font-bold shadow-lg transition-all hover:shadow-xl active:scale-[0.98]"
-        style={{ 
-          background: `linear-gradient(135deg, ${color}, ${color}dd)`,
-          color: '#0a0e14'
-        }}
-      >
-        Workout Shuru Karo →
-      </Link>
-    </Card>
+        <div className="mt-3">
+          <MuscleGlyphRow primary={musclesForDay(day)} color={color} />
+        </div>
+
+        <p className="mt-4 rounded-2xl bg-surface2 p-3.5 text-sm leading-relaxed text-muted">
+          <span className="font-semibold text-ink">Crowd-dodge: </span>
+          {day.crowdNote}
+        </p>
+
+        <div className="mt-4 flex flex-wrap gap-2 text-xs text-muted">
+          <Meta icon={<Dumbbell size={13} strokeWidth={2} />}>
+            {day.exercises.length} exercises
+          </Meta>
+          <Meta icon={<Clock size={13} strokeWidth={2} />}>~60–75 min</Meta>
+          <Meta icon={<Clock size={13} strokeWidth={2} />}>7:00 PM</Meta>
+        </div>
+
+        <div className="mt-5">
+          <TodayProgressBar date={date} plates={plates} color={color} />
+        </div>
+
+        <Link
+          href={`/workout/${dayId}`}
+          className="mt-5 flex min-h-[56px] items-center justify-center gap-2 rounded-2xl text-base font-bold shadow-md transition-transform active:scale-[0.98]"
+          style={{
+            background: `linear-gradient(135deg, ${color}, ${color}cc)`,
+            color: "#0a0e14",
+          }}
+        >
+          <Play size={20} strokeWidth={2.5} fill="#0a0e14" />
+          Workout Shuru Karo
+        </Link>
+      </Card>
+    </div>
   );
 }
 
 function RestHero({ dateLabel }: { dateLabel: string }) {
   return (
-    <Card className="p-5" accent="#8e95a3">
-      <p className="text-xs font-medium text-muted">{dateLabel}</p>
-      <p className="text-xs font-bold uppercase tracking-wider text-muted">
-        Rest Day
-      </p>
-      <h1 className="mt-2 font-display text-5xl leading-tight">AARAM</h1>
-
-      <p className="mt-4 text-sm leading-relaxed text-muted">
-        {plan.weekendRoutine.satSun}
+    <div className="flex flex-col gap-4">
+      <p className="text-[15px] leading-snug text-muted">
+        <span className="font-semibold text-ink">Aaj rest</span> — recovery bhi
+        training hai.
       </p>
 
-      <ul className="mt-4 flex flex-col gap-3">
-        <RestLine icon="🚶">{plan.weekendRoutine.steps}</RestLine>
-        <RestLine icon="🧴">{plan.weekendRoutine.daily}</RestLine>
-        <RestLine icon="💊">Creatine aaj bhi — rest day bhi 3–5 g.</RestLine>
-      </ul>
+      <Card accent="#4dabf7" className="p-5">
+        <p className="text-xs font-medium text-muted">{dateLabel}</p>
+        <p className="t-cap mt-0.5" style={{ color: "#4dabf7" }}>
+          Rest Day
+        </p>
+        <h1 className="t-display mt-2">AARAM</h1>
 
-      <Link
-        href="/week"
-        className="mt-5 flex min-h-[52px] items-center justify-center rounded-2xl bg-surface2 text-sm font-semibold text-ink shadow-md transition-all hover:bg-surface3 active:scale-[0.98]"
-      >
-        Poora hafta dekho
-      </Link>
-    </Card>
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          {plan.weekendRoutine.satSun}
+        </p>
+
+        <ul className="mt-4 flex flex-col gap-3">
+          <RestLine icon={<Footprints size={18} strokeWidth={2} />}>
+            {plan.weekendRoutine.steps}
+          </RestLine>
+          <RestLine icon={<Pill size={18} strokeWidth={2} />}>
+            Creatine aaj bhi — rest day bhi 3–5 g.
+          </RestLine>
+        </ul>
+
+        <Link
+          href="/week"
+          className="mt-5 flex min-h-[52px] items-center justify-center rounded-2xl bg-surface2 text-sm font-semibold text-ink transition-transform active:scale-[0.98]"
+        >
+          Poora hafta dekho
+        </Link>
+      </Card>
+    </div>
   );
 }
 
-function Meta({ children }: { children: React.ReactNode }) {
+function Meta({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <span className="rounded-full bg-surface2/50 px-3 py-1.5 backdrop-blur-sm">
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-surface2 px-2.5 py-1.5">
+      <span className="text-muted">{icon}</span>
       {children}
     </span>
   );
 }
 
-function RestLine({
-  icon,
-  children,
-}: {
-  icon: string;
-  children: React.ReactNode;
-}) {
+function RestLine({ icon, children }: { icon: React.ReactNode; children: React.ReactNode }) {
   return (
-    <li className="flex gap-3 text-sm leading-relaxed text-muted">
-      <span className="text-lg" aria-hidden>{icon}</span>
+    <li className="flex items-start gap-3 text-sm leading-relaxed text-muted">
+      <span className="mt-0.5 text-[#4dabf7]">{icon}</span>
       <span>{children}</span>
     </li>
-  );
-}
-
-function Legend() {
-  return (
-    <div className="flex items-center gap-2 text-[9px] text-muted">
-      <span className="flex items-center gap-1">
-        <i className="h-2.5 w-2.5 rounded-sm bg-success" /> done
-      </span>
-      <span className="flex items-center gap-1">
-        <i className="h-2.5 w-2.5 rounded-sm border border-[#d6454577]" /> miss
-      </span>
-      <span className="flex items-center gap-1">
-        <i className="h-2.5 w-2.5 rounded-sm bg-surface2" /> rest
-      </span>
-    </div>
-  );
-}
-
-/* --- tile icons --- */
-function GridIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
-      <rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
-      <rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
-      <rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}
-function PlateIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
-      <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}
-function ChartIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M4 19V5m0 14h16M7 15l4-5 3 3 5-7" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-function BookIcon() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2V5Z" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
-    </svg>
   );
 }

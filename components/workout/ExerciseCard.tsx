@@ -1,101 +1,157 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Check, Play, TrendingUp, ExternalLink as ExternalLinkIcon } from "lucide-react";
 import { lsGet, useStorageTick } from "@/lib/storage";
 import { keys } from "@/lib/keys";
 import { parseSets, qualifiesForOverload } from "@/lib/sets";
-import type { Exercise, LoggedSession } from "@/lib/types";
+import type { Exercise, LoggedSession, LoggedSet } from "@/lib/types";
 import { MuscleChips } from "@/components/Chips";
 import { Disclosure } from "@/components/Disclosure";
 import { ExternalLink } from "@/components/ui";
+import Sheet from "@/components/Sheet";
 import SetLogger from "./SetLogger";
+
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
 
 export default function ExerciseCard({
   exercise,
   date,
   color,
   overloadRule,
+  active,
+  onExpand,
   onStartRest,
+  onComplete,
 }: {
   exercise: Exercise;
   date: string;
   color: string;
   overloadRule: string;
+  active: boolean;
+  onExpand: () => void;
   onStartRest: (seconds: number) => void;
+  onComplete: () => void;
 }) {
   const parsed = parseSets(exercise.sets);
+  const total = parsed.count;
   const [showRule, setShowRule] = useState(false);
   const { hydrated } = useStorageTick();
+  const ref = useRef<HTMLElement | null>(null);
+  const setRef = (el: HTMLElement | null) => {
+    ref.current = el;
+  };
 
-  // Read the previous session's sets (from before today) to decide the badge.
+  const rows = hydrated ? lsGet<LoggedSet[]>(keys.setlog(date, exercise.id), []) : [];
+  const doneCount = rows.filter((r) => r.done).length;
+
   let overload = false;
   if (hydrated) {
     const log = lsGet<LoggedSession[]>(keys.log(exercise.id), []);
     overload = qualifiesForOverload(log[log.length - 1]?.sets, parsed.repHigh);
   }
 
-  return (
-    <article className="rounded-3xl bg-surface p-5 shadow-md">
-      <div className="flex items-start gap-4">
+  // When this card becomes the active one, bring it into view.
+  useEffect(() => {
+    if (active && ref.current) {
+      ref.current.scrollIntoView({
+        behavior: prefersReducedMotion() ? "auto" : "smooth",
+        block: "center",
+      });
+    }
+  }, [active]);
+
+  if (!active) {
+    const complete = doneCount >= total && total > 0;
+    return (
+      <button
+        ref={setRef}
+        type="button"
+        onClick={onExpand}
+        className="flex w-full items-center gap-3 rounded-2xl border border-line bg-surface p-3.5 text-left transition-transform active:scale-[0.99]"
+      >
         <span
-          className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-base font-bold shadow-sm"
-          style={{ 
-            background: `linear-gradient(135deg, ${color}, ${color}dd)`,
-            color: '#0a0e14'
-          }}
+          className="num flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-bold"
+          style={
+            complete
+              ? { backgroundColor: color, color: "#0a0e14" }
+              : { border: `2px solid ${color}`, color }
+          }
+        >
+          {complete ? <Check size={16} strokeWidth={3} aria-hidden /> : exercise.order}
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-[15px] font-semibold text-ink">
+            {exercise.name}
+          </span>
+          <span className="num block text-xs text-muted">{exercise.sets}</span>
+        </span>
+        <MiniRing done={doneCount} total={total} color={color} />
+      </button>
+    );
+  }
+
+  return (
+    <article
+      ref={setRef}
+      className="scroll-mt-40 rounded-3xl border border-line bg-surface p-5 shadow-md"
+    >
+      <div className="flex items-start gap-3">
+        <span
+          className="num mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-base font-bold"
+          style={{ backgroundColor: color, color: "#0a0e14" }}
         >
           {exercise.order}
         </span>
         <div className="min-w-0 flex-1">
-          <h3 className="text-lg font-bold leading-tight">{exercise.name}</h3>
-          <p className="text-sm font-semibold tabnum" style={{ color }}>
+          <h3 className="t-h3">{exercise.name}</h3>
+          <p className="num text-sm font-semibold" style={{ color }}>
             {exercise.sets}
           </p>
         </div>
       </div>
 
       <div className="mt-4">
-        <MuscleChips
-          primary={exercise.primary}
-          secondary={exercise.secondary}
-          color={color}
-        />
+        <MuscleChips primary={exercise.primary} secondary={exercise.secondary} color={color} />
       </div>
-
-      <ExerciseImage
-        id={exercise.id}
-        name={exercise.name}
-        primary={exercise.primary}
-        color={color}
-      />
 
       {overload && (
         <div className="mt-4">
           <button
             type="button"
-            onClick={() => setShowRule((v) => !v)}
-            className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold shadow-sm transition-all hover:shadow-md active:scale-95"
-            style={{
-              background: 'linear-gradient(135deg, #6ee7b730, #6ee7b720)',
-              color: '#6ee7b7',
-              border: '1px solid #6ee7b740'
-            }}
+            onClick={() => setShowRule(true)}
+            className="animate-chip-pulse inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-bold"
+            style={{ backgroundColor: "#51cf661f", color: "#51cf66" }}
           >
-            ↑ +2.5 kg badha — coach ka rule
+            <TrendingUp size={14} strokeWidth={2.5} aria-hidden />
+            +2.5 kg
           </button>
-          {showRule && (
-            <p className="mt-3 rounded-2xl bg-surface2 p-4 text-sm leading-relaxed text-muted">
-              {overloadRule}
-            </p>
-          )}
+          <Sheet open={showRule} onClose={() => setShowRule(false)} labelledBy="ov-title">
+            <h2 id="ov-title" className="t-h2" style={{ color: "#51cf66" }}>
+              Progressive overload
+            </h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-muted">{overloadRule}</p>
+            <button
+              type="button"
+              onClick={() => setShowRule(false)}
+              className="mt-5 min-h-[48px] w-full rounded-2xl bg-surface2 text-sm font-semibold text-ink active:scale-[0.99]"
+            >
+              Samajh gaya
+            </button>
+          </Sheet>
         </div>
       )}
 
-      <div className="mt-4 divide-y divide-[rgba(255,255,255,0.08)]">
-        <Disclosure summary="Form / best position" defaultOpen accent={color}>
+      <div className="mt-4 flex flex-col divide-y divide-line">
+        <Disclosure summary="Form / best position" defaultOpen accent="#51cf66" tone="form">
           {exercise.form}
         </Disclosure>
-        <Disclosure summary="Galti mat karna" tone="warn">
+        <Disclosure summary="Galti mat karna" accent="#ff6b6b" tone="danger">
           {exercise.mistakes}
         </Disclosure>
       </div>
@@ -112,69 +168,56 @@ export default function ExerciseCard({
         date={date}
         parsed={parsed}
         color={color}
-        onSetChecked={() => onStartRest(exercise.restSeconds)}
+        onSetChecked={(allDone) => {
+          onStartRest(exercise.restSeconds);
+          if (allDone) onComplete();
+        }}
       />
 
       <div className="mt-4 flex gap-3">
         <ExternalLink
           href={exercise.video}
-          className="flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-2xl bg-surface2 text-sm font-semibold text-ink shadow-sm transition-all hover:bg-surface3 active:scale-95"
+          className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-2xl bg-surface2 text-sm font-semibold text-ink transition-transform active:scale-[0.98]"
         >
-          ▶ Video
+          <Play size={16} strokeWidth={2.5} fill="currentColor" /> Video
         </ExternalLink>
         <ExternalLink
           href="https://musclewiki.com"
-          className="flex min-h-[44px] flex-1 items-center justify-center gap-2 rounded-2xl bg-surface2 text-sm font-semibold text-ink shadow-sm transition-all hover:bg-surface3 active:scale-95"
+          className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-2xl bg-surface2 text-sm font-semibold text-ink transition-transform active:scale-[0.98]"
         >
-          MuscleWiki
+          <ExternalLinkIcon size={16} strokeWidth={2} /> MuscleWiki
         </ExternalLink>
       </div>
     </article>
   );
 }
 
-/**
- * Optional local image at /public/exercises/<id>.jpg. Never hotlinks. Shows a
- * clean muscle-tag placeholder until (and unless) a local image loads.
- */
-function ExerciseImage({
-  id,
-  name,
-  primary,
-  color,
-}: {
-  id: string;
-  name: string;
-  primary: string[];
-  color: string;
-}) {
-  const [ok, setOk] = useState(false);
-
+function MiniRing({ done, total, color }: { done: number; total: number; color: string }) {
+  const r = 9;
+  const c = 2 * Math.PI * r;
+  const pct = total > 0 ? done / total : 0;
+  const complete = done >= total && total > 0;
   return (
-    <div className="relative mt-3 aspect-[16/7] overflow-hidden rounded-xl bg-surface2">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`/exercises/${id}.jpg`}
-        alt={ok ? name : ""}
-        loading="lazy"
-        onLoad={() => setOk(true)}
-        onError={() => setOk(false)}
-        className="h-full w-full object-cover"
-        style={{ display: ok ? "block" : "none" }}
-      />
-      {!ok && (
-        <div className="flex h-full w-full flex-col items-center justify-center gap-1 p-2 text-center">
-          <span
-            className="text-[10px] font-bold uppercase tracking-[0.2em]"
-            style={{ color }}
-          >
-            {primary[0]}
-          </span>
-          <span className="text-[10px] text-muted">
-            reference: MuscleWiki / Video
-          </span>
-        </div>
+    <span className="relative flex h-7 w-7 shrink-0 items-center justify-center">
+      <svg viewBox="0 0 24 24" className="h-7 w-7 -rotate-90">
+        <circle cx="12" cy="12" r={r} fill="none" stroke="#252a33" strokeWidth="2.5" />
+        <circle
+          cx="12"
+          cy="12"
+          r={r}
+          fill="none"
+          stroke={color}
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeDasharray={c}
+          strokeDashoffset={c * (1 - pct)}
+        />
+      </svg>
+      {complete ? (
+        <Check size={12} strokeWidth={3} className="absolute" style={{ color }} aria-hidden />
+      ) : (
+        <span className="num absolute text-[10px] font-bold text-muted">{done}</span>
       )}
-    </div>
+    </span>
   );
 }

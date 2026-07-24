@@ -26,6 +26,11 @@ export const metadata: Metadata = {
   description:
     "Personal 6-month aesthetic-body training plan: warm-up, lift, stretch, diet aur coach ke rules — sab ek jagah.",
   applicationName: "Coach",
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   appleWebApp: {
     capable: true,
     title: "Coach",

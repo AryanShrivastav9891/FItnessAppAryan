@@ -1,44 +1,37 @@
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import type { Day } from "@/lib/types";
 import { dayColor, musclesForDay, DAY_PLATE_KG } from "@/lib/plan";
-import { Chip } from "./Chips";
+import { MuscleGlyphRow } from "./Chips";
 
 export default function DayCard({ day }: { day: Day }) {
   const color = dayColor(day.id);
-  const muscles = musclesForDay(day);
 
   return (
     <Link
       href={`/workout/${day.id}`}
-      className="group block rounded-3xl bg-surface p-5 shadow-md transition-all hover:shadow-lg active:scale-[0.98]"
-      style={{ 
-        background: `linear-gradient(135deg, ${color}10 0%, transparent 50%)`,
-        backgroundColor: 'var(--color-surface)'
-      }}
+      className="block rounded-3xl border border-line bg-surface p-4 shadow-sm transition-transform active:scale-[0.99]"
+      style={{ borderLeft: `3px solid ${color}` }}
     >
-      <div className="flex items-baseline justify-between gap-3">
-        <div>
-          <p
-            className="text-xs font-bold uppercase tracking-wider"
-            style={{ color }}
-          >
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0">
+          <p className="t-cap" style={{ color }}>
             {day.day}
           </p>
-          <h3 className="font-display text-3xl leading-tight">{day.title}</h3>
+          <h3 className="t-h2 mt-0.5">{day.title}</h3>
         </div>
-        <span className="shrink-0 text-xs text-muted tabnum">
+        <span className="num flex shrink-0 items-center gap-1 text-xs text-muted">
           {day.exercises.length} ex · {DAY_PLATE_KG[day.id]}kg
+          <ChevronRight size={16} strokeWidth={2} />
         </span>
       </div>
 
-      <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-muted">
+      <p className="mt-2 line-clamp-2 text-sm leading-snug text-muted">
         {day.crowdNote}
       </p>
 
-      <div className="mt-4 flex flex-wrap gap-2">
-        {muscles.map((m) => (
-          <Chip key={m} label={m} color={color} filled />
-        ))}
+      <div className="mt-3">
+        <MuscleGlyphRow primary={musclesForDay(day)} color={color} />
       </div>
     </Link>
   );

@@ -77,14 +77,15 @@ export default function BarbellLoader({
                 fill={color}
                 opacity={0.95}
               />
+              {/* metallic top-edge highlight */}
               <rect
-                x={x + 1.5}
-                y={mid - 12}
-                width={2}
-                height={24}
-                rx={1}
+                x={x + 1}
+                y={mid - 14}
+                width={PLATE_W - 2}
+                height={1.4}
+                rx={0.7}
                 fill="#ffffff"
-                opacity={0.2}
+                opacity={0.35}
               />
             </g>
           );

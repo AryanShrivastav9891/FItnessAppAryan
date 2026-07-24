@@ -1,6 +1,8 @@
+import { Check } from "lucide-react";
 import { plan } from "@/lib/plan";
 import { Card, PageTitle, SectionTitle, ExternalLink } from "@/components/ui";
 import { Disclosure } from "@/components/Disclosure";
+import HelpSheet from "@/components/HelpSheet";
 
 export const metadata = { title: "Rules — Coach" };
 
@@ -40,7 +42,20 @@ export default function RulesPage() {
 
   return (
     <div className="flex flex-col gap-6 animate-fade-in-up">
-      <PageTitle kicker="Coach ke usool" title="Rules" />
+      <PageTitle
+        kicker="Coach ke usool"
+        title="Rules"
+        action={
+          <HelpSheet
+            title="Rules"
+            bullets={[
+              "Har section pe tap karke coach ke usool khol/band karo.",
+              "'Seedha sach' — 6 mahine ka realistic result. Neeche profile.",
+              "Reference library se MuscleWiki aur YouTube form-videos khulte hain.",
+            ]}
+          />
+        }
+      />
 
       {/* Honest expectation */}
       <Card className="p-5" accent="#ff6b6b">
@@ -50,8 +65,8 @@ export default function RulesPage() {
         </p>
         <ul className="mt-2 flex flex-col gap-1.5">
           {expectation.results.map((r) => (
-            <li key={r} className="flex gap-2 text-[13px] text-ink">
-              <span className="text-success">✓</span>
+            <li key={r} className="flex gap-2 text-sm text-ink">
+              <Check size={16} strokeWidth={2.5} className="mt-0.5 shrink-0 text-success" aria-hidden />
               <span>{r}</span>
             </li>
           ))}
@@ -97,7 +112,7 @@ export default function RulesPage() {
         <SectionTitle>Cardio · Neend · Cigarette</SectionTitle>
         <Card className="flex flex-col gap-3 p-4">
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted">
+            <p className="t-cap">
               Cardio / steps
             </p>
             <p className="mt-0.5 text-[13px] leading-relaxed text-ink">
@@ -105,7 +120,7 @@ export default function RulesPage() {
             </p>
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted">
+            <p className="t-cap">
               Neend
             </p>
             <p className="mt-0.5 text-[13px] leading-relaxed text-ink">
@@ -113,7 +128,7 @@ export default function RulesPage() {
             </p>
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-wider text-muted">
+            <p className="t-cap">
               Cigarette (coach-to-athlete)
             </p>
             <Bullets items={lifestyle.smoking} />

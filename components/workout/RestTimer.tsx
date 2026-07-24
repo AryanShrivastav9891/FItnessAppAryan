@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Plus, X } from "lucide-react";
 
 function beep() {
   try {
@@ -27,17 +28,9 @@ function beep() {
   }
 }
 
-function vibrate() {
-  try {
-    navigator.vibrate?.([120, 60, 120]);
-  } catch {
-    /* unsupported */
-  }
-}
-
 /**
- * A floating rest countdown that sits above the bottom nav and keeps running
- * while the user scrolls. Parent remounts it (via key) to (re)start.
+ * Rest countdown as a slide-up panel above the nav. No blocking backdrop, so the
+ * exercise list stays scrollable behind it. Parent remounts it (via key) to start.
  */
 export default function RestTimer({
   seconds,
@@ -48,21 +41,34 @@ export default function RestTimer({
   color: string;
   onClose: () => void;
 }) {
+  const [added, setAdded] = useState(0);
   const [left, setLeft] = useState(seconds);
   const [done, setDone] = useState(false);
+  const startRef = useRef<number | null>(null);
   const firedRef = useRef(false);
 
+  const target = seconds + added;
+
+  // stamp start once, in an effect (never during render)
   useEffect(() => {
-    const start = Date.now();
+    startRef.current = Date.now();
+  }, []);
+
+  useEffect(() => {
     const tick = () => {
-      const rem = seconds - Math.floor((Date.now() - start) / 1000);
+      if (startRef.current == null) return;
+      const rem = target - Math.floor((Date.now() - startRef.current) / 1000);
       if (rem <= 0) {
         setLeft(0);
         if (!firedRef.current) {
           firedRef.current = true;
           setDone(true);
           beep();
-          vibrate();
+          try {
+            navigator.vibrate?.(200);
+          } catch {
+            /* unsupported */
+          }
         }
       } else {
         setLeft(rem);
@@ -71,64 +77,92 @@ export default function RestTimer({
     tick();
     const id = window.setInterval(tick, 250);
     return () => window.clearInterval(id);
-  }, [seconds]);
+  }, [target]);
 
-  // auto-dismiss a few seconds after it finishes
   useEffect(() => {
     if (!done) return;
-    const id = window.setTimeout(onClose, 4500);
+    const id = window.setTimeout(onClose, 3000);
     return () => window.clearTimeout(id);
   }, [done, onClose]);
 
+  const addThirty = () => {
+    if (done) {
+      // resume: run a fresh 30s (target = seconds + added = 30)
+      firedRef.current = false;
+      startRef.current = Date.now();
+      setDone(false);
+      setAdded(30 - seconds);
+    } else {
+      setAdded((a) => a + 30);
+    }
+  };
+
   const mm = Math.floor(left / 60);
   const ss = String(left % 60).padStart(2, "0");
-  const pct = Math.max(0, Math.min(1, left / seconds));
+  const pct = Math.max(0, Math.min(1, left / Math.max(1, target)));
+  const R = 26;
+  const C = 2 * Math.PI * R;
 
   return (
     <div
       role="timer"
       aria-live="polite"
-      className="fixed inset-x-0 z-30 px-4"
-      style={{ bottom: "calc(74px + env(safe-area-inset-bottom))" }}
+      className="fixed inset-x-0 z-40 px-4"
+      style={{ bottom: "calc(70px + env(safe-area-inset-bottom))" }}
     >
-      <div className="mx-auto flex w-full max-w-md items-center gap-3 overflow-hidden rounded-2xl border border-line bg-surface2/95 p-3 shadow-lg backdrop-blur">
-        <div className="relative h-10 w-10 shrink-0">
-          <svg viewBox="0 0 36 36" className="h-10 w-10 -rotate-90">
-            <circle cx="18" cy="18" r="15" fill="none" stroke="#2b3742" strokeWidth="4" />
+      <div className="animate-sheet-up mx-auto flex w-full max-w-md items-center gap-4 rounded-3xl border border-line bg-surface p-4 shadow-lg">
+        <div className={`relative h-16 w-16 shrink-0 ${done ? "animate-ring-pulse" : ""}`}>
+          <svg viewBox="0 0 64 64" className="h-16 w-16 -rotate-90">
+            <circle cx="32" cy="32" r={R} fill="none" stroke="#252a33" strokeWidth="5" />
             <circle
-              cx="18"
-              cy="18"
-              r="15"
+              cx="32"
+              cy="32"
+              r={R}
               fill="none"
-              stroke={done ? "#4ade80" : color}
-              strokeWidth="4"
+              stroke={done ? "#51cf66" : color}
+              strokeWidth="5"
               strokeLinecap="round"
-              strokeDasharray={`${2 * Math.PI * 15}`}
-              strokeDashoffset={`${2 * Math.PI * 15 * (1 - pct)}`}
+              strokeDasharray={C}
+              strokeDashoffset={C * (1 - pct)}
             />
           </svg>
+          <span className="num absolute inset-0 flex items-center justify-center text-lg font-bold">
+            {done ? "0" : `${mm}:${ss}`}
+          </span>
         </div>
+
         <div className="min-w-0 flex-1">
           {done ? (
-            <p className="text-sm font-bold text-success">
-              Rest khatam — agla set! 💪
+            <p className="text-[15px] font-bold" style={{ color: "#51cf66" }}>
+              Rest khatam — agla set!
             </p>
           ) : (
             <>
-              <p className="text-[11px] text-muted">Rest</p>
-              <p className="font-mono text-xl font-bold tabnum leading-none">
-                {mm}:{ss}
-              </p>
+              <p className="t-cap">Rest chal raha hai</p>
+              <p className="text-sm text-muted">Saans le, form sambhaal.</p>
             </>
           )}
         </div>
-        <button
-          type="button"
-          onClick={onClose}
-          className="min-h-[40px] rounded-xl border border-line px-3 text-sm font-semibold text-ink active:bg-surface"
-        >
-          {done ? "Band karo" : "Skip"}
-        </button>
+
+        <div className="flex shrink-0 flex-col gap-2">
+          <button
+            type="button"
+            onClick={addThirty}
+            className="num flex h-9 items-center justify-center gap-0.5 rounded-xl bg-surface2 px-3 text-sm font-semibold text-ink active:scale-95"
+          >
+            <Plus size={14} strokeWidth={2.5} />
+            30s
+          </button>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Skip rest"
+            className="flex h-9 items-center justify-center gap-1 rounded-xl bg-surface2 px-3 text-sm font-semibold text-ink active:scale-95"
+          >
+            <X size={14} strokeWidth={2.5} />
+            {done ? "Band" : "Skip"}
+          </button>
+        </div>
       </div>
     </div>
   );

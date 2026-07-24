@@ -37,9 +37,9 @@ export default function TodayProgressBar({
         color={color}
         animate={hydrated}
       />
-      <p className="mt-1.5 text-[11px] text-muted tabnum">
-        {shown}/{total} sets{" "}
-        {finished ? "· session complete ✓" : done > 0 ? "loaded" : "— bar khaali hai"}
+      <p className="mt-1.5 text-xs text-muted">
+        <span className="num">{shown}/{total}</span> sets{" "}
+        {finished ? "· session complete" : done > 0 ? "loaded" : "— bar khaali hai"}
       </p>
     </div>
   );

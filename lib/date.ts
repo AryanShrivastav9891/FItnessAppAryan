@@ -81,6 +81,23 @@ export function yesterdayKey(date: Date = new Date()): string {
   return recentDayKeys(2, date)[0];
 }
 
+/** This week's 7 day-keys, Monday → Sunday, in Asia/Kolkata. */
+export function weekStripKeys(date: Date = new Date()): string[] {
+  const wd = weekdayIndex(date); // 0=Sun..6=Sat
+  const sinceMonday = (wd + 6) % 7; // 0 if Monday
+  const [y, m, d] = todayKey(date).split("-").map(Number);
+  const monAnchor = Date.UTC(y, m - 1, d, 12, 0, 0) - sinceMonday * 86_400_000;
+  const keys: string[] = [];
+  for (let i = 0; i < 7; i++) {
+    const dt = new Date(monAnchor + i * 86_400_000);
+    const yy = dt.getUTCFullYear();
+    const mm = String(dt.getUTCMonth() + 1).padStart(2, "0");
+    const dd = String(dt.getUTCDate()).padStart(2, "0");
+    keys.push(`${yy}-${mm}-${dd}`);
+  }
+  return keys;
+}
+
 /** Short weekday label for a key, e.g. "Mon". */
 export function shortWeekday(key: string): string {
   return WD_SHORT[weekdayForKey(key)];

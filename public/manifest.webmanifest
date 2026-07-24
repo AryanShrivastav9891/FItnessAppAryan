@@ -1,0 +1,19 @@
+{
+  "name": "Coach — 6-Month Mission",
+  "short_name": "Coach",
+  "description": "Personal 6-month aesthetic-body training plan: warm-up, lift, stretch, diet aur coach ke rules.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0e14",
+  "theme_color": "#0a0e14",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

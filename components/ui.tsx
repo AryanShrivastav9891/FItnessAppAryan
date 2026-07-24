@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+/** Flat card. `accent` shows only as a 3px left bar — the app-wide accent rule. */
 export function Card({
   children,
   className = "",
@@ -9,14 +10,10 @@ export function Card({
   className?: string;
   accent?: string;
 }) {
-  const bgGradient = accent
-    ? `linear-gradient(135deg, ${accent}15 0%, transparent 60%)`
-    : undefined;
-  
   return (
     <div
-      className={`rounded-3xl bg-surface shadow-[0_4px_16px_rgba(0,0,0,0.5)] ${className}`}
-      style={bgGradient ? { background: bgGradient, backgroundColor: 'var(--color-surface)' } : undefined}
+      className={`rounded-3xl border border-line bg-surface shadow-sm ${className}`}
+      style={accent ? { borderLeft: `3px solid ${accent}` } : undefined}
     >
       {children}
     </div>
@@ -30,35 +27,31 @@ export function SectionTitle({
   children: React.ReactNode;
   className?: string;
 }) {
-  return (
-    <h2
-      className={`text-xs font-semibold uppercase tracking-wider text-muted ${className}`}
-    >
-      {children}
-    </h2>
-  );
+  return <h2 className={`t-cap ${className}`}>{children}</h2>;
 }
 
 export function PageTitle({
   kicker,
   title,
   accent,
+  action,
 }: {
   kicker?: string;
   title: string;
   accent?: string;
+  action?: React.ReactNode;
 }) {
   return (
-    <header className="pt-2">
-      {kicker && (
-        <p
-          className="text-xs font-semibold uppercase tracking-wider text-muted"
-          style={accent ? { color: accent } : undefined}
-        >
-          {kicker}
-        </p>
-      )}
-      <h1 className="font-display text-5xl leading-tight">{title}</h1>
+    <header className="flex items-start justify-between gap-3 pt-1">
+      <div>
+        {kicker && (
+          <p className="t-cap" style={accent ? { color: accent } : undefined}>
+            {kicker}
+          </p>
+        )}
+        <h1 className="t-display mt-1.5">{title}</h1>
+      </div>
+      {action}
     </header>
   );
 }
@@ -74,12 +67,7 @@ export function ExternalLink({
   className?: string;
 }) {
   return (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={className}
-    >
+    <a href={href} target="_blank" rel="noopener noreferrer" className={className}>
       {children}
     </a>
   );
@@ -90,20 +78,22 @@ export function TileLink({
   label,
   sub,
   icon,
+  accent = "#9aa3b2",
 }: {
   href: string;
   label: string;
   sub: string;
   icon: React.ReactNode;
+  accent?: string;
 }) {
   return (
     <Link
       href={href}
-      className="group flex min-h-[88px] flex-col justify-between rounded-3xl bg-surface p-4 shadow-[0_2px_8px_rgba(0,0,0,0.4)] transition-all hover:shadow-[0_4px_16px_rgba(0,0,0,0.5)] active:scale-[0.98]"
+      className="flex min-h-[92px] flex-col justify-between rounded-3xl border border-line bg-surface p-4 shadow-sm transition-transform active:scale-[0.98]"
     >
-      <span className="text-muted transition-colors group-hover:text-ink">{icon}</span>
+      <span style={{ color: accent }}>{icon}</span>
       <span>
-        <span className="block text-base font-semibold text-ink">{label}</span>
+        <span className="block text-[15px] font-semibold text-ink">{label}</span>
         <span className="block text-xs text-muted">{sub}</span>
       </span>
     </Link>

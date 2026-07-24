@@ -1,5 +1,6 @@
 "use client";
 
+import { Flame } from "lucide-react";
 import { lsGet, useStorageTick } from "@/lib/storage";
 import { keys } from "@/lib/keys";
 import { dayIdForKey, yesterdayKey } from "@/lib/date";
@@ -16,14 +17,19 @@ export default function MissTwiceBanner({ mindset }: { mindset: string }) {
   if (!missedYesterday) return null;
 
   return (
-    <div className="rounded-2xl border border-[#d6454566] bg-[#d6454514] p-3">
-      <p
-        className="text-[11px] font-semibold uppercase tracking-[0.14em]"
-        style={{ color: "#F2B84B" }}
+    <div className="flex items-start gap-3 rounded-3xl border border-[#ff6b6b33] bg-[#ff6b6b14] p-4">
+      <span
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+        style={{ backgroundColor: "#ff6b6b26", color: "#ff6b6b" }}
       >
-        ⚠ Kal miss hua
-      </p>
-      <p className="mt-1 text-sm font-semibold leading-snug">{mindset}</p>
+        <Flame size={18} strokeWidth={2} />
+      </span>
+      <div>
+        <p className="t-cap" style={{ color: "#ff6b6b" }}>
+          Kal miss hua
+        </p>
+        <p className="mt-1 text-sm font-semibold leading-snug">{mindset}</p>
+      </div>
     </div>
   );
 }
