@@ -2,6 +2,7 @@
 
 import { Check, Play } from "lucide-react";
 import { ExternalLink } from "@/components/ui";
+import ExercisePhotos from "@/components/ExercisePhotos";
 
 export default function CheckRow({
   checked,
@@ -11,6 +12,7 @@ export default function CheckRow({
   desc,
   video,
   color,
+  photo,
 }: {
   checked: boolean;
   onToggle: () => void;
@@ -19,6 +21,7 @@ export default function CheckRow({
   desc: string;
   video: string;
   color: string;
+  photo?: { images: string[]; instructions: string[] } | null;
 }) {
   return (
     <div className="flex items-center gap-3 border-b border-line py-3 last:border-0">
@@ -56,6 +59,9 @@ export default function CheckRow({
           </span>
         </span>
       </button>
+      {photo && photo.images.length > 0 && (
+        <ExercisePhotos name={title} images={photo.images} instructions={photo.instructions} color={color} variant="thumb" />
+      )}
       <ExternalLink
         href={video}
         className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface2 text-muted transition-transform active:scale-95"

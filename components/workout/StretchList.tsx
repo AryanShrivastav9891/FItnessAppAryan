@@ -3,6 +3,7 @@
 import { useLocalState } from "@/lib/storage";
 import { keys } from "@/lib/keys";
 import { plan } from "@/lib/plan";
+import { getImages } from "@/lib/images";
 import type { StaticItem } from "@/lib/types";
 import { Disclosure } from "@/components/Disclosure";
 import CheckRow from "./CheckRow";
@@ -40,6 +41,7 @@ export default function StretchList({
             desc={s.target}
             video={s.video}
             color={color}
+            photo={getImages(s.id)}
           />
         ))}
       </div>

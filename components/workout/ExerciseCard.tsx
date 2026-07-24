@@ -10,6 +10,8 @@ import { MuscleChips } from "@/components/Chips";
 import { Disclosure } from "@/components/Disclosure";
 import { ExternalLink } from "@/components/ui";
 import Sheet from "@/components/Sheet";
+import ExercisePhotos from "@/components/ExercisePhotos";
+import { getImages } from "@/lib/images";
 import SetLogger from "./SetLogger";
 
 function prefersReducedMotion(): boolean {
@@ -40,6 +42,7 @@ export default function ExerciseCard({
 }) {
   const parsed = parseSets(exercise.sets);
   const total = parsed.count;
+  const photos = getImages(exercise.id);
   const [showRule, setShowRule] = useState(false);
   const { hydrated } = useStorageTick();
   const ref = useRef<HTMLElement | null>(null);
@@ -119,6 +122,27 @@ export default function ExerciseCard({
       <div className="mt-4">
         <MuscleChips primary={exercise.primary} secondary={exercise.secondary} color={color} />
       </div>
+
+      {photos ? (
+        <ExercisePhotos
+          name={exercise.name}
+          images={photos.images}
+          instructions={photos.instructions}
+          color={color}
+        />
+      ) : (
+        <div className="mt-4 flex items-center gap-3 rounded-2xl bg-surface2 p-3">
+          <span
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-xs font-bold"
+            style={{ backgroundColor: `${color}1f`, color }}
+          >
+            {exercise.primary[0]?.slice(0, 2).toUpperCase()}
+          </span>
+          <p className="text-xs leading-snug text-muted">
+            Iski photo library mein nahi — Video ya MuscleWiki se form dekh lo (neeche).
+          </p>
+        </div>
+      )}
 
       {overload && (
         <div className="mt-4">

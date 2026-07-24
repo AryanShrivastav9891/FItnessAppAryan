@@ -2,6 +2,7 @@
 
 import { useLocalState } from "@/lib/storage";
 import { keys } from "@/lib/keys";
+import { getImages } from "@/lib/images";
 import type { WarmupItem } from "@/lib/types";
 import CheckRow from "./CheckRow";
 
@@ -40,6 +41,7 @@ export default function WarmupList({
             desc={w.why}
             video={w.video}
             color={color}
+            photo={getImages(w.id)}
           />
         ))}
       </div>
