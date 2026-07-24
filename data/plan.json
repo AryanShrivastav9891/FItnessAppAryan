@@ -1,0 +1,1332 @@
+{
+  "meta": {
+    "appName": "Coach",
+    "mission": "6-month aesthetic body (X-frame) — body recomposition for a 25 y/o skinny-fat beginner, Delhi NCR",
+    "split": "Mon Lower A / Tue Push / Wed Pull / Thu Legs+Abs / Fri Upper B / Sat-Sun Rest + walking",
+    "timezone": "Asia/Kolkata",
+    "language": "Hinglish UI labels welcome (user is a Hinglish speaker)"
+  },
+  "profile": {
+    "name": "Athlete (Delhi NCR)",
+    "age": 25,
+    "sex": "Male",
+    "height": "5'9\" (175 cm)",
+    "weight": "66 kg",
+    "bodyType": "Skinny-fat (slim limbs, belly + side fat)",
+    "experience": "Beginner (pehle ~20 din normal exercise, phir gap — ab fresh restart)",
+    "goal": "Body recomposition / lean gain — muscle build + side belly kam. 5–6 mahine mein aesthetic X-frame body (chaude kandhe + chaudi lats + tight waist + bhare hue legs). Slight calorie surplus, NO crash diet.",
+    "diet": "Non-veg (4 eggs/day, chicken Sundays). Ek mahina pure veg (religious).",
+    "budget": "Rs.5,000/month (food + supplements)",
+    "gymTime": "7:00 PM (office ke baad, bina aaram kiye)",
+    "medical": "Koi injury nahi",
+    "smoking": "~5 saal se, quit/cut-down karna hai",
+    "digestion": "Fiber ke saath theek; bina fiber bloating (papaya, dahi, paani help karte hain)",
+    "supplementsOwned": "Creatine monohydrate + Whey 1 kg (25 g protein/scoop)"
+  },
+  "expectation": {
+    "honestTruth": "6 mahine mein Instagram model nahi banega — wo 1.5–2 saal ka khel hai. Lekin 6 mahine bina ek bhi hafta miss kiye train kiya toh ye milega:",
+    "results": [
+      "Weight 66 → 69–70 kg (muscle ka, fat ka nahi)",
+      "Waist 3–4 cm kam",
+      "Chest, shoulders, arms visibly bhare hue — T-shirt fit hone lagegi",
+      "Month 3–4 se log poochne lagenge: 'gym jaata hai kya?'"
+    ],
+    "core": "Asli test body ka nahi, consistency ka hai. 20-din-on / 1-week-off wala khel is baar band.",
+    "fiveDayConditions": "5-day plan tabhi kaam karega jab: (1) Neend 7 ghante minimum, (2) Khana poora, (3) Cigarette down. Ye teen nahi toh 4 din consistent zyada behtar hai 5 din adhoore se.",
+    "spotReductionTruth": "Spot reduction jhooth hai — na side bends se love handles jaate hain, na 500 crunches se. Fat poore body se jaata hai: calorie balance + protein + patience. Core strength ke liye train hota hai; fat girega toh abs dikhenge. Heavy weighted side bends MAT karna — obliques mote hoke waist chaudi dikha sakte hain."
+  },
+  "trainingRules": [
+    "Har session ka opening (10 min, plan ka hissa hai): 5 min incline walk/cycle (halki saans phoole) + us din ka dynamic warm-up (~5 min) + pehli exercise ke 1–2 halke ramp-up sets.",
+    "Rest: compound lifts (squat, RDL, bench, overhead press, rows, pulldown) pe 2–3 min; isolation (curls, raises, pushdowns, calves, abs) pe 60–90 sec.",
+    "Tempo: weight neeche 2 second control se, upar power se. Gravity ko free ride nahi.",
+    "Weight kitna? Jisme last 2 reps mushkil hon par form na toote.",
+    "PROGRESSIVE OVERLOAD (growth ka engine): jab teeno sets clean form mein rep-range ke top pe lag jayen → agle session +2.5 kg. Ye nahi kiya toh 6 mahine baad bhi same body.",
+    "Pehle 2 hafte weight halka, form pakka. Apne sets phone pe record kar (side angle) — camera jhooth nahi bolta.",
+    "Session total 60–75 min (7:00–8:15 PM). Sat–Sun gym band: full rest + walking.",
+    "Roz 8,000–10,000 steps (office + dinner ke baad 15 min walk — digestion + cigarette-replacement dono).",
+    "Creatine 3–5 g HAR roz — rest day bhi.",
+    "Neend: 11–11:30 tak bed, 7 ghante minimum. Muscle gym mein TOOT-ta hai, neend mein BANTA hai.",
+    "NEVER MISS TWICE: ek din chhoota — theek hai, agla din pakka. Mood na ho toh bhi jaa, 30 min hi sahi."
+  ],
+  "universalFormRules": [
+    "Spine neutral — na gol, na zyada arch. Har lift ka rule #1.",
+    "Shoulder blades ka ghar — pressing mein peeche-neeche squeeze; pulling mein pehle khulti hain, phir squeeze hoti hain.",
+    "Core braced — har rep se pehle aisa tight jaise pet pe punch aane wala ho.",
+    "Full range of motion — aadha rep = aadha muscle.",
+    "Control — neeche 2 second, upar power se."
+  ],
+  "stretchingRules": [
+    "GOLDEN RULE: Exercise se PEHLE = dynamic (hilte-dulte moves). Exercise ke BAAD = static (20–30 sec pakad ke rukna). Pehle static karne se muscle dheela padta hai — strength 5–10% girti hai.",
+    "Bounce kabhi nahi — jhatke se stretch = chhoti tear ka invite. Pakad ke statue ban ja.",
+    "Khichav feel ho, dard nahi — 6/10 tak ka pull theek, uske aage backfire.",
+    "Saans chalti rahe — exhale pe thoda aur andar ja. Saans roki toh muscle akad jaata hai.",
+    "Thande muscle ko kabhi zor se static stretch mat kar — isi liye static workout ke BAAD hai."
+  ],
+  "weekendRoutine": {
+    "satSun": "Gym band — full rest. 10 min full-body stretch ghar pe (Monday wale saare static + doorway chest + child's pose). Soreness aadhi, Monday fresh legs.",
+    "daily": "Din mein kabhi bhi: hip flexor lunge stretch + doorway chest stretch — desk job ke do sabse bade dushmanon ka roz ka ilaaj.",
+    "steps": "Sat–Sun bhi 8–10k steps chalu, creatine chalu."
+  },
+  "crowdDodgeRules": [
+    "Order shuffle allowed — SAME day ke andar exercises aage-peeche kar sakta hai (bench busy? pehle fly/lateral kar, 10 min mein bench khali). Bas kisi aur DIN ka muscle mat utha lena.",
+    "Backup ready rakh: Barbell bench busy → DB bench ya machine chest press. Squat rack busy → goblet squat ya leg press pehle. Lat pulldown busy → assisted pull-up ya one-arm row pehle. Cable busy → DB se wahi kaam.",
+    "Magic line seekh le: 'Bhai kitne set bache? Saath mein kar loon?' — uske rest mein tera set, tere rest mein uska. Gym ka sabse purana jugaad."
+  ],
+  "muscleAudit": [
+    "Upper chest — Tue (Incline DB Press)",
+    "Mid chest — Fri (Barbell Bench) + Tue fly/pec deck",
+    "Lats — 2× (Wed pull-up/pulldown + one-arm row; Fri lat pulldown)",
+    "Mid-back (rhomboids, mid traps) — 2× (Wed chest-supported row; Fri cable row)",
+    "Lower back (spinal erectors) — Mon (RDL)",
+    "Front delts — 2× (Tue + Fri presses)",
+    "Side delts — 2× direct (Tue cable lateral, Fri DB lateral) + 2 press days",
+    "Rear delts — 2× (Wed face pull; Fri reverse pec deck)",
+    "Upper traps — Wed (DB shrug) + Thu (farmer's carry)",
+    "Biceps — 2× (Wed EZ curl; Fri DB curl) + saare pulls",
+    "Brachialis — Wed (hammer curl)",
+    "Triceps long head — Tue (overhead extension); lateral head — Tue + Fri (pushdowns)",
+    "Forearms — 2× (Wed hammer curl; Thu farmer's carry)",
+    "Quads — 2× (Mon squat/leg press; Thu leg press/lunges/extension)",
+    "Hamstrings — 2× (Mon RDL/lying curl; Thu seated curl)",
+    "Glutes — 3× touch (squat, RDL, lunges, leg press, bridge)",
+    "Calves: Gastrocnemius — Mon (standing raise); Soleus — Thu (seated raise)",
+    "Upper abs — Thu (cable crunch); Lower abs — Thu (hanging knee raise)",
+    "Obliques — Mon (side plank)",
+    "Rotator cuff — Wed (face pull) + band pull-aparts roz",
+    "RECOVERY CHECK: Legs Mon→Thu = 72 hrs. Chest Tue→Fri = 72 hrs. Back Wed→Fri = 48 hrs (exercises alag). Koi muscle do din lagatar nahi. Sar se pair tak EK BHI muscle bina kaam ke nahi."
+  ],
+  "week": [
+    {
+      "day": "Monday",
+      "title": "LOWER A",
+      "crowdNote": "Sab bench pe lage hain (International Chest Day) → squat rack aur leg section khali — tu raja.",
+      "warmup": [
+        {
+          "name": "Leg swings (aage-peeche)",
+          "dose": "10/leg",
+          "why": "Hamstrings + hip flexors jagte hain — RDL ready.",
+          "video": "https://www.youtube.com/results?search_query=front+to+back+leg+swings+warm+up",
+          "id": "monday-wu-leg-swings-aage-peeche"
+        },
+        {
+          "name": "Leg swings (side-to-side)",
+          "dose": "10/leg",
+          "why": "Groin/adductors khulte hain — squat mein knees bahar rakhne ke liye.",
+          "video": "https://www.youtube.com/results?search_query=side+to+side+leg+swings+warm+up",
+          "id": "monday-wu-leg-swings-side-to-side"
+        },
+        {
+          "name": "Hip circles / 90-90 rotation",
+          "dose": "8/side",
+          "why": "Hip joint ka poora ghumav.",
+          "video": "https://www.youtube.com/results?search_query=90+90+hip+rotation+mobility",
+          "id": "monday-wu-hip-circles-90-90-rotation"
+        },
+        {
+          "name": "Bodyweight squats",
+          "dose": "12–15",
+          "why": "Squat pattern ka rehearsal — ghutne-hips sync.",
+          "video": "https://www.youtube.com/results?search_query=bodyweight+squat+form",
+          "id": "monday-wu-bodyweight-squats"
+        },
+        {
+          "name": "Ankle rocks (knee-to-wall)",
+          "dose": "10/side",
+          "why": "Ankle mobility — squat depth ka asli taala; heels uthne ki problem yahin fix hoti hai.",
+          "video": "https://www.youtube.com/results?search_query=knee+to+wall+ankle+mobility",
+          "id": "monday-wu-ankle-rocks-knee-to-wall"
+        },
+        {
+          "name": "Glute bridge",
+          "dose": "12",
+          "why": "Desk job se soye glutes ko ON karna — warna squat mein sirf quads khayenge.",
+          "video": "https://www.youtube.com/results?search_query=glute+bridge+form",
+          "id": "monday-wu-glute-bridge"
+        },
+        {
+          "name": "Cat-cow",
+          "dose": "8",
+          "why": "Spine ko RDL ke liye jagana.",
+          "video": "https://www.youtube.com/results?search_query=cat+cow+stretch",
+          "id": "monday-wu-cat-cow"
+        }
+      ],
+      "exercises": [
+        {
+          "order": 1,
+          "name": "Barbell Back Squat",
+          "sets": "3 × 6–10",
+          "primary": [
+            "Quads",
+            "Glutes"
+          ],
+          "secondary": [
+            "Core (stabilizer)",
+            "Lower back (stabilizer)"
+          ],
+          "form": "Bar upper traps pe, chest upar, back seedhi. Feet shoulder-width, toes thoda bahar, heels zameen pe, knees toes ki direction. Depth: hip crease ghutne ke barabar ya thoda neeche. (Form set na ho tab tak Goblet Squat.)",
+          "mistakes": "Ego weight pe half squat; knees andar girna; heels uthna.",
+          "video": "https://www.youtube.com/results?search_query=barbell+back+squat+proper+form",
+          "backup": "Goblet Squat ya Leg Press pehle (rack busy ho toh)",
+          "id": "monday-barbell-back-squat",
+          "restSeconds": 150
+        },
+        {
+          "order": 2,
+          "name": "Romanian Deadlift (RDL)",
+          "sets": "3 × 8–10",
+          "primary": [
+            "Hamstrings",
+            "Glutes"
+          ],
+          "secondary": [
+            "Lower back (spinal erectors)"
+          ],
+          "form": "Knees soft, hips PEECHE push, bar body se chipki, back bilkul FLAT (plank jaisi). Hamstring mein stretch aaya → wapas upar.",
+          "mistakes": "Back round karna — ye galti MAAF NAHI. Photo/video mein pith gol dikhe toh wahi galat version hai.",
+          "video": "https://www.youtube.com/results?search_query=romanian+deadlift+proper+form",
+          "backup": "",
+          "id": "monday-romanian-deadlift-rdl",
+          "restSeconds": 150
+        },
+        {
+          "order": 3,
+          "name": "Leg Press",
+          "sets": "3 × 10–12",
+          "primary": [
+            "Quads"
+          ],
+          "secondary": [
+            "Glutes"
+          ],
+          "form": "Full control se neeche; top pe knees lock out mat kar.",
+          "mistakes": "Bahut neeche laake lower back seat se uthana; knees lock karna.",
+          "video": "https://www.youtube.com/results?search_query=leg+press+machine+proper+form",
+          "backup": "",
+          "id": "monday-leg-press",
+          "restSeconds": 150
+        },
+        {
+          "order": 4,
+          "name": "Lying Leg Curl",
+          "sets": "3 × 10–15",
+          "primary": [
+            "Hamstrings (isolate)"
+          ],
+          "secondary": [],
+          "form": "Hips pad se chipke rahen, control se curl.",
+          "mistakes": "Jhatka maar ke hips uthana.",
+          "video": "https://www.youtube.com/results?search_query=lying+leg+curl+proper+form",
+          "backup": "Seated Leg Curl",
+          "id": "monday-lying-leg-curl",
+          "restSeconds": 75
+        },
+        {
+          "order": 5,
+          "name": "Standing Calf Raise",
+          "sets": "4 × 12–15",
+          "primary": [
+            "Calves (gastrocnemius)"
+          ],
+          "secondary": [],
+          "form": "Upar 1 sec ruk, neeche FULL stretch. Calves ziddi muscle hai — isliye 4 sets.",
+          "mistakes": "Bounce karna.",
+          "video": "https://www.youtube.com/results?search_query=standing+calf+raise+proper+form",
+          "backup": "",
+          "id": "monday-standing-calf-raise",
+          "restSeconds": 75
+        },
+        {
+          "order": 6,
+          "name": "Plank + Side Plank",
+          "sets": "Plank 3 × 30–45 sec + Side Plank 2 × 20–30 sec/side",
+          "primary": [
+            "Deep core (transverse abdominis + rectus abdominis)",
+            "Obliques (side plank)"
+          ],
+          "secondary": [
+            "Glutes",
+            "Shoulders (stabilizer)"
+          ],
+          "form": "Sar se edi tak seedhi rod jaisi line, glutes squeeze, hips na latke na uthe. Side plank: elbow seedha kandhe ke neeche. Side plank obliques ko BINA mota kiye tight karta hai — isi liye weighted side bends nahi (waist chaudi karke X-frame kharab karte hain).",
+          "mistakes": "Hips latakna ya upar uthana.",
+          "video": "https://www.youtube.com/results?search_query=plank+side+plank+correct+form",
+          "backup": "",
+          "id": "monday-plank-side-plank",
+          "restSeconds": 60
+        }
+      ],
+      "static": [
+        {
+          "name": "Standing quad stretch",
+          "dose": "20–30 sec/side",
+          "target": "Quads — edi ko hip tak kheench.",
+          "video": "https://www.youtube.com/results?search_query=standing+quad+stretch",
+          "id": "monday-st-standing-quad-stretch"
+        },
+        {
+          "name": "Hamstring stretch",
+          "dose": "20–30 sec/side",
+          "target": "Hamstrings — pair seedha, hips se aage jhuk.",
+          "video": "https://www.youtube.com/results?search_query=standing+hamstring+stretch",
+          "id": "monday-st-hamstring-stretch"
+        },
+        {
+          "name": "Figure-4 / Pigeon",
+          "dose": "20–30 sec/side",
+          "target": "Glutes.",
+          "video": "https://www.youtube.com/results?search_query=figure+4+glute+stretch",
+          "id": "monday-st-figure-4-pigeon"
+        },
+        {
+          "name": "Butterfly",
+          "dose": "20–30 sec",
+          "target": "Groin/adductors.",
+          "video": "https://www.youtube.com/results?search_query=butterfly+stretch",
+          "id": "monday-st-butterfly"
+        },
+        {
+          "name": "Wall calf stretch (pair seedha)",
+          "dose": "20–30 sec/side",
+          "target": "Gastrocnemius.",
+          "video": "https://www.youtube.com/results?search_query=wall+calf+stretch",
+          "id": "monday-st-wall-calf-stretch-pair-seedha"
+        },
+        {
+          "name": "Hip flexor lunge stretch",
+          "dose": "20–30 sec/side",
+          "target": "Hip flexors — ghutna zameen pe, hips aage push. Desk job ka sabse tight muscle; roz ghar pe bhi kar.",
+          "video": "https://www.youtube.com/results?search_query=kneeling+hip+flexor+stretch",
+          "id": "monday-st-hip-flexor-lunge-stretch"
+        },
+        {
+          "name": "Child's pose",
+          "dose": "30 sec",
+          "target": "Lower back release — saans chhodte hue.",
+          "video": "https://www.youtube.com/results?search_query=childs+pose+stretch",
+          "id": "monday-st-child-s-pose"
+        }
+      ],
+      "id": "monday"
+    },
+    {
+      "day": "Tuesday",
+      "title": "PUSH (Chest, Shoulders, Triceps)",
+      "crowdNote": "Monday wali chest crowd aaj back pe → incline bench, pec deck, shoulder press sab free.",
+      "warmup": [
+        {
+          "name": "Arm circles",
+          "dose": "10 chhote + 10 bade (dono direction)",
+          "why": "Shoulder joint mein garmi.",
+          "video": "https://www.youtube.com/results?search_query=arm+circles+warm+up",
+          "id": "tuesday-wu-arm-circles"
+        },
+        {
+          "name": "Shoulder dislocates (towel/band/rod)",
+          "dose": "10",
+          "why": "Kandhe ke saare angles khulte hain, chest bhi stretch. Naam se dar mat.",
+          "video": "https://www.youtube.com/results?search_query=shoulder+dislocates+band",
+          "id": "tuesday-wu-shoulder-dislocates-towel-band-rod"
+        },
+        {
+          "name": "Band pull-aparts",
+          "dose": "15",
+          "why": "Rear delts + rotator cuff ON — pressing se pehle kandhe ka insurance.",
+          "video": "https://www.youtube.com/results?search_query=band+pull+aparts+form",
+          "id": "tuesday-wu-band-pull-aparts"
+        },
+        {
+          "name": "Wall slides",
+          "dose": "10",
+          "why": "Shoulder blades (scapula) ka smooth chalna.",
+          "video": "https://www.youtube.com/results?search_query=wall+slides+shoulder+mobility",
+          "id": "tuesday-wu-wall-slides"
+        },
+        {
+          "name": "Open-close hugs (arm swings)",
+          "dose": "10",
+          "why": "Chest ka dynamic stretch.",
+          "video": "https://www.youtube.com/results?search_query=arm+swings+chest+warm+up",
+          "id": "tuesday-wu-open-close-hugs-arm-swings"
+        },
+        {
+          "name": "Push-ups",
+          "dose": "8–10",
+          "why": "Aaj ke pressing pattern ka rehearsal.",
+          "video": "https://www.youtube.com/results?search_query=push+up+proper+form",
+          "id": "tuesday-wu-push-ups"
+        },
+        {
+          "name": "Wrist circles + halki wrist stretch",
+          "dose": "20 sec",
+          "why": "Pressing ka saara load wrist se guzarta hai.",
+          "video": "https://www.youtube.com/results?search_query=wrist+warm+up+exercises",
+          "id": "tuesday-wu-wrist-circles-halki-wrist-stretch"
+        }
+      ],
+      "exercises": [
+        {
+          "order": 1,
+          "name": "Incline Dumbbell Press",
+          "sets": "3 × 8–12",
+          "primary": [
+            "Upper chest (clavicular pec)"
+          ],
+          "secondary": [
+            "Front delts",
+            "Triceps"
+          ],
+          "form": "Bench ~30°, forearms hamesha vertical, dumbbells chest ke upar milao (takraane nahi), control se neeche. Aesthetic chest yahi banata hai — flat bench upper hissa poora nahi bharta.",
+          "mistakes": "Bench 45°+ karna — tab shoulder zyada khaata hai, chest kam.",
+          "video": "https://www.youtube.com/results?search_query=incline+dumbbell+press+form",
+          "backup": "",
+          "id": "tuesday-incline-dumbbell-press",
+          "restSeconds": 75
+        },
+        {
+          "order": 2,
+          "name": "Pec Deck / Cable Fly",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Chest (isolate — stretch + squeeze)"
+          ],
+          "secondary": [],
+          "form": "Elbows halke bent aur FIX, haath hug karne jaisa milao.",
+          "mistakes": "Bhaari leke elbow ka angle badalna.",
+          "video": "https://www.youtube.com/results?search_query=pec+deck+machine+proper+form",
+          "backup": "Cable Fly ya DB Fly",
+          "id": "tuesday-pec-deck-cable-fly",
+          "restSeconds": 75
+        },
+        {
+          "order": 3,
+          "name": "Seated Overhead Press (barbell/machine)",
+          "sets": "3 × 8–10",
+          "primary": [
+            "Front delts",
+            "Side delts"
+          ],
+          "secondary": [
+            "Triceps"
+          ],
+          "form": "Core tight, ribs neeche, lower back over-arch nahi, upar full press.",
+          "mistakes": "Heavy leke aadhe reps.",
+          "video": "https://www.youtube.com/results?search_query=seated+overhead+press+form",
+          "backup": "Machine Shoulder Press",
+          "id": "tuesday-seated-overhead-press-barbell-machine",
+          "restSeconds": 150
+        },
+        {
+          "order": 4,
+          "name": "Cable Lateral Raise",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Side delts"
+          ],
+          "secondary": [],
+          "form": "X-frame ki chaudai yahi muscle hai. Elbows se lead, shoulder height tak, elbow ka halka bend poore rep mein SAME. Cable = constant tension.",
+          "mistakes": "Swing karna; traps shrug karna.",
+          "video": "https://www.youtube.com/results?search_query=cable+lateral+raise+form",
+          "backup": "DB Lateral Raise",
+          "id": "tuesday-cable-lateral-raise",
+          "restSeconds": 75
+        },
+        {
+          "order": 5,
+          "name": "Overhead DB Triceps Extension",
+          "sets": "3 × 10–12",
+          "primary": [
+            "Triceps (long head)"
+          ],
+          "secondary": [],
+          "form": "Arm ka sabse bada hissa long head hai aur ye sirf overhead position mein full stretch hota hai. Elbows kaano ke paas, sirf forearm chale.",
+          "mistakes": "Elbows bahar phailna; kohni ka hilna.",
+          "video": "https://www.youtube.com/results?search_query=overhead+dumbbell+tricep+extension+form",
+          "backup": "",
+          "id": "tuesday-overhead-db-triceps-extension",
+          "restSeconds": 75
+        },
+        {
+          "order": 6,
+          "name": "Rope Pushdown",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Triceps (lateral head — horseshoe shape)"
+          ],
+          "secondary": [],
+          "form": "Elbows body se fix, neeche full lockout squeeze, rope ends alag karo bottom pe.",
+          "mistakes": "Kandhe aage jhuka ke body ka weight lagana.",
+          "video": "https://www.youtube.com/results?search_query=rope+pushdown+proper+form",
+          "backup": "Straight bar pushdown",
+          "id": "tuesday-rope-pushdown",
+          "restSeconds": 75
+        }
+      ],
+      "static": [
+        {
+          "name": "Doorway chest stretch",
+          "dose": "30 sec/side",
+          "target": "Pecs — haath doorframe pe, aage jhuk.",
+          "video": "https://www.youtube.com/results?search_query=doorway+chest+stretch",
+          "id": "tuesday-st-doorway-chest-stretch"
+        },
+        {
+          "name": "Overhead triceps stretch",
+          "dose": "20–30 sec/arm",
+          "target": "Triceps long head — kohni upar, haath peeche.",
+          "video": "https://www.youtube.com/results?search_query=overhead+triceps+stretch",
+          "id": "tuesday-st-overhead-triceps-stretch"
+        },
+        {
+          "name": "Cross-body shoulder stretch",
+          "dose": "20–30 sec/side",
+          "target": "Side + rear delt.",
+          "video": "https://www.youtube.com/results?search_query=cross+body+shoulder+stretch",
+          "id": "tuesday-st-cross-body-shoulder-stretch"
+        },
+        {
+          "name": "Hands-behind-back chest opener",
+          "dose": "20–30 sec",
+          "target": "Front delts + chest — haath peeche interlock karke chest kholna.",
+          "video": "https://www.youtube.com/results?search_query=hands+behind+back+chest+opener+stretch",
+          "id": "tuesday-st-hands-behind-back-chest-opener"
+        },
+        {
+          "name": "Neck side stretch",
+          "dose": "20 sec/side",
+          "target": "Traps — kaan kandhe ki taraf (pressing mein traps tight ho jaate hain).",
+          "video": "https://www.youtube.com/results?search_query=neck+side+stretch+traps",
+          "id": "tuesday-st-neck-side-stretch"
+        }
+      ],
+      "id": "tuesday"
+    },
+    {
+      "day": "Wednesday",
+      "title": "PULL (Back, Rear Delts, Biceps)",
+      "crowdNote": "Aaj bros ka shoulder day → lat pulldown, rows, pull-up station khali.",
+      "warmup": [
+        {
+          "name": "Arm circles + shoulder rolls",
+          "dose": "10 each",
+          "why": "Shoulder garam.",
+          "video": "https://www.youtube.com/results?search_query=arm+circles+shoulder+rolls+warm+up",
+          "id": "wednesday-wu-arm-circles-shoulder-rolls"
+        },
+        {
+          "name": "Band pull-aparts",
+          "dose": "15",
+          "why": "Roz ka ritual — rear delt kabhi thanda nahi jaana chahiye.",
+          "video": "https://www.youtube.com/results?search_query=band+pull+aparts+form",
+          "id": "wednesday-wu-band-pull-aparts"
+        },
+        {
+          "name": "Cat-cow + T-spine rotation (open book)",
+          "dose": "8 + 8/side",
+          "why": "Rowing ke liye upper spine ka ghumav zaroori.",
+          "video": "https://www.youtube.com/results?search_query=open+book+thoracic+rotation",
+          "id": "wednesday-wu-cat-cow-t-spine-rotation-open-book"
+        },
+        {
+          "name": "Dead hang",
+          "dose": "20–30 sec",
+          "why": "Lats stretch + spine decompress + grip warm — pull day ka perfect starter.",
+          "video": "https://www.youtube.com/results?search_query=dead+hang+benefits+form",
+          "id": "wednesday-wu-dead-hang"
+        },
+        {
+          "name": "Scapular pulls",
+          "dose": "8–10",
+          "why": "Dead hang mein bina kohni mode kandhe neeche kheencho — lats ko ON karna sikhata hai; pull-up ka pehla step.",
+          "video": "https://www.youtube.com/results?search_query=scapular+pull+ups+form",
+          "id": "wednesday-wu-scapular-pulls"
+        },
+        {
+          "name": "Wrist/forearm circles",
+          "dose": "20 sec",
+          "why": "Curls + grip ke liye.",
+          "video": "https://www.youtube.com/results?search_query=wrist+forearm+warm+up",
+          "id": "wednesday-wu-wrist-forearm-circles"
+        }
+      ],
+      "exercises": [
+        {
+          "order": 1,
+          "name": "Assisted Pull-up / Close-grip Lat Pulldown",
+          "sets": "3 × 8–12",
+          "primary": [
+            "Lats"
+          ],
+          "secondary": [
+            "Biceps"
+          ],
+          "form": "Har hafte assist weight thoda kam kar. Target: month 3 mein pehla bina-support pull-up.",
+          "mistakes": "Aadhi range; jhatka.",
+          "video": "https://www.youtube.com/results?search_query=assisted+pull+up+machine+form",
+          "backup": "Close-grip Lat Pulldown",
+          "id": "wednesday-assisted-pull-up-close-grip-lat-pulldown",
+          "restSeconds": 150
+        },
+        {
+          "order": 2,
+          "name": "Chest-supported Row",
+          "sets": "3 × 8–10",
+          "primary": [
+            "Mid-back (rhomboids, middle traps)"
+          ],
+          "secondary": [
+            "Rear delts",
+            "Biceps",
+            "Lats"
+          ],
+          "form": "Chest pad pe — cheating impossible, beginner ke liye best. Elbow peeche kheench, 1 sec squeeze. (Barbell Row option: back flat, jerk nahi.)",
+          "mistakes": "Jhatke se poora body hilana (barbell version mein back round karna).",
+          "video": "https://www.youtube.com/results?search_query=chest+supported+row+form",
+          "backup": "Barbell Row ya Machine Row",
+          "id": "wednesday-chest-supported-row",
+          "restSeconds": 150
+        },
+        {
+          "order": 3,
+          "name": "One-arm Dumbbell Row",
+          "sets": "3 × 10–12 per side",
+          "primary": [
+            "Lats",
+            "Mid-back"
+          ],
+          "secondary": [
+            "Biceps",
+            "Rear delts"
+          ],
+          "form": "Ek haath-ghutna bench pe, pith table jaisi FLAT, elbow hip ki taraf kheench, torso square rahe.",
+          "mistakes": "Torso ghumana; jhatka.",
+          "video": "https://www.youtube.com/results?search_query=one+arm+dumbbell+row+form",
+          "backup": "",
+          "id": "wednesday-one-arm-dumbbell-row",
+          "restSeconds": 150
+        },
+        {
+          "order": 4,
+          "name": "Face Pull",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Rear delts",
+            "Rotator cuff",
+            "Mid traps"
+          ],
+          "secondary": [],
+          "form": "Chhupa hua hero: 3D kandhe peeche se bante hain + desk-job wali aage jhuki posture repair + shoulder injury insurance. Rope aankhon ke level pe, elbows HIGH (kandhon se upar), ends ko alag kheench, finish 'double biceps pose' jaisa.",
+          "mistakes": "Heavy leke isko row bana dena. 90% log yahi galat karte hain.",
+          "video": "https://www.youtube.com/results?search_query=face+pull+cable+exercise+form",
+          "backup": "Reverse Pec Deck",
+          "id": "wednesday-face-pull",
+          "restSeconds": 75
+        },
+        {
+          "order": 5,
+          "name": "Dumbbell Shrug",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Upper traps"
+          ],
+          "secondary": [
+            "Grip/forearms"
+          ],
+          "form": "Neck ke side ka muscle jo collar se dikhta hai. Kandhe seedhe UPAR, top pe 1 sec hold, control se neeche.",
+          "mistakes": "Kandhe gol-gol ghumana — bekar aur risky.",
+          "video": "https://www.youtube.com/results?search_query=dumbbell+shrug+proper+form",
+          "backup": "",
+          "id": "wednesday-dumbbell-shrug",
+          "restSeconds": 75
+        },
+        {
+          "order": 6,
+          "name": "EZ-bar Curl",
+          "sets": "3 × 8–12",
+          "primary": [
+            "Biceps brachii (dono heads)"
+          ],
+          "secondary": [
+            "Forearms"
+          ],
+          "form": "Elbows body ke saath FIX, poora range — neeche full stretch, upar squeeze.",
+          "mistakes": "Kamar se jhula jhulana.",
+          "video": "https://www.youtube.com/results?search_query=ez+bar+curl+proper+form",
+          "backup": "Barbell/DB Curl",
+          "id": "wednesday-ez-bar-curl",
+          "restSeconds": 75
+        },
+        {
+          "order": 7,
+          "name": "Hammer Curl",
+          "sets": "3 × 10–12",
+          "primary": [
+            "Brachialis (biceps ke neeche — arm ki motai)"
+          ],
+          "secondary": [
+            "Forearms (brachioradialis)"
+          ],
+          "form": "Neutral grip (hatheliyan aamne-saamne), elbows steady, control se.",
+          "mistakes": "Body se swing karna.",
+          "video": "https://www.youtube.com/results?search_query=hammer+curl+proper+form",
+          "backup": "",
+          "id": "wednesday-hammer-curl",
+          "restSeconds": 75
+        }
+      ],
+      "static": [
+        {
+          "name": "Lat stretch (rack pakad ke)",
+          "dose": "30 sec/side",
+          "target": "Lats — rack pakad, hips peeche, side mein jhuk. Pull day ka KING stretch.",
+          "video": "https://www.youtube.com/results?search_query=lat+stretch+on+rack",
+          "id": "wednesday-st-lat-stretch-rack-pakad-ke"
+        },
+        {
+          "name": "Biceps wall stretch",
+          "dose": "20–30 sec/arm",
+          "target": "Biceps — hatheli peeche wall pe, body aage ghuma.",
+          "video": "https://www.youtube.com/results?search_query=biceps+wall+stretch",
+          "id": "wednesday-st-biceps-wall-stretch"
+        },
+        {
+          "name": "Forearm stretches (dono)",
+          "dose": "20 sec each",
+          "target": "Forearms — hatheli upar karke ungliyan peeche kheench, phir hatheli neeche karke. Hammer curls ke baad zaroori.",
+          "video": "https://www.youtube.com/results?search_query=forearm+flexor+extensor+stretch",
+          "id": "wednesday-st-forearm-stretches-dono"
+        },
+        {
+          "name": "Upper trap stretch",
+          "dose": "20–30 sec/side",
+          "target": "Upper traps — kaan kandhe ki taraf, halka haath ka pressure. Shrugs ke baad.",
+          "video": "https://www.youtube.com/results?search_query=upper+trap+stretch",
+          "id": "wednesday-st-upper-trap-stretch"
+        },
+        {
+          "name": "Cross-body rear delt stretch",
+          "dose": "20–30 sec/side",
+          "target": "Rear delts.",
+          "video": "https://www.youtube.com/results?search_query=cross+body+rear+delt+stretch",
+          "id": "wednesday-st-cross-body-rear-delt-stretch"
+        },
+        {
+          "name": "Child's pose side reach",
+          "dose": "20–30 sec/side",
+          "target": "Lats ka doosra angle — ek taraf haath ghuma ke.",
+          "video": "https://www.youtube.com/results?search_query=childs+pose+side+reach+lat+stretch",
+          "id": "wednesday-st-child-s-pose-side-reach"
+        }
+      ],
+      "id": "wednesday"
+    },
+    {
+      "day": "Thursday",
+      "title": "LEGS + ABS",
+      "crowdNote": "Aaj sab arms maar rahe hain, cable pe curl-pushdown ki line → leg area bilkul sunsaan.",
+      "warmup": [
+        {
+          "name": "Leg swings (dono direction)",
+          "dose": "10/leg",
+          "why": "Hips + hamstrings ready.",
+          "video": "https://www.youtube.com/results?search_query=leg+swings+warm+up",
+          "id": "thursday-wu-leg-swings-dono-direction"
+        },
+        {
+          "name": "Bodyweight squats",
+          "dose": "10",
+          "why": "Pattern on.",
+          "video": "https://www.youtube.com/results?search_query=bodyweight+squat+form",
+          "id": "thursday-wu-bodyweight-squats"
+        },
+        {
+          "name": "Reverse lunges",
+          "dose": "6–8/leg",
+          "why": "Aaj walking lunges hain — pattern pehle bina weight ghis le.",
+          "video": "https://www.youtube.com/results?search_query=reverse+lunge+form",
+          "id": "thursday-wu-reverse-lunges"
+        },
+        {
+          "name": "Hip circles + ankle rocks",
+          "dose": "8/side + 10/side",
+          "why": "Hips + ankles khule.",
+          "video": "https://www.youtube.com/results?search_query=hip+circles+ankle+mobility",
+          "id": "thursday-wu-hip-circles-ankle-rocks"
+        },
+        {
+          "name": "Glute bridge",
+          "dose": "12",
+          "why": "Glutes ON.",
+          "video": "https://www.youtube.com/results?search_query=glute+bridge+form",
+          "id": "thursday-wu-glute-bridge"
+        },
+        {
+          "name": "Dead hang",
+          "dose": "15–20 sec",
+          "why": "Hanging knee raises ke liye grip + shoulders ready.",
+          "video": "https://www.youtube.com/results?search_query=dead+hang+form",
+          "id": "thursday-wu-dead-hang"
+        },
+        {
+          "name": "Standing torso twists",
+          "dose": "10/side",
+          "why": "Core/spine ko crunch work ke liye jagana.",
+          "video": "https://www.youtube.com/results?search_query=standing+torso+twists+warm+up",
+          "id": "thursday-wu-standing-torso-twists"
+        }
+      ],
+      "exercises": [
+        {
+          "order": 1,
+          "name": "Leg Press (Heavy Day)",
+          "sets": "3 × 8–10",
+          "primary": [
+            "Quads"
+          ],
+          "secondary": [
+            "Glutes"
+          ],
+          "form": "Monday se thoda zyada weight, form bilkul same. Control se neeche, knees lock nahi.",
+          "mistakes": "Weight ke chakkar mein range chhoti karna.",
+          "video": "https://www.youtube.com/results?search_query=leg+press+machine+proper+form",
+          "backup": "",
+          "id": "thursday-leg-press-heavy-day",
+          "restSeconds": 150
+        },
+        {
+          "order": 2,
+          "name": "Walking Lunges",
+          "sets": "3 × 10 per leg",
+          "primary": [
+            "Quads",
+            "Glutes"
+          ],
+          "secondary": [
+            "Core + chhote hip stabilizers (balance, athletic look)"
+          ],
+          "form": "Dono ghutne 90°, aage wala knee panje ke UPAR (aage nahi), torso seedha khada, peeche wala ghutna zameen ko bas touch kare.",
+          "mistakes": "Chhote steps; aage jhukna.",
+          "video": "https://www.youtube.com/results?search_query=walking+lunge+proper+form",
+          "backup": "Reverse Lunges (balance issue ho toh)",
+          "id": "thursday-walking-lunges",
+          "restSeconds": 150
+        },
+        {
+          "order": 3,
+          "name": "Leg Extension",
+          "sets": "2 × 12–15",
+          "primary": [
+            "Quads (isolate — vastus medialis/teardrop, knee ke upar)"
+          ],
+          "secondary": [],
+          "form": "Top pe 1 sec squeeze, control se neeche.",
+          "mistakes": "Jhatke se kick karna.",
+          "video": "https://www.youtube.com/results?search_query=leg+extension+machine+form",
+          "backup": "",
+          "id": "thursday-leg-extension",
+          "restSeconds": 75
+        },
+        {
+          "order": 4,
+          "name": "Seated Leg Curl",
+          "sets": "3 × 10–15",
+          "primary": [
+            "Hamstrings"
+          ],
+          "secondary": [],
+          "form": "Seated angle lying se alag stretch deta hai — Monday lying tha, aaj seated. Control se curl.",
+          "mistakes": "Aadhi range.",
+          "video": "https://www.youtube.com/results?search_query=seated+leg+curl+form",
+          "backup": "Lying Leg Curl",
+          "id": "thursday-seated-leg-curl",
+          "restSeconds": 75
+        },
+        {
+          "order": 5,
+          "name": "Seated Calf Raise",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Soleus (calf ka neeche wala muscle — sirf bent-knee mein lagta hai)"
+          ],
+          "secondary": [],
+          "form": "Monday standing = gastro, aaj seated = soleus. Calf complete. Upar 1 sec, neeche full stretch.",
+          "mistakes": "Bounce.",
+          "video": "https://www.youtube.com/results?search_query=seated+calf+raise+form",
+          "backup": "",
+          "id": "thursday-seated-calf-raise",
+          "restSeconds": 75
+        },
+        {
+          "order": 6,
+          "name": "Hanging Knee Raise",
+          "sets": "3 × 10–15",
+          "primary": [
+            "Lower abs (rectus abdominis ka nichla hissa)"
+          ],
+          "secondary": [
+            "Grip",
+            "Hip flexors"
+          ],
+          "form": "Pelvis ko UPAR curl kar — sirf taange mat jhula.",
+          "mistakes": "Swing se reps ginna.",
+          "video": "https://www.youtube.com/results?search_query=hanging+knee+raise+proper+form",
+          "backup": "Captain's chair knee raise",
+          "id": "thursday-hanging-knee-raise",
+          "restSeconds": 75
+        },
+        {
+          "order": 7,
+          "name": "Cable Crunch",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Upper abs"
+          ],
+          "secondary": [],
+          "form": "Hips FIX, sirf spine ko round karke neeche crunch. Abs bhi muscle hai — weight se badhta hai, sirf floor crunches se nahi.",
+          "mistakes": "Hips se jhukna (spine round nahi karna).",
+          "video": "https://www.youtube.com/results?search_query=cable+crunch+proper+form",
+          "backup": "Decline bench crunch (cable busy ho toh — same upper abs)",
+          "id": "thursday-cable-crunch",
+          "restSeconds": 75
+        },
+        {
+          "order": 8,
+          "name": "Farmer's Carry",
+          "sets": "2 rounds × 30–40 steps",
+          "primary": [
+            "Forearms/Grip",
+            "Traps",
+            "Core"
+          ],
+          "secondary": [
+            "Full body stabilizers"
+          ],
+          "form": "Bhaari DB dono haath, seedha khada chal — kandhe peeche, core tight.",
+          "mistakes": "Jhuk ke chalna. (Jagah na ho toh: khade hoke 30–40 sec heavy DB hold — same kaam.)",
+          "video": "https://www.youtube.com/results?search_query=farmers+carry+proper+form",
+          "backup": "Heavy DB timed hold 30–40 sec",
+          "id": "thursday-farmer-s-carry",
+          "restSeconds": 90
+        }
+      ],
+      "static": [
+        {
+          "name": "Quad + Hip flexor lunge stretch",
+          "dose": "20–30 sec/side each",
+          "target": "Lunges ke baad ye dono NON-NEGOTIABLE.",
+          "video": "https://www.youtube.com/results?search_query=kneeling+hip+flexor+quad+stretch",
+          "id": "thursday-st-quad-hip-flexor-lunge-stretch"
+        },
+        {
+          "name": "Hamstring stretch",
+          "dose": "20–30 sec/side",
+          "target": "Hamstrings.",
+          "video": "https://www.youtube.com/results?search_query=standing+hamstring+stretch",
+          "id": "thursday-st-hamstring-stretch"
+        },
+        {
+          "name": "Figure-4 glute stretch",
+          "dose": "20–30 sec/side",
+          "target": "Glutes.",
+          "video": "https://www.youtube.com/results?search_query=figure+4+glute+stretch",
+          "id": "thursday-st-figure-4-glute-stretch"
+        },
+        {
+          "name": "Calf stretch (dono versions)",
+          "dose": "20 sec each/side",
+          "target": "Pair seedha = gastro; ghutna halka bent = soleus (aaj seated calf isi ka tha).",
+          "video": "https://www.youtube.com/results?search_query=gastrocnemius+soleus+calf+stretch",
+          "id": "thursday-st-calf-stretch-dono-versions"
+        },
+        {
+          "name": "Cobra stretch",
+          "dose": "20–30 sec",
+          "target": "Abs ka stretch — crunches ke baad pet ke muscles ko lamba karna, spine ko ulta ghumav.",
+          "video": "https://www.youtube.com/results?search_query=cobra+stretch",
+          "id": "thursday-st-cobra-stretch"
+        },
+        {
+          "name": "Child's pose",
+          "dose": "30 sec",
+          "target": "Band karne ka signature move.",
+          "video": "https://www.youtube.com/results?search_query=childs+pose+stretch",
+          "id": "thursday-st-child-s-pose"
+        }
+      ],
+      "id": "thursday"
+    },
+    {
+      "day": "Friday",
+      "title": "UPPER B",
+      "crowdNote": "Friday ko aadhe log legs karte hain, aadhe gym hi nahi aate → bench aur machines free.",
+      "warmup": [
+        {
+          "name": "Arm circles",
+          "dose": "10 + 10 (dono direction)",
+          "why": "Shoulder garam.",
+          "video": "https://www.youtube.com/results?search_query=arm+circles+warm+up",
+          "id": "friday-wu-arm-circles"
+        },
+        {
+          "name": "Shoulder dislocates",
+          "dose": "10",
+          "why": "Saare angles khule.",
+          "video": "https://www.youtube.com/results?search_query=shoulder+dislocates+band",
+          "id": "friday-wu-shoulder-dislocates"
+        },
+        {
+          "name": "Band pull-aparts",
+          "dose": "15",
+          "why": "Rear delt + cuff ON.",
+          "video": "https://www.youtube.com/results?search_query=band+pull+aparts+form",
+          "id": "friday-wu-band-pull-aparts"
+        },
+        {
+          "name": "Wall slides",
+          "dose": "10",
+          "why": "Scapula smooth.",
+          "video": "https://www.youtube.com/results?search_query=wall+slides+shoulder+mobility",
+          "id": "friday-wu-wall-slides"
+        },
+        {
+          "name": "Push-ups",
+          "dose": "8–10",
+          "why": "Bench ka rehearsal.",
+          "video": "https://www.youtube.com/results?search_query=push+up+proper+form",
+          "id": "friday-wu-push-ups"
+        },
+        {
+          "name": "Dead hang + scapular pulls",
+          "dose": "20 sec + 8",
+          "why": "Pulldown-row ready.",
+          "video": "https://www.youtube.com/results?search_query=dead+hang+scapular+pull+ups",
+          "id": "friday-wu-dead-hang-scapular-pulls"
+        },
+        {
+          "name": "Cat-cow + wrist circles",
+          "dose": "8 + 20 sec",
+          "why": "Spine + wrists ready.",
+          "video": "https://www.youtube.com/results?search_query=cat+cow+wrist+circles+warm+up",
+          "id": "friday-wu-cat-cow-wrist-circles"
+        }
+      ],
+      "exercises": [
+        {
+          "order": 1,
+          "name": "Barbell Bench Press",
+          "sets": "3 × 6–10",
+          "primary": [
+            "Mid chest (sternal pec)"
+          ],
+          "secondary": [
+            "Front delts",
+            "Triceps"
+          ],
+          "form": "Tuesday incline = upper chest, aaj flat = mid chest → chest COMPLETE. 5-point contact: sar + upper back + hips bench pe, dono pair zameen pe jame. Shoulder blades peeche squeeze, halka natural arch, bar mid-chest touch, elbows ~45°.",
+          "mistakes": "Bar chest pe bounce; hips bench se uthana; elbows 90° flare (shoulder risky).",
+          "video": "https://www.youtube.com/results?search_query=barbell+bench+press+proper+form",
+          "backup": "DB Bench ya Machine Chest Press (bench busy ho toh)",
+          "id": "friday-barbell-bench-press",
+          "restSeconds": 150
+        },
+        {
+          "order": 2,
+          "name": "Lat Pulldown",
+          "sets": "3 × 8–12",
+          "primary": [
+            "Lats (V-taper — width touch #2)"
+          ],
+          "secondary": [
+            "Biceps"
+          ],
+          "form": "Chest upar, halka lean back (10–15°, isse zyada = cheating), bar collarbone tak, elbows neeche-peeche, kandhe NEECHE dabe (shrug nahi).",
+          "mistakes": "Peeche jhool ke momentum se kheenchna.",
+          "video": "https://www.youtube.com/results?search_query=lat+pulldown+proper+form",
+          "backup": "Assisted Pull-up ya One-arm Row pehle",
+          "id": "friday-lat-pulldown",
+          "restSeconds": 150
+        },
+        {
+          "order": 3,
+          "name": "Seated DB Shoulder Press",
+          "sets": "3 × 8–12",
+          "primary": [
+            "Front delts",
+            "Side delts"
+          ],
+          "secondary": [
+            "Triceps",
+            "Stabilizers (DB version)"
+          ],
+          "form": "Tuesday barbell/machine tha, aaj DB — stabilizers bhi lagenge. Core tight, lower back seedhi, full press.",
+          "mistakes": "Over-arch; half reps.",
+          "video": "https://www.youtube.com/results?search_query=seated+dumbbell+shoulder+press+form",
+          "backup": "",
+          "id": "friday-seated-db-shoulder-press",
+          "restSeconds": 150
+        },
+        {
+          "order": 4,
+          "name": "Seated Cable Row",
+          "sets": "3 × 8–12",
+          "primary": [
+            "Mid-back (thickness touch #2)"
+          ],
+          "secondary": [
+            "Lats",
+            "Rear delts",
+            "Biceps"
+          ],
+          "form": "Elbow apni waist ki taraf kheench, 1 sec squeeze, chest upar.",
+          "mistakes": "Jhatka maar ke poora body aage-peeche hilana.",
+          "video": "https://www.youtube.com/results?search_query=seated+cable+row+proper+form",
+          "backup": "",
+          "id": "friday-seated-cable-row",
+          "restSeconds": 150
+        },
+        {
+          "order": 5,
+          "name": "DB Lateral Raise",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Side delts (round 2)"
+          ],
+          "secondary": [],
+          "form": "Halka aur clean. Elbow ka bend fix, wrist elbow se neeche nahi, shoulder height tak — dumbbell aur elbow lagbhag ek line.",
+          "mistakes": "Bhaari leke swing; traps shrug.",
+          "video": "https://www.youtube.com/results?search_query=dumbbell+lateral+raise+form",
+          "backup": "",
+          "id": "friday-db-lateral-raise",
+          "restSeconds": 75
+        },
+        {
+          "order": 6,
+          "name": "Reverse Pec Deck",
+          "sets": "3 × 12–15",
+          "primary": [
+            "Rear delts (direct touch #2)"
+          ],
+          "secondary": [
+            "Mid traps",
+            "Rhomboids"
+          ],
+          "form": "Aage se kandha bada, peeche se flat — wo adhoora look ab nahi. Arms khol ke peeche squeeze, weight halka.",
+          "mistakes": "Heavy leke row bana dena.",
+          "video": "https://www.youtube.com/results?search_query=reverse+pec+deck+form",
+          "backup": "Bent-over reverse fly",
+          "id": "friday-reverse-pec-deck",
+          "restSeconds": 75
+        },
+        {
+          "order": 7,
+          "name": "Superset: DB Curl + Rope Pushdown",
+          "sets": "3 × 10–12 each (back-to-back, phir rest)",
+          "primary": [
+            "Biceps (curl)",
+            "Triceps (pushdown)"
+          ],
+          "secondary": [
+            "Forearms"
+          ],
+          "form": "Week ka arm-finisher — pump leke weekend mein ja. Curl: elbows body se chipke, swing nahi. Pushdown: elbows fix, neeche full lockout squeeze.",
+          "mistakes": "Jaldi mein form todna.",
+          "video": "https://www.youtube.com/results?search_query=dumbbell+curl+rope+pushdown+superset",
+          "backup": "",
+          "id": "friday-superset-db-curl-rope-pushdown",
+          "restSeconds": 75
+        }
+      ],
+      "static": [
+        {
+          "name": "Doorway chest stretch",
+          "dose": "30 sec/side",
+          "target": "Pecs.",
+          "video": "https://www.youtube.com/results?search_query=doorway+chest+stretch",
+          "id": "friday-st-doorway-chest-stretch"
+        },
+        {
+          "name": "Lat stretch (rack pe)",
+          "dose": "30 sec/side",
+          "target": "Lats.",
+          "video": "https://www.youtube.com/results?search_query=lat+stretch+on+rack",
+          "id": "friday-st-lat-stretch-rack-pe"
+        },
+        {
+          "name": "Cross-body shoulder + rear delt stretch",
+          "dose": "20–30 sec/side",
+          "target": "Side + rear delts.",
+          "video": "https://www.youtube.com/results?search_query=cross+body+shoulder+rear+delt+stretch",
+          "id": "friday-st-cross-body-shoulder-rear-delt-stretch"
+        },
+        {
+          "name": "Overhead triceps stretch",
+          "dose": "20–30 sec/arm",
+          "target": "Triceps.",
+          "video": "https://www.youtube.com/results?search_query=overhead+triceps+stretch",
+          "id": "friday-st-overhead-triceps-stretch"
+        },
+        {
+          "name": "Biceps wall stretch",
+          "dose": "20–30 sec/arm",
+          "target": "Biceps.",
+          "video": "https://www.youtube.com/results?search_query=biceps+wall+stretch",
+          "id": "friday-st-biceps-wall-stretch"
+        },
+        {
+          "name": "Forearm stretches (dono)",
+          "dose": "20 sec each",
+          "target": "Forearms.",
+          "video": "https://www.youtube.com/results?search_query=forearm+flexor+extensor+stretch",
+          "id": "friday-st-forearm-stretches-dono"
+        },
+        {
+          "name": "Neck/trap stretch + gehri saans",
+          "dose": "20–30 sec/side",
+          "target": "Traps — week done. Weekend se pehle full upper service complete.",
+          "video": "https://www.youtube.com/results?search_query=neck+trap+stretch",
+          "id": "friday-st-neck-trap-stretch-gehri-saans"
+        }
+      ],
+      "id": "friday"
+    }
+  ],
+  "diet": {
+    "regular": {
+      "id": "regular",
+      "label": "Regular (Non-veg)",
+      "targets": "~2,500–2,600 kcal (halka surplus — bulk nahi) | Protein 110–120 g/day | Paani 3–4 L",
+      "meals": [
+        {
+          "time": "8:00 AM",
+          "food": "4 ande (bhurji/boiled) + 2 roti ya 4 bread + 1 kela",
+          "protein": "~30 g"
+        },
+        {
+          "time": "Lunch",
+          "food": "Ghar ka — dal + rice/roti + sabzi + 1 katori dahi",
+          "protein": "~20 g"
+        },
+        {
+          "time": "6:00 PM (office, pre-gym)",
+          "food": "1 kela + muthi bhar peanuts ya peanut-butter bread",
+          "protein": "~8 g (+ energy for 7 PM session)"
+        },
+        {
+          "time": "7:00–8:15 PM",
+          "food": "GYM",
+          "protein": "—"
+        },
+        {
+          "time": "9:00–9:30 PM (dinner)",
+          "food": "Soya chunks 60 g dry (sabzi/pulao). Sunday + ek weekday: chicken 250 g. Saath mein roti/rice + salad + papita",
+          "protein": "~30 g (chicken day ~55 g)"
+        },
+        {
+          "time": "10:30 PM",
+          "food": "1 glass doodh",
+          "protein": "~8 g"
+        }
+      ],
+      "note": "Ye bina whey ke ~100–110 g protein deta hai. Fiber system roz chalu: papita, dahi, salad, paani — tera pet already bata chuka hai use kya chahiye.",
+      "budget": [
+        { "item": "Ande (120)", "cost": "Rs.900" },
+        { "item": "Soya chunks (2 kg)", "cost": "Rs.300" },
+        { "item": "Chicken (2 kg)", "cost": "Rs.550" },
+        { "item": "Doodh", "cost": "Rs.500" },
+        { "item": "Dahi", "cost": "Rs.300" },
+        { "item": "Peanuts", "cost": "Rs.160" },
+        { "item": "Kela + papita", "cost": "Rs.450" },
+        { "item": "TOTAL FOOD", "cost": "~Rs.3,200" },
+        { "item": "Creatine monohydrate 250 g", "cost": "~Rs.550" },
+        { "item": "Bacha ~Rs.1,200: sale pe unflavoured whey concentrate 1 kg, warna extra ande/soya", "cost": "—" }
+      ],
+      "priority": "Priority hamesha: khaana pehle, phir creatine, phir whey. Whey convenience hai, jaadu nahi."
+    },
+    "veg": {
+      "id": "veg",
+      "label": "Veg Month",
+      "targets": "~2,500 kcal | Protein ~115–125 g/day | Paani 3–4 L (dal-soya zyada hoga, paani aur zaroori warna bloating)",
+      "meals": [
+        {
+          "time": "8:00 AM",
+          "food": "Paneer bhurji 100 g + 2 roti + 1 kela",
+          "protein": "~25 g"
+        },
+        {
+          "time": "Lunch",
+          "food": "Dal 2 katori + roti/rice + sabzi + dahi 1 katori",
+          "protein": "~23 g"
+        },
+        {
+          "time": "6:00 PM (pre-gym)",
+          "food": "1 kela + muthi bhar peanuts, ya sattu shake (30 g sattu + paani + nimbu)",
+          "protein": "~8 g"
+        },
+        {
+          "time": "Post-gym 8:30 PM",
+          "food": "Whey 1 scoop, 250 ml doodh mein",
+          "protein": "~33 g"
+        },
+        {
+          "time": "9:30 PM (dinner)",
+          "food": "Soya chunks 50 g dry (sabzi/pulao) + 2 roti + salad + papita",
+          "protein": "~30 g"
+        },
+        {
+          "time": "Sone se pehle",
+          "food": "1 glass doodh",
+          "protein": "~8 g"
+        }
+      ],
+      "note": "100 g toh aaram se cross — buffer bhi hai. Agar ande allowed hain toh bata dena, kaam aur easy. Paneer mehenga pade toh 100 g roz ki jagah alternate days + us din soya 75 g — protein same.",
+      "budget": [
+        { "item": "Paneer (3 kg — local dairy se loose, packet se sasta)", "cost": "Rs.950" },
+        { "item": "Doodh (15 L)", "cost": "Rs.850" },
+        { "item": "Soya chunks (1.5 kg)", "cost": "Rs.250" },
+        { "item": "Dal (3 kg)", "cost": "Rs.450" },
+        { "item": "Dahi (ya doodh se ghar pe jamao — free jaisa)", "cost": "Rs.400" },
+        { "item": "Peanuts + sattu", "cost": "Rs.280" },
+        { "item": "Kela + papita", "cost": "Rs.450" },
+        { "item": "TOTAL", "cost": "~Rs.3,600" },
+        { "item": "Whey + creatine already paas hain — is mahine budget aaram se fit", "cost": "—" }
+      ],
+      "priority": "Veg month mein creatine AUR ZYADA important — natural creatine meat se milta hai; veg log supplement se sabse zyada fayda uthate hain. Timing perfect hai."
+    }
+  },
+  "supplements": [
+    {
+      "name": "Creatine monohydrate",
+      "detail": "3–5 g HAR ROZ (rest day bhi), kisi bhi time, paani ke saath — paani zyada pee. Sabse research-backed supplement; strength aur size dono mein farak dikhega."
+    },
+    {
+      "name": "Whey (25 g protein/scoop)",
+      "detail": "1 scoop post-workout, 250 ml doodh mein. 1 kg pack lagbhag poora mahina. Rest days pe bhi le sakta hai agar khana kam pada ho."
+    }
+  ],
+  "supplementsPriority": "Priority order: Khaana pehle, phir creatine, phir whey.",
+  "lifestyle": {
+    "cardio": "Roz 8,000–10,000 steps (office walk + dinner ke baad 15 min). Sat: brisk/incline walk option. Spot reduction jhooth hai — fat calorie balance se jaayega, walking usko support karti hai + digestion sudharti hai.",
+    "sleep": "11–11:30 tak bed, minimum 7 ghante. Muscle gym mein tootta hai, neend mein banta hai.",
+    "smoking": [
+      "Cigarette oxygen aur recovery loot rahi hai — stamina down, pump down, recovery slow. Quit ka decision teri profile ka best decision hai.",
+      "Pehla target: khaane ke baad + gym ke baad wali cigarette ko 10-min walk se replace kar.",
+      "Is mahine count AADHA kar. 5-day training pe cigarette ka tax double lagta hai.",
+      "35 saal ka pattern: jaise-jaise gym mein strong hoga, cigarette apne aap kamzor padegi."
+    ]
+  },
+  "tracking": {
+    "start": "Day 1: photo le (front + side), same lighting mein rakhna aage bhi.",
+    "biweekly": "Har 2 hafte: waist tape navel pe + subah khaali pet weight.",
+    "perfectRecomp": "Weight stable ya +0.5 kg/month max, waist same ya girti hui.",
+    "adjust": "Belly badhe toh roti/rice thoda kam. Weight na badhe 4+ hafte toh khana thoda badha.",
+    "sundayReport": "Sunday raat: hafte ki report — kaunsi exercise mein form ka doubt laga, wahi pehle polish hogi.",
+    "mindset": "NEVER MISS TWICE. Ek din chhoota — agla din pakka, 30 min hi sahi."
+  },
+  "references": {
+    "muscleWiki": "MuscleWiki: musclewiki.com — body ka diagram, muscle pe click → us muscle ki saari exercises video ke saath + primary/secondary muscles likhe hue. App bhi hai. HAR exercise ka photo+video+diagram ek jagah, free.",
+    "youtube": "YouTube: Har exercise ke saath diya 'Video' link YouTube search kholta hai — top result koi bhi 1-min technique video dekh le. Search pattern: '[exercise name] proper form'.",
+    "camera": "Camera: Sabse bada pro move: apna set phone pe record kar (side angle) aur reference se compare kar. Aaina jhooth bolta hai, camera nahi.",
+    "charts": "Charts: Dynamic warm-up chart + full-body stretching chart (e.g. DAREBEE ke free charts) print karke gym bag mein rakh le."
+  },
+  "closing": "Ab isme sochne wala kaam khatam — sirf karne wala baaki. Never miss twice. — Coach"
+}
