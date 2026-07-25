@@ -133,7 +133,7 @@ export default function SetLogger({
             </div>
             {ghost && !row.done && (
               <p className="num mt-1.5 pl-[34px] text-xs text-muted">
-                pichli baar {ghost.w} × {ghost.r}
+                last time {ghost.w} × {ghost.r}
               </p>
             )}
           </div>

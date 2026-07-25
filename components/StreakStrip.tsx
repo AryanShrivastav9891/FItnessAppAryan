@@ -25,7 +25,7 @@ export default function StreakStrip() {
   };
 
   return (
-    <Link href="/week" className="block" aria-label="Poora hafta dekho">
+    <Link href="/week" className="block" aria-label="See the full week">
       <div className="flex items-end justify-between">
         {week.map((key, i) => {
           const state = stateFor(key);

@@ -36,10 +36,10 @@ function verdict(sorted: Measurement[]): { state: VState; text: string } | null 
   const waistDelta = last.waist - first.waist;
 
   if (waistDelta > 0.3)
-    return { state: "adjust", text: "Waist badh rahi hai — surplus zyada. Coach: roti/rice thoda kam." };
+    return { state: "adjust", text: "Waist is going up — the surplus is too high. Coach: cut flatbread/rice a little." };
   if (weightDelta > allowedGain)
-    return { state: "watch", text: "Weight tez chadha (fat aa sakta) — surplus halka kar, protein wahi." };
-  return { state: "track", text: "Perfect recomp — weight control mein, waist same ya girti. X-frame ka rasta." };
+    return { state: "watch", text: "Weight went up fast (fat may be creeping in) — ease the surplus, keep protein the same." };
+  return { state: "track", text: "Perfect recomp — weight in control, waist same or dropping. This is the road to the X-frame." };
 }
 
 function mondayKey(key: string): string {
@@ -101,7 +101,7 @@ export default function ProgressView({ tracking }: { tracking: Tracking }) {
 
   const guide = [
     { label: "Start", text: tracking.start },
-    { label: "Har 2 hafte", text: tracking.biweekly },
+    { label: "Every 2 weeks", text: tracking.biweekly },
     { label: "Perfect recomp", text: tracking.perfectRecomp },
     { label: "Adjust", text: tracking.adjust },
     { label: "Sunday report", text: tracking.sundayReport },
@@ -114,9 +114,9 @@ export default function ProgressView({ tracking }: { tracking: Tracking }) {
 
       {/* stat tiles */}
       <div className="grid grid-cols-2 gap-3">
-        <StatTile icon={<Dumbbell size={16} />} value={`${Math.round(thisWeekVol).toLocaleString("en-IN")}`} unit="kg" label="Is hafte volume" color="#4dabf7" />
+        <StatTile icon={<Dumbbell size={16} />} value={`${Math.round(thisWeekVol).toLocaleString("en-IN")}`} unit="kg" label="This week volume" color="#4dabf7" />
         <StatTile icon={<CalendarCheck size={16} />} value={`${sessionsDone}/${planned}`} unit="" label="Sessions" color="#51cf66" />
-        <StatTile icon={<Flame size={16} />} value={`${streak}`} unit="" label="Streak (din)" color="#ff6b6b" />
+        <StatTile icon={<Flame size={16} />} value={`${streak}`} unit="" label="Streak (days)" color="#ff6b6b" />
         <StatTile icon={<Trophy size={16} />} value={`${Math.round(bestWeekVol).toLocaleString("en-IN")}`} unit="kg" label="Best week" color="#ffd43b" />
       </div>
 
@@ -142,7 +142,7 @@ export default function ProgressView({ tracking }: { tracking: Tracking }) {
 
       {/* entry form */}
       <section className="flex flex-col gap-3">
-        <SectionTitle>Nayi entry (har 2 hafte)</SectionTitle>
+        <SectionTitle>New entry (every 2 weeks)</SectionTitle>
         <Card className="flex flex-col gap-3 p-4">
           <label className="flex items-center justify-between gap-3 text-sm">
             <span className="text-muted">Date</span>
@@ -184,7 +184,7 @@ export default function ProgressView({ tracking }: { tracking: Tracking }) {
             onClick={add}
             className="min-h-[52px] rounded-2xl bg-ink text-sm font-bold text-iron transition-transform active:scale-[0.98]"
           >
-            Entry save karo
+            Save entry
           </button>
         </Card>
       </section>
@@ -216,13 +216,13 @@ export default function ProgressView({ tracking }: { tracking: Tracking }) {
       <Card className="p-4">
         <p className="text-sm leading-relaxed text-muted">
           <span className="font-semibold text-ink">Photo:</span> Day 1 front + side,
-          same lighting mein. Har mahine wahi angle — aaina jhooth bolta hai, camera
-          nahi.
+          in the same lighting. Same angle every month — the mirror lies, the camera
+          doesn&apos;t.
         </p>
       </Card>
 
       <section className="flex flex-col gap-3">
-        <SectionTitle>Tracking system — coach ka tareeka</SectionTitle>
+        <SectionTitle>Tracking system — the coach&apos;s way</SectionTitle>
         <Card className="divide-y divide-line">
           {guide.map((g) => (
             <div key={g.label} className="p-3.5">
@@ -301,11 +301,12 @@ function EmptyState() {
         </g>
       </svg>
       <p className="text-sm leading-relaxed text-muted">
-        Abhi koi entry nahi. Pehli entry <span className="text-ink">Sunday</span> ko
-        daal — coach ka rule: har 2 hafte weight + waist.
+        No entries yet. Add your first entry on{" "}
+        <span className="text-ink">Sunday</span> — coach&apos;s rule: weight + waist
+        every 2 weeks.
       </p>
       <span className="inline-flex items-center gap-1 text-xs font-semibold text-ink">
-        Neeche form bhar <ArrowDown size={14} strokeWidth={2.5} />
+        Fill the form below <ArrowDown size={14} strokeWidth={2.5} />
       </span>
     </Card>
   );

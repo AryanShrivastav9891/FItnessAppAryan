@@ -43,15 +43,15 @@ export default function RulesPage() {
   return (
     <div className="flex flex-col gap-6 animate-fade-in-up">
       <PageTitle
-        kicker="Coach ke usool"
+        kicker="The coach's rules"
         title="Rules"
         action={
           <HelpSheet
             title="Rules"
             bullets={[
-              "Har section pe tap karke coach ke usool khol/band karo.",
-              "'Seedha sach' — 6 mahine ka realistic result. Neeche profile.",
-              "Reference library se MuscleWiki aur YouTube form-videos khulte hain.",
+              "Tap any section to open/close the coach's rules.",
+              "'The honest truth' — the realistic 6-month result. Profile at the bottom.",
+              "The reference library opens MuscleWiki and YouTube form videos.",
             ]}
           />
         }
@@ -59,7 +59,7 @@ export default function RulesPage() {
 
       {/* Honest expectation */}
       <Card className="p-5" accent="#ff6b6b">
-        <SectionTitle>Seedha sach — 5–6 mahine</SectionTitle>
+        <SectionTitle>The honest truth — 5–6 months</SectionTitle>
         <p className="mt-3 text-sm leading-relaxed text-muted">
           {expectation.honestTruth}
         </p>
@@ -77,13 +77,13 @@ export default function RulesPage() {
       </Card>
 
       <Card className="px-4">
-        <Disclosure summary="5-day plan ki 3 sharten">
+        <Disclosure summary="The 3 conditions for the 5-day plan">
           <p className="pb-1">{expectation.fiveDayConditions}</p>
         </Disclosure>
       </Card>
 
       <Card className="px-4">
-        <Disclosure summary="Side belly ka sach (spot reduction)" tone="warn">
+        <Disclosure summary="The truth about side belly (spot reduction)" tone="warn">
           <p className="pb-1">{expectation.spotReductionTruth}</p>
         </Disclosure>
       </Card>
@@ -92,16 +92,16 @@ export default function RulesPage() {
       <section className="flex flex-col gap-2">
         <SectionTitle>Rulebook</SectionTitle>
         <Card className="divide-y divide-line px-4">
-          <Disclosure summary="Training ke rules (har session)" defaultOpen>
+          <Disclosure summary="Training rules (every session)" defaultOpen>
             <Bullets items={plan.trainingRules} />
           </Disclosure>
-          <Disclosure summary="Universal best position — har exercise pe">
+          <Disclosure summary="Universal best position — on every exercise">
             <Bullets items={plan.universalFormRules} />
           </Disclosure>
-          <Disclosure summary="Stretching ke pakke rules">
+          <Disclosure summary="Stretching golden rules">
             <Bullets items={plan.stretchingRules} />
           </Disclosure>
-          <Disclosure summary="Machine busy ho toh — 3 rules">
+          <Disclosure summary="When a machine is busy — 3 rules">
             <Bullets items={plan.crowdDodgeRules} />
           </Disclosure>
         </Card>
@@ -109,7 +109,7 @@ export default function RulesPage() {
 
       {/* Lifestyle */}
       <section className="flex flex-col gap-2">
-        <SectionTitle>Cardio · Neend · Cigarette</SectionTitle>
+        <SectionTitle>Cardio · Sleep · Cigarettes</SectionTitle>
         <Card className="flex flex-col gap-3 p-4">
           <div>
             <p className="t-cap">
@@ -121,7 +121,7 @@ export default function RulesPage() {
           </div>
           <div>
             <p className="t-cap">
-              Neend
+              Sleep
             </p>
             <p className="mt-0.5 text-[13px] leading-relaxed text-ink">
               {lifestyle.sleep}
@@ -156,7 +156,7 @@ export default function RulesPage() {
             href="https://musclewiki.com"
             className="flex min-h-[44px] items-center justify-center rounded-xl border border-line text-sm font-semibold text-ink active:bg-surface2"
           >
-            MuscleWiki kholo ↗
+            Open MuscleWiki ↗
           </ExternalLink>
         </Card>
       </section>

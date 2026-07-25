@@ -18,7 +18,7 @@ export default function HelpSheet({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        aria-label="Ye screen kaise use kare"
+        aria-label="How to use this screen"
         className="flex h-11 w-11 items-center justify-center rounded-full bg-surface text-muted transition-colors hover:text-ink active:scale-95"
       >
         <CircleHelp size={20} strokeWidth={2} />
@@ -42,7 +42,7 @@ export default function HelpSheet({
           onClick={() => setOpen(false)}
           className="mt-5 min-h-[48px] w-full rounded-2xl bg-surface2 text-sm font-semibold text-ink active:scale-[0.99]"
         >
-          Samajh gaya
+          Got it
         </button>
       </Sheet>
     </>

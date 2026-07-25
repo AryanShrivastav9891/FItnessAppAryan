@@ -139,7 +139,7 @@ export default function ExerciseCard({
             {exercise.primary[0]?.slice(0, 2).toUpperCase()}
           </span>
           <p className="text-xs leading-snug text-muted">
-            Iski photo library mein nahi — Video ya MuscleWiki se form dekh lo (neeche).
+            Not in the photo library — check the form via Video or MuscleWiki (below).
           </p>
         </div>
       )}
@@ -169,7 +169,7 @@ export default function ExerciseCard({
               onClick={() => setShowRule(false)}
               className="mt-5 min-h-[48px] w-full rounded-2xl bg-surface2 text-sm font-semibold text-ink active:scale-[0.99]"
             >
-              Samajh gaya
+              Got it
             </button>
           </Sheet>
         </div>
@@ -179,14 +179,14 @@ export default function ExerciseCard({
         <Disclosure summary="Form / best position" defaultOpen accent="#51cf66" tone="form">
           {exercise.form}
         </Disclosure>
-        <Disclosure summary="Galti mat karna" accent="#ff6b6b" tone="danger">
+        <Disclosure summary="Mistakes to avoid" accent="#ff6b6b" tone="danger">
           {exercise.mistakes}
         </Disclosure>
       </div>
 
       {exercise.backup && (
         <p className="mt-3 text-sm text-muted">
-          <span className="font-semibold text-ink">Busy ho toh: </span>
+          <span className="font-semibold text-ink">If busy: </span>
           {exercise.backup}
         </p>
       )}

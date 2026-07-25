@@ -3,21 +3,21 @@ import { PageTitle } from "@/components/ui";
 import DietView from "@/components/DietView";
 import HelpSheet from "@/components/HelpSheet";
 
-export const metadata = { title: "Khana — Coach" };
+export const metadata = { title: "Food — Coach" };
 
 export default function DietPage() {
   return (
     <div className="flex flex-col gap-6 animate-fade-in-up">
       <PageTitle
-        kicker="Diet + paani"
-        title="Khana"
+        kicker="Diet + water"
+        title="Food"
         action={
           <HelpSheet
-            title="Khana"
+            title="Food"
             bullets={[
-              "Upar toggle se Regular (non-veg) ya Veg month choose karo — yaad rehta hai.",
-              "Har glass tap karke paani track karo — target 8 glass (3–4L).",
-              "Protein total neeche dikhta hai. Khaana pehle, phir creatine, phir whey.",
+              "Use the toggle up top to choose Regular (non-veg) or Veg month — it's remembered.",
+              "Tap each glass to track water — target 8 glasses (3–4L).",
+              "The protein total shows below. Food first, then creatine, then whey.",
             ]}
           />
         }

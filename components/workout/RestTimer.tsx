@@ -134,12 +134,12 @@ export default function RestTimer({
         <div className="min-w-0 flex-1">
           {done ? (
             <p className="text-[15px] font-bold" style={{ color: "#51cf66" }}>
-              Rest khatam — agla set!
+              Rest over — next set!
             </p>
           ) : (
             <>
-              <p className="t-cap">Rest chal raha hai</p>
-              <p className="text-sm text-muted">Saans le, form sambhaal.</p>
+              <p className="t-cap">Resting</p>
+              <p className="text-sm text-muted">Breathe, keep your form.</p>
             </>
           )}
         </div>
@@ -160,7 +160,7 @@ export default function RestTimer({
             className="flex h-9 items-center justify-center gap-1 rounded-xl bg-surface2 px-3 text-sm font-semibold text-ink active:scale-95"
           >
             <X size={14} strokeWidth={2.5} />
-            {done ? "Band" : "Skip"}
+            {done ? "Close" : "Skip"}
           </button>
         </div>
       </div>

@@ -24,7 +24,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Coach — 6-Month Mission",
   description:
-    "Personal 6-month aesthetic-body training plan: warm-up, lift, stretch, diet aur coach ke rules — sab ek jagah.",
+    "Personal 6-month aesthetic-body training plan: warm-up, lift, stretch, diet and the coach's rules — all in one place.",
   applicationName: "Coach",
   manifest: "/manifest.webmanifest",
   icons: {

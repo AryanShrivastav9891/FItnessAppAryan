@@ -54,7 +54,7 @@ export default function DietView({
       {/* meals */}
       <section className="flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <SectionTitle>Din ka khana</SectionTitle>
+          <SectionTitle>The day&apos;s food</SectionTitle>
           <span className="num text-xs text-muted">~{totalProtein} g protein</span>
         </div>
         <Card className="divide-y divide-line">
@@ -74,7 +74,7 @@ export default function DietView({
             </div>
           ))}
           <div className="flex items-center justify-between p-4">
-            <span className="t-cap">Total (bina extra)</span>
+            <span className="t-cap">Total (without extras)</span>
             <span className="num text-xl font-bold" style={{ color: "#51cf66" }}>
               ~{totalProtein} g
             </span>
@@ -147,7 +147,7 @@ function WaterTracker() {
   return (
     <section className="flex flex-col gap-3">
       <div className="flex items-center justify-between">
-        <SectionTitle>Paani — aaj (3–4 L)</SectionTitle>
+        <SectionTitle>Water — today (3–4 L)</SectionTitle>
         <span className="num inline-flex items-center gap-1 text-xs text-muted">
           <Droplets size={13} strokeWidth={2} className="text-[#4dabf7]" />
           {water}/{GLASSES} glass

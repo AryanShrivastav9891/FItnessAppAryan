@@ -111,7 +111,7 @@ export default function ExercisePhotos({
 
         {instructions.length > 0 && (
           <div className="mt-4">
-            <p className="t-cap">Kaise kare</p>
+            <p className="t-cap">How to do it</p>
             <ol className="mt-2 flex max-h-52 flex-col gap-2 overflow-y-auto pr-1">
               {instructions.map((step, i) => (
                 <li key={i} className="flex gap-2.5 text-sm leading-relaxed text-muted">
@@ -130,7 +130,7 @@ export default function ExercisePhotos({
           onClick={() => setOpen(false)}
           className="mt-4 min-h-[48px] w-full rounded-2xl bg-surface2 text-sm font-semibold text-ink active:scale-[0.99]"
         >
-          Band karo
+          Close
         </button>
       </Sheet>
     </>
@@ -150,7 +150,7 @@ function IconBtn({
     <button
       type="button"
       onClick={onClick}
-      aria-label={side === "left" ? "Pichla" : "Agla"}
+      aria-label={side === "left" ? "Previous" : "Next"}
       className="absolute top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full text-white"
       style={{ backgroundColor: "rgba(10,14,20,0.6)", [side]: 8 }}
     >

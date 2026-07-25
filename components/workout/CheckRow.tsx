@@ -67,7 +67,7 @@ export default function CheckRow({
         className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface2 text-muted transition-transform active:scale-95"
       >
         <Play size={16} strokeWidth={2.5} fill="currentColor" />
-        <span className="sr-only">Video dekho</span>
+        <span className="sr-only">Watch video</span>
       </ExternalLink>
     </div>
   );

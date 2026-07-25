@@ -19,7 +19,7 @@ export default function Daily3() {
       <ToggleRow
         icon={<Pill size={18} strokeWidth={2} />}
         label="Creatine 3–5g"
-        sub="Rest day bhi — roz."
+        sub="Rest days too — daily."
         checked={creatine}
         onToggle={() => setCreatine((v) => !v)}
         color="#b197fc"
@@ -33,13 +33,13 @@ export default function Daily3() {
           <Droplets size={18} strokeWidth={2} />
         </span>
         <div className="min-w-0 flex-1">
-          <p className="text-[15px] font-semibold">Paani 3–4L</p>
+          <p className="text-[15px] font-semibold">Water 3–4L</p>
           <div className="mt-1.5 flex items-center gap-1">
             {Array.from({ length: GLASSES }).map((_, i) => (
               <button
                 key={i}
                 type="button"
-                aria-label={`${i + 1} glass paani`}
+                aria-label={`${i + 1} glass water`}
                 onClick={() => setWater((w) => (w === i + 1 ? i : i + 1))}
                 className="h-6 flex-1 rounded-md transition-colors"
                 style={{
@@ -57,8 +57,8 @@ export default function Daily3() {
 
       <ToggleRow
         icon={<Moon size={18} strokeWidth={2} />}
-        label="Neend 11:30 tak"
-        sub="7 ghante minimum — muscle yahin banta hai."
+        label="Sleep by 11:30"
+        sub="7 hours minimum — muscle is built here."
         checked={sleep}
         onToggle={() => setSleep((v) => !v)}
         color="#4dabf7"

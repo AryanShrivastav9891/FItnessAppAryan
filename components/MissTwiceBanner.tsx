@@ -26,7 +26,7 @@ export default function MissTwiceBanner({ mindset }: { mindset: string }) {
       </span>
       <div>
         <p className="t-cap" style={{ color: "#ff6b6b" }}>
-          Kal miss hua
+          Missed yesterday
         </p>
         <p className="mt-1 text-sm font-semibold leading-snug">{mindset}</p>
       </div>

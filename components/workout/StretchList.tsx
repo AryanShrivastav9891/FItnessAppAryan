@@ -27,7 +27,7 @@ export default function StretchList({
     <div className="flex flex-col gap-3">
       <p className="rounded-xl bg-surface2 p-3 text-[13px] leading-snug text-muted">
         <span className="font-semibold text-ink">Step 3: </span>
-        Workout ke BAAD static stretching — har pose 20–30 sec, bounce nahi.
+        Static stretching AFTER the workout — hold each pose 20–30 sec, no bouncing.
       </p>
 
       <div className="rounded-2xl border border-line bg-surface px-4">
@@ -47,7 +47,7 @@ export default function StretchList({
       </div>
 
       <div className="rounded-2xl border border-line bg-surface px-4">
-        <Disclosure summary="Stretching ke pakke rules">
+        <Disclosure summary="Stretching golden rules">
           <ul className="mt-1 flex flex-col gap-2 pb-1">
             {plan.stretchingRules.map((r) => (
               <li key={r} className="flex gap-2 text-[13px] leading-snug text-ink">

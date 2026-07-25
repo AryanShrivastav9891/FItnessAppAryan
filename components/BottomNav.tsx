@@ -14,9 +14,9 @@ import { dayIdForToday } from "@/lib/date";
 import { dayColor } from "@/lib/plan";
 
 const TABS: { href: string; label: string; Icon: LucideIcon }[] = [
-  { href: "/", label: "Aaj", Icon: Home },
-  { href: "/week", label: "Hafta", Icon: CalendarDays },
-  { href: "/diet", label: "Khana", Icon: UtensilsCrossed },
+  { href: "/", label: "Today", Icon: Home },
+  { href: "/week", label: "Week", Icon: CalendarDays },
+  { href: "/diet", label: "Food", Icon: UtensilsCrossed },
   { href: "/progress", label: "Progress", Icon: LineChart },
   { href: "/rules", label: "Rules", Icon: ScrollText },
 ];

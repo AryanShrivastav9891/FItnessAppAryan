@@ -39,7 +39,7 @@ export default function TodayProgressBar({
       />
       <p className="mt-1.5 text-xs text-muted">
         <span className="num">{shown}/{total}</span> sets{" "}
-        {finished ? "· session complete" : done > 0 ? "loaded" : "— bar khaali hai"}
+        {finished ? "· session complete" : done > 0 ? "loaded" : "— bar is empty"}
       </p>
     </div>
   );

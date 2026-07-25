@@ -120,7 +120,7 @@ export default function WorkoutSession({
             href="/"
             className="flex h-10 items-center gap-0.5 text-sm font-medium text-muted transition-colors hover:text-ink"
           >
-            <ChevronLeft size={18} strokeWidth={2} /> Aaj
+            <ChevronLeft size={18} strokeWidth={2} /> Today
           </Link>
           <div className="text-center">
             <p className="t-cap" style={{ color }}>
@@ -167,7 +167,7 @@ export default function WorkoutSession({
         <div className="flex flex-col gap-5">
           <WarmupList items={day.warmup} date={date} color={color} />
           <PrimaryButton color={color} onClick={() => { setPhase("lift"); window.scrollTo({ top: 0 }); }}>
-            Warm-up done — Lift pe jao <ArrowRight size={18} strokeWidth={2.5} />
+            Warm-up done — go to Lift <ArrowRight size={18} strokeWidth={2.5} />
           </PrimaryButton>
         </div>
       )}
@@ -194,7 +194,7 @@ export default function WorkoutSession({
             className="flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border-2 text-sm font-bold transition-transform active:scale-[0.98]"
             style={{ borderColor: color, color }}
           >
-            Lifts done — Stretch pe jao <ArrowRight size={18} strokeWidth={2.5} />
+            Lifts done — go to Stretch <ArrowRight size={18} strokeWidth={2.5} />
           </button>
         </div>
       )}

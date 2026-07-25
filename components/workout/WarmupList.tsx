@@ -25,9 +25,9 @@ export default function WarmupList({
     <div className="flex flex-col gap-3">
       <p className="rounded-xl bg-surface2 p-3 text-[13px] leading-snug text-muted">
         <span className="font-semibold text-ink">Step 1: </span>
-        Pehle <span className="text-ink">5 min incline walk/cycle</span> (halki
-        saans phoole), phir ye dynamic warm-up (~5 min). Pehli exercise ke 1–2
-        halke ramp-up sets bhi.
+        First, <span className="text-ink">5 min incline walk/cycle</span> (until
+        slightly out of breath), then this dynamic warm-up (~5 min). Plus 1–2
+        light ramp-up sets of the first exercise.
       </p>
 
       <div className="rounded-2xl border border-line bg-surface px-4">

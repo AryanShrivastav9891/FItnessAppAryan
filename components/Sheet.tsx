@@ -32,7 +32,7 @@ export default function Sheet({
     <div className="fixed inset-0 z-50 flex items-end justify-center">
       <button
         type="button"
-        aria-label="Band karo"
+        aria-label="Close"
         onClick={onClose}
         className="animate-backdrop-in absolute inset-0 bg-black/60 backdrop-blur-sm"
       />

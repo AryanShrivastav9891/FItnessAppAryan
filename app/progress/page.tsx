@@ -15,9 +15,9 @@ export default function ProgressPage() {
           <HelpSheet
             title="Progress"
             bullets={[
-              "Har 2 hafte weight + waist ki entry add karo — subah khaali pet.",
-              "Verdict card batata hai: On Track, Watch ya Adjust.",
-              "Stat tiles upar: is hafte ka volume, sessions, streak, best week.",
+              "Add a weight + waist entry every 2 weeks — morning, empty stomach.",
+              "The verdict card tells you: On Track, Watch or Adjust.",
+              "Stat tiles up top: this week's volume, sessions, streak, best week.",
             ]}
           />
         }

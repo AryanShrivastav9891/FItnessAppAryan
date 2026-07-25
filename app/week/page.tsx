@@ -4,7 +4,7 @@ import { Disclosure } from "@/components/Disclosure";
 import DayCard from "@/components/DayCard";
 import HelpSheet from "@/components/HelpSheet";
 
-export const metadata = { title: "Poora Hafta — Coach" };
+export const metadata = { title: "Full Week — Coach" };
 
 export default function WeekPage() {
   const audit = plan.muscleAudit;
@@ -15,21 +15,21 @@ export default function WeekPage() {
     <div className="flex flex-col gap-6 animate-fade-in-up">
       <PageTitle
         kicker="5-day split"
-        title="Poora Hafta"
+        title="Full Week"
         action={
           <HelpSheet
-            title="Poora hafta"
+            title="Full week"
             bullets={[
-              "Har din pe tap karke us din ka warm-up, lifts aur stretch dekho.",
-              "Rang = us din ka plate color. Har muscle hafte mein 2 baar aata hai.",
-              "Neeche 'Muscle Coverage Audit' — proof ki koi muscle chhoota nahi.",
+              "Tap any day to see that day's warm-up, lifts and stretch.",
+              "Color = that day's plate color. Every muscle comes twice a week.",
+              "Below, the 'Muscle Coverage Audit' — proof that no muscle is missed.",
             ]}
           />
         }
       />
 
       <p className="-mt-3 text-sm leading-relaxed text-muted">
-        {plan.meta.split}. Har muscle hafte mein 2 baar.
+        {plan.meta.split}. Every muscle twice a week.
       </p>
 
       <div className="flex flex-col gap-3">
@@ -47,9 +47,9 @@ export default function WeekPage() {
       </div>
 
       <section className="flex flex-col gap-3">
-        <SectionTitle>Muscle Coverage Audit — proof, hawa nahi</SectionTitle>
+        <SectionTitle>Muscle Coverage Audit — proof, not talk</SectionTitle>
         <Card className="px-5">
-          <Disclosure summary="Sar se pair tak — kaun muscle kab lagta hai">
+          <Disclosure summary="Head to toe — which muscle is worked when">
             <ul className="mt-1 flex flex-col gap-2.5 pb-2">
               {rows.map((line) => (
                 <li key={line} className="flex gap-3 text-sm text-ink">

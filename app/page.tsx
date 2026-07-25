@@ -33,9 +33,9 @@ function ist(opts: Intl.DateTimeFormatOptions): string {
 
 function greetWord(): string {
   const h = Number(ist({ hour: "numeric", hour12: false }));
-  if (h < 12) return "Subah";
-  if (h < 17) return "Dopahar";
-  return "Shaam";
+  if (h < 12) return "Morning";
+  if (h < 17) return "Afternoon";
+  return "Evening";
 }
 
 export default function Home() {
@@ -49,14 +49,14 @@ export default function Home() {
       <div className="flex items-center justify-between pt-1">
         <div>
           <p className="font-display text-2xl leading-none">COACH</p>
-          <p className="text-xs text-muted">6-mahine ka mission</p>
+          <p className="text-xs text-muted">6-month mission</p>
         </div>
         <HelpSheet
-          title="Aaj ka plan"
+          title="Today's plan"
           bullets={[
-            "Aaj ka workout upar hai — 'Workout Shuru Karo' dabao aur seedha session mein.",
-            "Daily 3 mark karo: creatine, paani, neend. Ye teen roz ka base hai.",
-            "Hafte ki ring strip pe tap karke poora split dekho.",
+            "Today's workout is up top — tap 'Start Workout' to jump straight into the session.",
+            "Mark the Daily 3: creatine, water, sleep. These three are the daily base.",
+            "Tap the week's ring strip to see the full split.",
           ]}
         />
       </div>
@@ -70,24 +70,24 @@ export default function Home() {
       <MissTwiceBanner mindset={plan.tracking.mindset} />
 
       <section className="flex flex-col gap-3">
-        <SectionTitle>Is hafte</SectionTitle>
+        <SectionTitle>This week</SectionTitle>
         <Card className="p-4">
           <StreakStrip />
         </Card>
       </section>
 
       <section className="flex flex-col gap-3">
-        <SectionTitle>Daily 3 — roz ka base</SectionTitle>
+        <SectionTitle>Daily 3 — the daily base</SectionTitle>
         <Daily3 />
       </section>
 
       <section className="flex flex-col gap-3">
-        <SectionTitle>Jaldi se</SectionTitle>
+        <SectionTitle>Quick links</SectionTitle>
         <div className="grid grid-cols-2 gap-3">
-          <TileLink href="/week" label="Poora Hafta" sub="5-day split" accent="#4dabf7" icon={<CalendarDays size={20} strokeWidth={2} />} />
-          <TileLink href="/diet" label="Khana" sub="Diet + paani" accent="#51cf66" icon={<UtensilsCrossed size={20} strokeWidth={2} />} />
+          <TileLink href="/week" label="Full Week" sub="5-day split" accent="#4dabf7" icon={<CalendarDays size={20} strokeWidth={2} />} />
+          <TileLink href="/diet" label="Food" sub="Diet + water" accent="#51cf66" icon={<UtensilsCrossed size={20} strokeWidth={2} />} />
           <TileLink href="/progress" label="Progress" sub="Weight + waist" accent="#b197fc" icon={<TrendingUp size={20} strokeWidth={2} />} />
-          <TileLink href="/rules" label="Rules" sub="Coach ke usool" accent="#ffd43b" icon={<ScrollText size={20} strokeWidth={2} />} />
+          <TileLink href="/rules" label="Rules" sub="The coach's rules" accent="#ffd43b" icon={<ScrollText size={20} strokeWidth={2} />} />
         </div>
       </section>
     </div>
@@ -114,11 +114,11 @@ function WorkoutHero({
   return (
     <div className="flex flex-col gap-4">
       <p className="text-[15px] leading-snug text-muted">
-        Chal, {greetWord().toLowerCase()} —{" "}
+        Good {greetWord().toLowerCase()} —{" "}
         <span className="font-semibold" style={{ color }}>
-          aaj {shortTitle} hai
+          today is {shortTitle}
         </span>
-        . Ek session, poora focus.
+        . One session, full focus.
       </p>
 
       <Card accent={color} className="overflow-hidden p-5">
@@ -126,7 +126,7 @@ function WorkoutHero({
           <div>
             <p className="text-xs font-medium text-muted">{dateLabel}</p>
             <p className="t-cap mt-0.5" style={{ color }}>
-              Aaj · {day.day}
+              Today · {day.day}
             </p>
           </div>
           <span
@@ -173,7 +173,7 @@ function WorkoutHero({
           }}
         >
           <Play size={20} strokeWidth={2.5} fill="#0a0e14" />
-          Workout Shuru Karo
+          Start Workout
         </Link>
       </Card>
     </div>
@@ -184,8 +184,8 @@ function RestHero({ dateLabel }: { dateLabel: string }) {
   return (
     <div className="flex flex-col gap-4">
       <p className="text-[15px] leading-snug text-muted">
-        <span className="font-semibold text-ink">Aaj rest</span> — recovery bhi
-        training hai.
+        <span className="font-semibold text-ink">Rest today</span> — recovery is
+        training too.
       </p>
 
       <Card accent="#4dabf7" className="p-5">
@@ -193,7 +193,7 @@ function RestHero({ dateLabel }: { dateLabel: string }) {
         <p className="t-cap mt-0.5" style={{ color: "#4dabf7" }}>
           Rest Day
         </p>
-        <h1 className="t-display mt-2">AARAM</h1>
+        <h1 className="t-display mt-2">REST</h1>
 
         <p className="mt-3 text-sm leading-relaxed text-muted">
           {plan.weekendRoutine.satSun}
@@ -204,7 +204,7 @@ function RestHero({ dateLabel }: { dateLabel: string }) {
             {plan.weekendRoutine.steps}
           </RestLine>
           <RestLine icon={<Pill size={18} strokeWidth={2} />}>
-            Creatine aaj bhi — rest day bhi 3–5 g.
+            Creatine today too — 3–5 g even on rest days.
           </RestLine>
         </ul>
 
@@ -212,7 +212,7 @@ function RestHero({ dateLabel }: { dateLabel: string }) {
           href="/week"
           className="mt-5 flex min-h-[52px] items-center justify-center rounded-2xl bg-surface2 text-sm font-semibold text-ink transition-transform active:scale-[0.98]"
         >
-          Poora hafta dekho
+          See the full week
         </Link>
       </Card>
     </div>

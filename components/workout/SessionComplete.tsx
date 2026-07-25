@@ -64,7 +64,7 @@ export default function SessionComplete({
           <p className="num mt-1 text-5xl font-bold leading-none" style={{ color }}>
             {vol.toLocaleString("en-IN")}
           </p>
-          <p className="num mt-1 text-sm text-muted">kg uthaya</p>
+          <p className="num mt-1 text-sm text-muted">kg lifted</p>
 
           <div className="mt-4 grid grid-cols-2 gap-3">
             <Stat value={`${completedSets}`} label="sets done" />
@@ -73,8 +73,8 @@ export default function SessionComplete({
         </div>
 
         <p className="mt-5 text-sm text-muted">
-          Kal: <span className="font-semibold text-ink">{nextLabel}</span>. Ghar
-          ja, khaana khaa, creatine le.
+          Tomorrow: <span className="font-semibold text-ink">{nextLabel}</span>. Go
+          home, eat, take creatine.
         </p>
 
         <Link
@@ -89,7 +89,7 @@ export default function SessionComplete({
           onClick={onClose}
           className="mt-2 min-h-[44px] w-full text-sm font-medium text-muted"
         >
-          Session mein wapas jao
+          Back to session
         </button>
       </div>
     </div>
