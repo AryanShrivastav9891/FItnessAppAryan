@@ -5,7 +5,8 @@ import { Check } from "lucide-react";
 import { useLocalState } from "@/lib/storage";
 import { keys } from "@/lib/keys";
 import { dayColor } from "@/lib/plan";
-import { dayIdForKey, isWeekendKey, todayKey, weekStripKeys } from "@/lib/date";
+import { dayIdForKey, isWeekendKey, weekStripKeys } from "@/lib/date";
+import { useTodayKey } from "@/lib/clock";
 import type { SessionsMap } from "@/lib/types";
 
 const LETTERS = ["M", "T", "W", "T", "F", "S", "S"];
@@ -14,13 +15,15 @@ type State = "done" | "missed" | "planned" | "rest";
 
 export default function StreakStrip() {
   const [sessions] = useLocalState<SessionsMap>(keys.sessions, {});
+  // Mon→Sun shape is the same in every week, so it is safe to prerender; only
+  // "which of these is today" needs the device clock.
   const week = weekStripKeys();
-  const today = todayKey();
+  const today = useTodayKey();
 
   const stateFor = (key: string): State => {
     if (sessions[key]) return "done";
     if (isWeekendKey(key)) return "rest";
-    if (key < today) return "missed";
+    if (today && key < today) return "missed";
     return "planned";
   };
 

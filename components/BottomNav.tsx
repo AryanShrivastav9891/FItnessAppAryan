@@ -11,6 +11,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { dayIdForToday } from "@/lib/date";
+import { useHydrated } from "@/lib/clock";
 import { dayColor } from "@/lib/plan";
 
 const TABS: { href: string; label: string; Icon: LucideIcon }[] = [
@@ -23,7 +24,8 @@ const TABS: { href: string; label: string; Icon: LucideIcon }[] = [
 
 export default function BottomNav() {
   const pathname = usePathname();
-  const todayId = dayIdForToday();
+  // The active-tab dot is tinted with today's colour — device clock, post-hydration.
+  const todayId = useHydrated() ? dayIdForToday() : null;
   const accent = todayId ? dayColor(todayId) : "#4dabf7";
 
   const isActive = (href: string) =>

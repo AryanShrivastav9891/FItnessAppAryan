@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import BottomNav from "@/components/BottomNav";
+import ServiceWorker from "@/components/ServiceWorker";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -61,6 +62,7 @@ export default function RootLayout({
           </main>
           <BottomNav />
         </div>
+        <ServiceWorker />
       </body>
     </html>
   );

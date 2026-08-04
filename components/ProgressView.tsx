@@ -13,7 +13,8 @@ import {
 } from "lucide-react";
 import { useLocalState } from "@/lib/storage";
 import { keys } from "@/lib/keys";
-import { todayKey, shortDate, recentDayKeys, weekStripKeys, dayIdForKey } from "@/lib/date";
+import { shortDate, recentDayKeys, weekStripKeys, dayIdForKey } from "@/lib/date";
+import { useTodayKey } from "@/lib/clock";
 import type { Measurement, SessionsMap, Tracking } from "@/lib/types";
 import { Card, SectionTitle } from "@/components/ui";
 import LineChart from "@/components/LineChart";
@@ -68,20 +69,23 @@ function currentStreak(sessions: SessionsMap, today: string): number {
 export default function ProgressView({ tracking }: { tracking: Tracking }) {
   const [list, setList] = useLocalState<Measurement[]>(keys.measurements, []);
   const [sessions] = useLocalState<SessionsMap>(keys.sessions, {});
-  const [date, setDate] = useState(() => todayKey());
+  // The date field defaults to today (device clock, so it is empty until
+  // hydration) and sticks to whatever the user picks instead.
+  const today = useTodayKey();
+  const [pickedDate, setDate] = useState<string | null>(null);
+  const date = pickedDate ?? today ?? "";
   const [weight, setWeight] = useState("");
   const [waist, setWaist] = useState("");
 
   const sorted = [...list].sort((a, b) => a.date.localeCompare(b.date));
   const v = verdict(sorted);
-  const today = todayKey();
 
   // stat tiles
   const weekKeys = weekStripKeys();
   const thisWeekVol = weekKeys.reduce((n, k) => n + (sessions[k]?.volumeKg ?? 0), 0);
   const sessionsDone = weekKeys.filter((k) => sessions[k]).length;
   const planned = weekKeys.filter((k) => dayIdForKey(k)).length;
-  const streak = currentStreak(sessions, today);
+  const streak = currentStreak(sessions, today ?? "");
   const weekVols: Record<string, number> = {};
   for (const [k, s] of Object.entries(sessions)) {
     const mk = mondayKey(k);
