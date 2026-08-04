@@ -1,10 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { Check, Play } from "lucide-react";
-import { ExternalLink } from "@/components/ui";
 import ExercisePhotos from "@/components/ExercisePhotos";
+import FormVideo from "./FormVideo";
 
 export default function CheckRow({
+  id,
   checked,
   onToggle,
   title,
@@ -14,6 +16,7 @@ export default function CheckRow({
   color,
   photo,
 }: {
+  id: string;
   checked: boolean;
   onToggle: () => void;
   title: string;
@@ -23,8 +26,11 @@ export default function CheckRow({
   color: string;
   photo?: { images: string[]; instructions: string[] } | null;
 }) {
+  const [showVideo, setShowVideo] = useState(false);
+
   return (
-    <div className="flex items-center gap-3 border-b border-line py-3 last:border-0">
+    <div className="border-b border-line py-3 last:border-0">
+      <div className="flex items-center gap-3">
       <button
         type="button"
         onClick={onToggle}
@@ -62,13 +68,27 @@ export default function CheckRow({
       {photo && photo.images.length > 0 && (
         <ExercisePhotos name={title} images={photo.images} instructions={photo.instructions} color={color} variant="thumb" />
       )}
-      <ExternalLink
-        href={video}
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-surface2 text-muted transition-transform active:scale-95"
-      >
-        <Play size={16} strokeWidth={2.5} fill="currentColor" />
-        <span className="sr-only">Watch video</span>
-      </ExternalLink>
+        <button
+          type="button"
+          onClick={() => setShowVideo((v) => !v)}
+          aria-expanded={showVideo}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-transform active:scale-95"
+          style={
+            showVideo
+              ? { background: `linear-gradient(135deg, ${color}, ${color}cc)`, color: "#0a0e14" }
+              : { backgroundColor: "var(--color-surface2)", color: "var(--color-muted)" }
+          }
+        >
+          <Play size={16} strokeWidth={2.5} fill="currentColor" />
+          <span className="sr-only">
+            {showVideo ? `Hide video for ${title}` : `Watch video for ${title}`}
+          </span>
+        </button>
+      </div>
+
+      {showVideo && (
+        <FormVideo id={id} name={title} color={color} searchUrl={video} />
+      )}
     </div>
   );
 }

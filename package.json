@@ -7,6 +7,7 @@
     "build": "next build && node scripts/gen-sw.mjs",
     "start": "next start",
     "preview": "node scripts/serve-out.mjs",
+    "videos": "node scripts/resolve-videos.mjs",
     "lint": "eslint"
   },
   "dependencies": {

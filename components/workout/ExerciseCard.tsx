@@ -13,6 +13,7 @@ import Sheet from "@/components/Sheet";
 import ExercisePhotos from "@/components/ExercisePhotos";
 import { getImages } from "@/lib/images";
 import SetLogger from "./SetLogger";
+import FormVideo from "./FormVideo";
 
 function prefersReducedMotion(): boolean {
   return (
@@ -44,6 +45,7 @@ export default function ExerciseCard({
   const total = parsed.count;
   const photos = getImages(exercise.id);
   const [showRule, setShowRule] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
   const { hydrated } = useStorageTick();
   const ref = useRef<HTMLElement | null>(null);
   const setRef = (el: HTMLElement | null) => {
@@ -203,12 +205,20 @@ export default function ExerciseCard({
       />
 
       <div className="mt-4 flex gap-3">
-        <ExternalLink
-          href={exercise.video}
-          className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-2xl bg-surface2 text-sm font-semibold text-ink transition-transform active:scale-[0.98]"
+        <button
+          type="button"
+          onClick={() => setShowVideo((v) => !v)}
+          aria-expanded={showVideo}
+          className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-2xl text-sm font-semibold transition-transform active:scale-[0.98]"
+          style={
+            showVideo
+              ? { background: `linear-gradient(135deg, ${color}, ${color}cc)`, color: "#0a0e14" }
+              : { backgroundColor: "var(--color-surface2)", color: "var(--color-ink)" }
+          }
         >
-          <Play size={16} strokeWidth={2.5} fill="currentColor" /> Video
-        </ExternalLink>
+          <Play size={16} strokeWidth={2.5} fill="currentColor" />
+          {showVideo ? "Hide video" : "Video"}
+        </button>
         <ExternalLink
           href="https://musclewiki.com"
           className="flex min-h-[48px] flex-1 items-center justify-center gap-2 rounded-2xl bg-surface2 text-sm font-semibold text-ink transition-transform active:scale-[0.98]"
@@ -216,6 +226,15 @@ export default function ExerciseCard({
           <ExternalLinkIcon size={16} strokeWidth={2} /> MuscleWiki
         </ExternalLink>
       </div>
+
+      {showVideo && (
+        <FormVideo
+          id={exercise.id}
+          name={exercise.name}
+          color={color}
+          searchUrl={exercise.video}
+        />
+      )}
     </article>
   );
 }

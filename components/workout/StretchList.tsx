@@ -34,6 +34,7 @@ export default function StretchList({
         {items.map((s) => (
           <CheckRow
             key={s.id}
+            id={s.id}
             checked={checked.includes(s.id)}
             onToggle={() => toggle(s.id)}
             title={s.name}

@@ -34,6 +34,7 @@ export default function WarmupList({
         {items.map((w) => (
           <CheckRow
             key={w.id}
+            id={w.id}
             checked={checked.includes(w.id)}
             onToggle={() => toggle(w.id)}
             title={w.name}
