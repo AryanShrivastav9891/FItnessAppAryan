@@ -5,6 +5,7 @@ export const keys = {
   sessions: "sessions", // SessionsMap
   measurements: "measurements", // Measurement[]
   dietMode: "dietMode", // "regular" | "veg"
+  offlineMode: "offlineMode", // boolean — the home screen's offline switch
 
   log: (exerciseId: string) => `log:${exerciseId}`, // LoggedSession[]
   setlog: (date: string, exerciseId: string) => `setlog:${date}:${exerciseId}`, // LoggedSet[]

@@ -27,10 +27,16 @@ export const metadata: Metadata = {
   description:
     "Personal 6-month aesthetic-body training plan: warm-up, lift, stretch, diet and the coach's rules — all in one place.",
   applicationName: "Coach",
-  manifest: "/manifest.webmanifest",
+  // The <link rel="manifest"> is emitted by app/manifest.ts (Next's metadata
+  // file convention), so it is deliberately not repeated here.
   icons: {
-    icon: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    // iOS ignores SVG here and falls back to a screenshot of the page, so the
+    // home-screen icon has to be a PNG.
+    apple: { url: "/apple-icon-180.png", sizes: "180x180", type: "image/png" },
   },
   appleWebApp: {
     capable: true,

@@ -11,6 +11,7 @@ import Daily3 from "@/components/Daily3";
 import TodayHero from "@/components/TodayHero";
 import MissTwiceBanner from "@/components/MissTwiceBanner";
 import HelpSheet from "@/components/HelpSheet";
+import OfflineToggle from "@/components/OfflineToggle";
 
 // This page is fully static so it can be precached and opened with no network.
 // Everything that depends on "which day is it" lives in <TodayHero>, which reads
@@ -49,6 +50,11 @@ export default function Home() {
       <section className="flex flex-col gap-3">
         <SectionTitle>Daily 3 — the daily base</SectionTitle>
         <Daily3 />
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <SectionTitle>Signal</SectionTitle>
+        <OfflineToggle />
       </section>
 
       <section className="flex flex-col gap-3">
