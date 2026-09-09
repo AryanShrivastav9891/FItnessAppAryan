@@ -9,15 +9,16 @@ export default function ProgressPage() {
   return (
     <div className="flex flex-col gap-6 animate-fade-in-up">
       <PageTitle
-        kicker="Weight + waist"
+        kicker="Strength + body"
         title="Progress"
         action={
           <HelpSheet
             title="Progress"
             bullets={[
+              "Stat tiles up top: this week's volume, best week, sessions and missed days this month.",
+              "Strength charts plot the best set of each session, with a dashed estimated 1RM.",
               "Add a weight + waist entry every 2 weeks — morning, empty stomach.",
-              "The verdict card tells you: On Track, Watch or Adjust.",
-              "Stat tiles up top: this week's volume, sessions, streak, best week.",
+              "Export JSON after a good week — that file is the only backup there is.",
             ]}
           />
         }

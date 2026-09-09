@@ -2,6 +2,7 @@ import { plan } from "@/lib/plan";
 import { Card, PageTitle, SectionTitle } from "@/components/ui";
 import { Disclosure } from "@/components/Disclosure";
 import DayCard from "@/components/DayCard";
+import MissedSummary from "@/components/MissedSummary";
 import HelpSheet from "@/components/HelpSheet";
 
 export const metadata = { title: "Full Week — Coach" };
@@ -31,6 +32,8 @@ export default function WeekPage() {
       <p className="-mt-3 text-sm leading-relaxed text-muted">
         {plan.meta.split}. Every muscle twice a week.
       </p>
+
+      <MissedSummary />
 
       <div className="flex flex-col gap-3">
         {plan.week.map((day) => (

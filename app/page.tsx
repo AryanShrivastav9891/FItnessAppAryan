@@ -10,6 +10,7 @@ import StreakStrip from "@/components/StreakStrip";
 import Daily3 from "@/components/Daily3";
 import TodayHero from "@/components/TodayHero";
 import MissTwiceBanner from "@/components/MissTwiceBanner";
+import MissedSummary from "@/components/MissedSummary";
 import HelpSheet from "@/components/HelpSheet";
 import OfflineToggle from "@/components/OfflineToggle";
 
@@ -39,6 +40,8 @@ export default function Home() {
       <TodayHero />
 
       <MissTwiceBanner mindset={plan.tracking.mindset} />
+
+      <MissedSummary compact />
 
       <section className="flex flex-col gap-3">
         <SectionTitle>This week</SectionTitle>

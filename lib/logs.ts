@@ -5,7 +5,13 @@
 
 import { lsGet, lsSet } from "./storage";
 import { keys } from "./keys";
-import { dayIdForKey, isWeekendKey, monthKeysUpTo, weekStripKeys } from "./date";
+import {
+  dayIdForKey,
+  isWeekendKey,
+  monthKeysUpTo,
+  recentDayKeys,
+  weekStripKeys,
+} from "./date";
 import { epley, type HistoryEntry } from "./progression";
 import type { SessionSummary, SessionsMap } from "./types";
 
@@ -262,6 +268,40 @@ export function weekStats(store: LogStore, today: string): PeriodStats {
 
 export function monthStats(store: LogStore, today: string): PeriodStats {
   return statsFor(store, monthKeysUpTo(today), today);
+}
+
+/**
+ * The state of a PLAN day (Monday's Lower A) rather than a calendar date — a
+ * make-up trained on Saturday still logs under `dayId`, so it counts here.
+ */
+export function planDayState(
+  store: LogStore,
+  dayId: string,
+  today: string,
+): DayState {
+  const week = weekStripKeys();
+  const session = store.sessions.find((s) => s.dayId === dayId && week.includes(s.date));
+  if (session) return session.status === "done" ? "done" : "partial";
+  const planned = week.find((k) => dayIdForKey(k) === dayId);
+  if (planned && today && planned < today) return "missed";
+  return "planned";
+}
+
+/** Consecutive planned days trained. Weekends are skipped, not breaks. */
+export function currentStreak(store: LogStore, today: string): number {
+  const days = recentDayKeys(180);
+  let streak = 0;
+  for (let i = days.length - 1; i >= 0; i--) {
+    const key = days[i];
+    if (!dayIdForKey(key)) continue; // rest day — neither breaks nor extends
+    if (sessionOn(store, key)) {
+      streak += 1;
+      continue;
+    }
+    if (key === today) continue; // today is not missed until it is over
+    break;
+  }
+  return streak;
 }
 
 /** Missed planned days in the current week, oldest first — the make-up list. */

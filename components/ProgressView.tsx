@@ -10,14 +10,25 @@ import {
   Flame,
   Trophy,
   ArrowDown,
+  CalendarX,
 } from "lucide-react";
-import { useLocalState } from "@/lib/storage";
+import { useLocalState, useStorageTick } from "@/lib/storage";
 import { keys } from "@/lib/keys";
-import { shortDate, recentDayKeys, weekStripKeys, dayIdForKey } from "@/lib/date";
+import { shortDate } from "@/lib/date";
 import { useTodayKey } from "@/lib/clock";
-import type { Measurement, SessionsMap, Tracking } from "@/lib/types";
+import {
+  bestWeekVolume,
+  currentStreak,
+  EMPTY_STORE,
+  monthStats,
+  readLogs,
+  weekStats,
+} from "@/lib/logs";
+import type { Measurement, Tracking } from "@/lib/types";
 import { Card, SectionTitle } from "@/components/ui";
 import LineChart from "@/components/LineChart";
+import StrengthCharts from "@/components/StrengthCharts";
+import LogBackup from "@/components/LogBackup";
 
 function monthsBetween(a: string, b: string): number {
   const da = new Date(`${a}T12:00:00Z`).getTime();
@@ -43,32 +54,9 @@ function verdict(sorted: Measurement[]): { state: VState; text: string } | null 
   return { state: "track", text: "Perfect recomp — weight in control, waist same or dropping. This is the road to the X-frame." };
 }
 
-function mondayKey(key: string): string {
-  const wd = new Date(`${key}T12:00:00Z`).getUTCDay();
-  const sinceMon = (wd + 6) % 7;
-  const dt = new Date(new Date(`${key}T12:00:00Z`).getTime() - sinceMon * 86_400_000);
-  return `${dt.getUTCFullYear()}-${String(dt.getUTCMonth() + 1).padStart(2, "0")}-${String(dt.getUTCDate()).padStart(2, "0")}`;
-}
-
-function currentStreak(sessions: SessionsMap, today: string): number {
-  const days = recentDayKeys(120);
-  let streak = 0;
-  for (let i = days.length - 1; i >= 0; i--) {
-    const k = days[i];
-    if (!dayIdForKey(k)) continue; // rest day
-    if (sessions[k]) {
-      streak++;
-      continue;
-    }
-    if (k === today) continue; // today not done yet
-    break;
-  }
-  return streak;
-}
-
 export default function ProgressView({ tracking }: { tracking: Tracking }) {
   const [list, setList] = useLocalState<Measurement[]>(keys.measurements, []);
-  const [sessions] = useLocalState<SessionsMap>(keys.sessions, {});
+  const { hydrated } = useStorageTick();
   // The date field defaults to today (device clock, so it is empty until
   // hydration) and sticks to whatever the user picks instead.
   const today = useTodayKey();
@@ -80,18 +68,13 @@ export default function ProgressView({ tracking }: { tracking: Tracking }) {
   const sorted = [...list].sort((a, b) => a.date.localeCompare(b.date));
   const v = verdict(sorted);
 
-  // stat tiles
-  const weekKeys = weekStripKeys();
-  const thisWeekVol = weekKeys.reduce((n, k) => n + (sessions[k]?.volumeKg ?? 0), 0);
-  const sessionsDone = weekKeys.filter((k) => sessions[k]).length;
-  const planned = weekKeys.filter((k) => dayIdForKey(k)).length;
-  const streak = currentStreak(sessions, today ?? "");
-  const weekVols: Record<string, number> = {};
-  for (const [k, s] of Object.entries(sessions)) {
-    const mk = mondayKey(k);
-    weekVols[mk] = (weekVols[mk] ?? 0) + (s.volumeKg ?? 0);
-  }
-  const bestWeekVol = Object.values(weekVols).reduce((m, x) => Math.max(m, x), 0);
+  // stat tiles — all derived from coach:logs.v1
+  const store = hydrated ? readLogs() : EMPTY_STORE;
+  const week = weekStats(store, today ?? "");
+  const month = monthStats(store, today ?? "");
+  const streak = currentStreak(store, today ?? "");
+  const bestWeekVol = bestWeekVolume(store);
+  const kg = (n: number) => Math.round(n).toLocaleString("en-IN");
 
   const add = () => {
     const w = parseFloat(weight);
@@ -118,15 +101,20 @@ export default function ProgressView({ tracking }: { tracking: Tracking }) {
 
       {/* stat tiles */}
       <div className="grid grid-cols-2 gap-3">
-        <StatTile icon={<Dumbbell size={16} />} value={`${Math.round(thisWeekVol).toLocaleString("en-IN")}`} unit="kg" label="This week volume" color="#4dabf7" />
-        <StatTile icon={<CalendarCheck size={16} />} value={`${sessionsDone}/${planned}`} unit="" label="Sessions" color="#51cf66" />
+        <StatTile icon={<Dumbbell size={16} />} value={kg(week.volumeKg)} unit="kg" label="This week volume" color="#4dabf7" />
+        <StatTile icon={<Trophy size={16} />} value={kg(bestWeekVol)} unit="kg" label="Best week" color="#ffd43b" />
+        <StatTile icon={<CalendarCheck size={16} />} value={`${month.done + month.partial}/${month.planned}`} unit="" label="Sessions this month" color="#51cf66" />
+        <StatTile icon={<CalendarX size={16} />} value={`${month.missed}`} unit="" label="Missed this month" color="#ff6b6b" />
         <StatTile icon={<Flame size={16} />} value={`${streak}`} unit="" label="Streak (days)" color="#ff6b6b" />
-        <StatTile icon={<Trophy size={16} />} value={`${Math.round(bestWeekVol).toLocaleString("en-IN")}`} unit="kg" label="Best week" color="#ffd43b" />
+        <StatTile icon={<Dumbbell size={16} />} value={kg(month.volumeKg)} unit="kg" label="This month volume" color="#b197fc" />
       </div>
+
+      <StrengthCharts store={store} />
 
       {/* charts or empty state */}
       {sorted.length > 0 ? (
         <div className="flex flex-col gap-3">
+          <SectionTitle>Body — weight + waist</SectionTitle>
           <Card className="p-4">
             <SectionTitle>Weight (kg)</SectionTitle>
             <div className="mt-2">
@@ -224,6 +212,8 @@ export default function ProgressView({ tracking }: { tracking: Tracking }) {
           doesn&apos;t.
         </p>
       </Card>
+
+      <LogBackup />
 
       <section className="flex flex-col gap-3">
         <SectionTitle>Tracking system — the coach&apos;s way</SectionTitle>

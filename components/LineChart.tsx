@@ -6,26 +6,32 @@ export default function LineChart({
   color,
   unit,
   baseline,
+  secondary,
+  emptyLabel = "No entries yet",
 }: {
   values: number[];
   color: string;
   unit: string;
   baseline?: number;
+  /** Optional dashed companion series drawn on the same scale (e.g. est. 1RM). */
+  secondary?: { values: number[]; label: string };
+  emptyLabel?: string;
 }) {
   const W = 300;
   const H = 108;
   const pad = 12;
   const gid = `area-${unit.replace(/\W/g, "")}-${color.replace(/\W/g, "")}`;
+  const sec = secondary?.values.length === values.length ? secondary : undefined;
 
   if (values.length === 0) {
     return (
       <div className="flex h-24 items-center justify-center text-sm text-muted">
-        Koi entry nahi
+        {emptyLabel}
       </div>
     );
   }
 
-  const all = baseline != null ? [...values, baseline] : values;
+  const all = [...values, ...(sec ? sec.values : []), ...(baseline != null ? [baseline] : [])];
   const min = Math.min(...all);
   const max = Math.max(...all);
   const span = max - min || 1;
@@ -78,10 +84,26 @@ export default function LineChart({
             strokeLinejoin="round"
           />
         )}
+        {sec && n > 1 && (
+          <polyline
+            points={sec.values.map((v, i) => `${x(i)},${y(v)}`).join(" ")}
+            fill="none"
+            stroke={color}
+            strokeWidth="1.5"
+            strokeDasharray="5 4"
+            strokeLinecap="round"
+            opacity="0.55"
+          />
+        )}
         {values.map((v, i) => (
           <circle key={i} cx={x(i)} cy={y(v)} r={3} fill={color} />
         ))}
       </svg>
+      {sec && (
+        <p className="num mt-1 text-[11px] text-muted">
+          <span aria-hidden>- - -</span> {sec.label}: {sec.values[sec.values.length - 1]} {unit}
+        </p>
+      )}
       <div className="num mt-1 flex justify-between text-xs text-muted">
         <span>start {first} {unit}</span>
         <span style={{ color: delta === 0 ? undefined : color }}>
