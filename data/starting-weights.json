@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "athlete": "65 kg male, 175 cm, 1-month beginner, Delhi NCR",
+    "basis": "Bench ~40 kg (bar 20 + 10/side) and Squat ~40 kg (bar 20 + 10/side) are confirmed. Leg days were skipped more than upper days in month 1, so leg loads are deliberately conservative. Everything else is a beginner estimate — the first session on each exercise is a 'find your weight' session: adjust ± until the last 2 reps of the target feel hard with clean form.",
+    "kgMeaning": "barbell/machine/cable = total load; dumbbell = per hand; assisted = assistance weight",
+    "progressionRule": "All sets at repMax with clean form -> add step next session. Any set below repMin two sessions in a row at the same kg -> minus one step.",
+    "defaultRepsRule": "range 6-10 or 8-12 -> 8; 10-12 -> 10; 12-15 -> 12; 10-15 -> 12"
+  },
+
+  "monday-barbell-back-squat":    { "type": "barbell",  "kg": 40,   "sets": 3, "reps": 8,  "repMin": 6,  "repMax": 10, "step": 5,   "note": "bar 20 + 10/side. Depth: hip crease at knee level. Ramp-up: empty bar x8, 30 x5, then working sets." },
+  "monday-romanian-deadlift-rdl": { "type": "barbell",  "kg": 30,   "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 10, "step": 5,   "note": "bar 20 + 5/side. Back flat is the only rule; go up only when the video shows a flat back." },
+  "monday-leg-press":             { "type": "machine",  "kg": 40,   "sets": 3, "reps": 10, "repMin": 10, "repMax": 12, "step": 10,  "note": "plates on sled, 20/side. If it is a stack machine start at ~60." },
+  "monday-lying-leg-curl":        { "type": "machine",  "kg": 20,   "sets": 3, "reps": 12, "repMin": 10, "repMax": 15, "step": 5 },
+  "monday-standing-calf-raise":   { "type": "machine",  "kg": 30,   "sets": 4, "reps": 12, "repMin": 12, "repMax": 15, "step": 5,   "note": "1 s pause at top, full stretch at bottom." },
+  "monday-plank-side-plank":      { "type": "time",     "seconds": 30, "sets": 3, "step": 5, "note": "Plank 3 x 30 s; side plank 2 x 20 s per side (log side plank as a note, not a set)." },
+
+  "tuesday-incline-dumbbell-press":               { "type": "dumbbell", "kg": 12.5, "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 12, "step": 2.5, "note": "per hand. Bench ~30 degrees." },
+  "tuesday-pec-deck-cable-fly":                   { "type": "machine",  "kg": 20,   "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 5 },
+  "tuesday-seated-overhead-press-barbell-machine":{ "type": "barbell",  "kg": 20,   "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 10, "step": 2.5, "note": "empty bar. Machine press: start 20." },
+  "tuesday-cable-lateral-raise":                  { "type": "cable",    "kg": 5,    "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 2.5, "note": "per side, lowest plate. Light and clean beats heavy and swung." },
+  "tuesday-overhead-db-triceps-extension":        { "type": "dumbbell", "kg": 10,   "sets": 3, "reps": 10, "repMin": 10, "repMax": 12, "step": 2.5, "note": "one dumbbell held in both hands." },
+  "tuesday-rope-pushdown":                        { "type": "cable",    "kg": 15,   "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 2.5 },
+
+  "wednesday-assisted-pull-up-close-grip-lat-pulldown": { "type": "assisted", "kg": 30, "sets": 3, "reps": 8, "repMin": 8, "repMax": 12, "step": 5, "note": "assistance weight — progression REDUCES it; goal 0 (first unassisted pull-up) by month 3. If using close-grip pulldown instead: machine, 30 kg, step +5." },
+  "wednesday-chest-supported-row":  { "type": "dumbbell", "kg": 12.5, "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 10, "step": 2.5, "note": "per hand. Machine row: 30 kg, step 5." },
+  "wednesday-one-arm-dumbbell-row": { "type": "dumbbell", "kg": 15,   "sets": 3, "reps": 10, "repMin": 10, "repMax": 12, "step": 2.5, "note": "per side." },
+  "wednesday-face-pull":            { "type": "cable",    "kg": 10,   "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 2.5, "note": "elbows high, pull the rope apart. If it turns into a row, the weight is too heavy." },
+  "wednesday-dumbbell-shrug":       { "type": "dumbbell", "kg": 15,   "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 2.5, "note": "per hand." },
+  "wednesday-ez-bar-curl":          { "type": "barbell",  "kg": 15,   "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 12, "step": 2.5, "note": "EZ bar ~10 + 2.5/side." },
+  "wednesday-hammer-curl":          { "type": "dumbbell", "kg": 7.5,  "sets": 3, "reps": 10, "repMin": 10, "repMax": 12, "step": 2.5, "note": "per hand." },
+
+  "thursday-leg-press-heavy-day": { "type": "machine",    "kg": 50, "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 10, "step": 10,  "note": "Monday's leg press + 10. Same range of motion, no knee lockout." },
+  "thursday-walking-lunges":      { "type": "dumbbell",   "kg": 0,  "sets": 3, "reps": 10, "repMin": 10, "repMax": 12, "step": 2.5, "note": "reps are per leg. Bodyweight first, then 5 kg per hand once 3 x 12 per leg is clean." },
+  "thursday-leg-extension":       { "type": "machine",    "kg": 20, "sets": 2, "reps": 12, "repMin": 12, "repMax": 15, "step": 5 },
+  "thursday-seated-leg-curl":     { "type": "machine",    "kg": 20, "sets": 3, "reps": 12, "repMin": 10, "repMax": 15, "step": 5 },
+  "thursday-seated-calf-raise":   { "type": "machine",    "kg": 20, "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 5 },
+  "thursday-hanging-knee-raise":  { "type": "bodyweight", "kg": 0,  "sets": 3, "reps": 10, "repMin": 10, "repMax": 15, "step": 0,   "note": "progress reps only; at 3 x 15 clean, switch to straight-leg raises." },
+  "thursday-cable-crunch":        { "type": "cable",      "kg": 20, "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 5 },
+  "thursday-farmer-s-carry":      { "type": "dumbbell",   "kg": 15, "sets": 2, "reps": 30, "repMin": 30, "repMax": 40, "step": 2.5, "note": "per hand; reps = steps. Walk tall, shoulders back." },
+
+  "friday-barbell-bench-press":     { "type": "barbell",  "kg": 40, "sets": 3, "reps": 8,  "repMin": 6,  "repMax": 10, "step": 2.5, "note": "bar 20 + 10/side. +2.5 total needs 1.25 kg plates; if the gym has none, the app rounds to +5. Spotter on set 3." },
+  "friday-lat-pulldown":            { "type": "machine",  "kg": 30, "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 12, "step": 5,   "note": "pull with the elbows, chest up, 1 s squeeze. If it is felt in the arms/triceps, drop one plate." },
+  "friday-seated-db-shoulder-press":{ "type": "dumbbell", "kg": 10, "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 12, "step": 2.5, "note": "per hand." },
+  "friday-seated-cable-row":        { "type": "cable",    "kg": 30, "sets": 3, "reps": 8,  "repMin": 8,  "repMax": 12, "step": 5 },
+  "friday-db-lateral-raise":        { "type": "dumbbell", "kg": 5,  "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 2.5, "note": "per hand." },
+  "friday-reverse-pec-deck":        { "type": "machine",  "kg": 15, "sets": 3, "reps": 12, "repMin": 12, "repMax": 15, "step": 5 },
+  "friday-superset-db-curl-rope-pushdown": {
+    "type": "superset", "sets": 3,
+    "parts": [
+      { "name": "DB Curl",       "type": "dumbbell", "kg": 7.5, "reps": 10, "repMin": 10, "repMax": 12, "step": 2.5, "note": "per hand" },
+      { "name": "Rope Pushdown", "type": "cable",    "kg": 15,  "reps": 10, "repMin": 10, "repMax": 12, "step": 2.5 }
+    ],
+    "note": "back-to-back, then rest."
+  }
+}
