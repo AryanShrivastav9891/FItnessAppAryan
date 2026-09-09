@@ -4,8 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import { Check, Play, TrendingUp, ExternalLink as ExternalLinkIcon } from "lucide-react";
 import { lsGet, useStorageTick } from "@/lib/storage";
 import { keys } from "@/lib/keys";
-import { parseSets, qualifiesForOverload } from "@/lib/sets";
-import type { Exercise, LoggedSession, LoggedSet } from "@/lib/types";
+import { parseSets } from "@/lib/sets";
+import { historyFor, lastEntryFor, readLogs, EMPTY_STORE } from "@/lib/logs";
+import { fallbackConfig, getConfig } from "@/lib/weights";
+import { nextTarget } from "@/lib/progression";
+import { countDoneRaw } from "@/lib/draft";
+import type { Exercise } from "@/lib/types";
 import { MuscleChips } from "@/components/Chips";
 import { Disclosure } from "@/components/Disclosure";
 import { ExternalLink } from "@/components/ui";
@@ -42,7 +46,11 @@ export default function ExerciseCard({
   onComplete: () => void;
 }) {
   const parsed = parseSets(exercise.sets);
-  const total = parsed.count;
+  // starting-weights.json is the prescription; the plan's "3 × 8–12" string is
+  // only the fallback if an exercise is ever added to the plan before the config.
+  const config =
+    getConfig(exercise.id) ?? fallbackConfig(parsed.count, parsed.repLow, parsed.repHigh);
+  const total = config.sets;
   const photos = getImages(exercise.id);
   const [showRule, setShowRule] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
@@ -52,14 +60,18 @@ export default function ExerciseCard({
     ref.current = el;
   };
 
-  const rows = hydrated ? lsGet<LoggedSet[]>(keys.setlog(date, exercise.id), []) : [];
-  const doneCount = rows.filter((r) => r.done).length;
+  const store = hydrated ? readLogs() : EMPTY_STORE;
+  const doneCount = hydrated
+    ? countDoneRaw(lsGet<unknown>(keys.setlog(date, exercise.id), null), config)
+    : 0;
 
-  let overload = false;
-  if (hydrated) {
-    const log = lsGet<LoggedSession[]>(keys.log(exercise.id), []);
-    overload = qualifiesForOverload(log[log.length - 1]?.sets, parsed.repHigh);
-  }
+  const target = nextTarget(exercise.id, historyFor(store, exercise.id), config, date, {
+    overrideKg: store.overrides[exercise.id]?.kg,
+    allow125: store.settings.allow125,
+  });
+  const last = hydrated ? lastEntryFor(store, exercise.id) : null;
+  // The chip only appears when the engine actually earned a jump.
+  const overload = hydrated && /hit top of range/.test(target.reason);
 
   // When this card becomes the active one, bring it into view.
   useEffect(() => {
@@ -159,7 +171,7 @@ export default function ExerciseCard({
             }}
           >
             <TrendingUp size={14} strokeWidth={2.5} aria-hidden />
-            +2.5 kg
+            {target.reason.replace(/^all sets hit top of range → /, "")}
           </button>
           <Sheet open={showRule} onClose={() => setShowRule(false)} labelledBy="ov-title">
             <h2 id="ov-title" className="t-h2" style={{ color: "#51cf66" }}>
@@ -195,11 +207,14 @@ export default function ExerciseCard({
 
       <SetLogger
         exerciseId={exercise.id}
+        exerciseName={exercise.name}
         date={date}
-        parsed={parsed}
+        config={config}
+        target={target}
+        last={last}
         color={color}
-        onSetChecked={(allDone) => {
-          onStartRest(exercise.restSeconds);
+        onSetDone={({ restNow, allDone }) => {
+          if (restNow) onStartRest(exercise.restSeconds);
           if (allDone) onComplete();
         }}
       />

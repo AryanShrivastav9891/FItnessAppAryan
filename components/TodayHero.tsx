@@ -6,6 +6,7 @@ import { plan, getDay, dayColor, DAY_PLATE_KG, musclesForDay } from "@/lib/plan"
 import { dayIdForToday, todayKey } from "@/lib/date";
 import { useHydrated } from "@/lib/clock";
 import { parseSets } from "@/lib/sets";
+import { fallbackConfig, getConfig } from "@/lib/weights";
 import { Card } from "@/components/ui";
 import { MuscleGlyphRow } from "@/components/Chips";
 import TodayProgressBar from "@/components/TodayProgressBar";
@@ -69,10 +70,13 @@ function WorkoutHero({
   const day = getDay(dayId)!;
   const color = dayColor(dayId);
   const shortTitle = day.title.split(/[ (]/)[0];
-  const plates = day.exercises.map((e) => ({
-    id: e.id,
-    count: parseSets(e.sets).count,
-  }));
+  const plates = day.exercises.map((e) => {
+    const parsed = parseSets(e.sets);
+    return {
+      id: e.id,
+      config: getConfig(e.id) ?? fallbackConfig(parsed.count, parsed.repLow, parsed.repHigh),
+    };
+  });
 
   return (
     <div className="flex flex-col gap-4">

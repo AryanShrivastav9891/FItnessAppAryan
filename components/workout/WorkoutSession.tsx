@@ -8,7 +8,16 @@ import { keys } from "@/lib/keys";
 import { todayKey } from "@/lib/date";
 import { parseSets } from "@/lib/sets";
 import { week as WEEK } from "@/lib/plan";
-import type { Day, LoggedSession, LoggedSet, SessionsMap } from "@/lib/types";
+import { fallbackConfig, getConfig, type ExerciseConfig } from "@/lib/weights";
+import { countDoneRaw, type DraftSet } from "@/lib/draft";
+import {
+  clearOverrides,
+  updateLogs,
+  type LogExercise,
+  type LogSession,
+  type LogSet,
+} from "@/lib/logs";
+import type { Day } from "@/lib/types";
 import BarbellLoader from "@/components/BarbellLoader";
 import WarmupList from "./WarmupList";
 import StretchList from "./StretchList";
@@ -20,6 +29,18 @@ type Phase = "warmup" | "lift" | "stretch";
 
 function cap(s: string): string {
   return s.charAt(0).toUpperCase() + s.slice(1).toLowerCase();
+}
+
+function configFor(ex: { id: string; sets: string }): ExerciseConfig {
+  const parsed = parseSets(ex.sets);
+  return getConfig(ex.id) ?? fallbackConfig(parsed.count, parsed.repLow, parsed.repHigh);
+}
+
+/** Strip the UI-only edit flags before a row goes into the log. */
+function toLogSet(r: DraftSet): LogSet {
+  const out: LogSet = { kg: r.kg, reps: r.reps, done: r.done === true };
+  if (r.part === 0 || r.part === 1) out.part = r.part;
+  return out;
 }
 
 export default function WorkoutSession({
@@ -51,12 +72,14 @@ export default function WorkoutSession({
     return () => window.clearInterval(id);
   }, []);
 
-  const totalSets = day.exercises.reduce((n, e) => n + parseSets(e.sets).count, 0);
+  // Set counts come from the starting-weight config (Monday = 19, Friday = 21 —
+  // a superset set counts once, not once per half).
+  const totalSets = day.exercises.reduce((n, e) => n + configFor(e).sets, 0);
 
   let doneSets = 0;
   if (hydrated) {
     for (const ex of day.exercises) {
-      doneSets += lsGet<LoggedSet[]>(keys.setlog(date, ex.id), []).filter((r) => r.done).length;
+      doneSets += countDoneRaw(lsGet<unknown>(keys.setlog(date, ex.id), null), configFor(ex));
     }
   }
   const wuDone = hydrated ? lsGet<string[]>(keys.warmup(date), []).length : 0;
@@ -80,26 +103,59 @@ export default function WorkoutSession({
   const nextDay = WEEK[(WEEK.findIndex((d) => d.id === day.id) + 1) % WEEK.length];
   const nextLabel = `${cap(nextDay.title.split(/[ (]/)[0])} — ${nextDay.day}`;
 
+  /**
+   * Write the session into coach:logs.v1. Every row goes in — ticked or not —
+   * so the progression engine can tell a completed session from a partial one.
+   * The day is logged under `day.id` with the ACTUAL date, which is what makes
+   * a make-up (Monday's workout trained on Saturday) land in the right place.
+   */
   const finish = () => {
     let completedSets = 0;
     let volumeKg = 0;
+    const exercises: LogExercise[] = [];
+    const loggedIds: string[] = [];
+
     for (const ex of day.exercises) {
-      const rows = lsGet<LoggedSet[]>(keys.setlog(date, ex.id), []);
-      const doneRows = rows.filter((r) => r.done);
-      if (!doneRows.length) continue;
-      completedSets += doneRows.length;
-      volumeKg += doneRows.reduce((s, r) => s + (r.w ?? 0) * (r.r ?? 0), 0);
-      const log = lsGet<LoggedSession[]>(keys.log(ex.id), []);
-      if (!log.some((s) => s.date === date)) {
-        log.push({ date, sets: doneRows.map((r) => ({ w: r.w, r: r.r })) });
-        lsSet(keys.log(ex.id), log);
-      }
+      const config = configFor(ex);
+      const rows = lsGet<DraftSet[]>(keys.setlog(date, ex.id), []);
+      const done = countDoneRaw(rows, config);
+      if (!Array.isArray(rows) || !rows.length || done === 0) continue;
+
+      completedSets += done;
+      volumeKg += rows.reduce((s, r) => s + (r.done ? (r.kg ?? 0) * (r.reps ?? 0) : 0), 0);
+
+      const note = lsGet<string>(keys.note(date, ex.id), "").trim();
+      exercises.push({
+        exerciseId: ex.id,
+        sets: rows.map(toLogSet),
+        ...(note ? { note } : {}),
+      });
+      loggedIds.push(ex.id);
     }
-    const startAt = lsGet<number | null>(keys.start(date, day.id), null);
-    const durationMin = startAt ? Math.max(1, Math.round((Date.now() - startAt) / 60000)) : 0;
-    const sessions = lsGet<SessionsMap>(keys.sessions, {});
-    sessions[date] = { dayId: day.id, completedSets, durationMin, volumeKg };
-    lsSet(keys.sessions, sessions);
+
+    const startedAt = lsGet<number | null>(keys.start(date, day.id), null) ?? Date.now();
+    const finishedAt = Date.now();
+    const durationMin = Math.max(1, Math.round((finishedAt - startedAt) / 60000));
+
+    const session: LogSession = {
+      id: `${date}-${day.id}`,
+      date,
+      dayId: day.id,
+      startedAt,
+      finishedAt,
+      status: completedSets >= totalSets ? "done" : "partial",
+      exercises,
+    };
+
+    updateLogs((store) => ({
+      ...store,
+      sessions: [...store.sessions.filter((s) => s.id !== session.id), session].sort(
+        (a, b) => a.date.localeCompare(b.date),
+      ),
+    }));
+    // §4.5 — a hand-set weight applies to one session, then it is spent.
+    clearOverrides(loggedIds);
+
     setSummary({ completedSets, volumeKg, durationMin });
     setFinished(true);
     window.scrollTo({ top: 0 });

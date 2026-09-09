@@ -112,3 +112,19 @@ export function shortDate(key: string): string {
     month: "short",
   }).format(dt);
 }
+
+/** Every day-key of `key`'s calendar month, from the 1st up to and including `key`. */
+export function monthKeysUpTo(key: string): string[] {
+  const [y, m, d] = key.split("-").map(Number);
+  if (!y || !m || !d) return [];
+  const out: string[] = [];
+  for (let i = 1; i <= d; i++) {
+    out.push(`${y}-${String(m).padStart(2, "0")}-${String(i).padStart(2, "0")}`);
+  }
+  return out;
+}
+
+/** "Mon 2 Sep" — how a past session is labelled on an exercise card. */
+export function shortWeekdayDate(key: string): string {
+  return `${shortWeekday(key)} ${shortDate(key)}`;
+}

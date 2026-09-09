@@ -1,5 +1,3 @@
-import type { LoggedSet } from "./types";
-
 export interface ParsedSets {
   count: number; // number of logger rows
   repLow: number | null;
@@ -36,18 +34,5 @@ export function parseSets(sets: string): ParsedSets {
   return { count, repLow, repHigh, raw: sets };
 }
 
-/**
- * Progressive-overload gate (coach's rule): every set of the LAST session was
- * logged with a real weight AND hit at/above the TOP of the rep range.
- */
-export function qualifiesForOverload(
-  lastSets: LoggedSet[] | undefined,
-  repHigh: number | null,
-): boolean {
-  if (!lastSets || lastSets.length === 0 || repHigh == null) return false;
-  return lastSets.every((s) => (s.w ?? 0) > 0 && (s.r ?? 0) >= repHigh);
-}
-
-export function sessionVolume(sets: LoggedSet[]): number {
-  return sets.reduce((sum, s) => sum + (s.w ?? 0) * (s.r ?? 0), 0);
-}
+// The progressive-overload decision now lives in lib/progression.ts, which reads
+// the real rep range from starting-weights.json instead of the plan's prose.

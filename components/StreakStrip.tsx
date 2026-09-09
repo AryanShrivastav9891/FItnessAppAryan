@@ -2,30 +2,23 @@
 
 import Link from "next/link";
 import { Check } from "lucide-react";
-import { useLocalState } from "@/lib/storage";
-import { keys } from "@/lib/keys";
+import { useStorageTick } from "@/lib/storage";
 import { dayColor } from "@/lib/plan";
-import { dayIdForKey, isWeekendKey, weekStripKeys } from "@/lib/date";
+import { dayIdForKey, weekStripKeys } from "@/lib/date";
 import { useTodayKey } from "@/lib/clock";
-import type { SessionsMap } from "@/lib/types";
+import { dayState, EMPTY_STORE, readLogs, type DayState } from "@/lib/logs";
 
 const LETTERS = ["M", "T", "W", "T", "F", "S", "S"];
 
-type State = "done" | "missed" | "planned" | "rest";
-
 export default function StreakStrip() {
-  const [sessions] = useLocalState<SessionsMap>(keys.sessions, {});
+  const { hydrated } = useStorageTick();
   // Mon→Sun shape is the same in every week, so it is safe to prerender; only
   // "which of these is today" needs the device clock.
   const week = weekStripKeys();
   const today = useTodayKey();
+  const store = hydrated ? readLogs() : EMPTY_STORE;
 
-  const stateFor = (key: string): State => {
-    if (sessions[key]) return "done";
-    if (isWeekendKey(key)) return "rest";
-    if (today && key < today) return "missed";
-    return "planned";
-  };
+  const stateFor = (key: string): DayState => dayState(store, key, today ?? "");
 
   return (
     <Link href="/week" className="block" aria-label="See the full week">
@@ -50,14 +43,19 @@ export default function StreakStrip() {
                   style={
                     state === "done"
                       ? { background: `linear-gradient(135deg, ${color}, ${color}dd)`, color: "#0a0e14" }
-                      : state === "missed"
-                        ? { border: "2px solid #ff6b6b66" }
-                        : state === "rest"
-                          ? { border: "1.5px dashed #3a4150" }
-                          : { border: "2px solid #252a33" }
+                      : state === "partial"
+                        ? { border: `2px solid ${color}`, color }
+                        : state === "missed"
+                          ? { border: "2px solid #ff6b6b66" }
+                          : state === "rest"
+                            ? { border: "1.5px dashed #3a4150" }
+                            : { border: "2px solid #252a33" }
                   }
                 >
                   {state === "done" && <Check size={15} strokeWidth={3} aria-hidden />}
+                  {state === "partial" && (
+                    <span className="h-2 w-2 rounded-full" style={{ background: color }} />
+                  )}
                 </span>
               </div>
               <span

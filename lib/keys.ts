@@ -2,13 +2,15 @@
 // Keep every key in one place so the dashboard and workout screens never drift.
 
 export const keys = {
-  sessions: "sessions", // SessionsMap
+  logs: "logs.v1", // LogStore — the workout log (lib/logs.ts)
+  sessions: "sessions", // SessionsMap — legacy, migrated into logs.v1
   measurements: "measurements", // Measurement[]
   dietMode: "dietMode", // "regular" | "veg"
   offlineMode: "offlineMode", // boolean — the home screen's offline switch
 
   log: (exerciseId: string) => `log:${exerciseId}`, // LoggedSession[]
-  setlog: (date: string, exerciseId: string) => `setlog:${date}:${exerciseId}`, // LoggedSet[]
+  setlog: (date: string, exerciseId: string) => `setlog:${date}:${exerciseId}`, // DraftSet[] in progress
+  note: (date: string, exerciseId: string) => `note:${date}:${exerciseId}`, // per-exercise note
   warmup: (date: string) => `wu:${date}`, // string[] of checked ids
   stretch: (date: string) => `st:${date}`, // string[] of checked ids
   start: (date: string, dayId: string) => `start:${date}:${dayId}`, // session start ms

@@ -3,6 +3,7 @@ import { Outfit, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import BottomNav from "@/components/BottomNav";
 import ServiceWorker from "@/components/ServiceWorker";
+import StoreMigration from "@/components/StoreMigration";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -69,6 +70,7 @@ export default function RootLayout({
           <BottomNav />
         </div>
         <ServiceWorker />
+        <StoreMigration />
       </body>
     </html>
   );

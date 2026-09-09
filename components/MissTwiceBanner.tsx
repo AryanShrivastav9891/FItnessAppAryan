@@ -1,10 +1,9 @@
 "use client";
 
 import { Flame } from "lucide-react";
-import { lsGet, useStorageTick } from "@/lib/storage";
-import { keys } from "@/lib/keys";
+import { useStorageTick } from "@/lib/storage";
 import { dayIdForKey, yesterdayKey } from "@/lib/date";
-import type { SessionsMap } from "@/lib/types";
+import { readLogs, sessionOn } from "@/lib/logs";
 
 export default function MissTwiceBanner({ mindset }: { mindset: string }) {
   const { hydrated } = useStorageTick();
@@ -12,8 +11,7 @@ export default function MissTwiceBanner({ mindset }: { mindset: string }) {
 
   const y = yesterdayKey();
   const yesterdayWasTraining = dayIdForKey(y) !== null;
-  const sessions = lsGet<SessionsMap>(keys.sessions, {});
-  const missedYesterday = yesterdayWasTraining && !sessions[y];
+  const missedYesterday = yesterdayWasTraining && !sessionOn(readLogs(), y);
   if (!missedYesterday) return null;
 
   return (
@@ -26,7 +24,7 @@ export default function MissTwiceBanner({ mindset }: { mindset: string }) {
       </span>
       <div>
         <p className="t-cap" style={{ color: "#ff6b6b" }}>
-          Missed yesterday
+          Missed yesterday · never miss twice
         </p>
         <p className="mt-1 text-sm font-semibold leading-snug">{mindset}</p>
       </div>
