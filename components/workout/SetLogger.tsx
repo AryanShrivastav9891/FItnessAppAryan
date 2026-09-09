@@ -220,6 +220,7 @@ export default function SetLogger({
                     unit="KG"
                     step={kgStep > 0 ? kgStep : 2.5}
                     highlight={firstTime}
+                    zeroLabel="BW"
                     onChange={(v) => patch(i, { kg: v, kgEdited: true })}
                   />
                 ) : (
@@ -291,12 +292,15 @@ function Stepper({
   unit,
   step,
   highlight,
+  zeroLabel,
   onChange,
 }: {
   value: number;
   unit: string;
   step: number;
   highlight?: boolean;
+  /** Shown instead of a bare 0 — an unloaded lift reads "BW", never "0 kg". */
+  zeroLabel?: string;
   onChange: (v: number) => void;
 }) {
   const clamp = (v: number) => Math.max(0, Math.round(v * 100) / 100);
@@ -330,17 +334,28 @@ function Stepper({
       >
         <Minus size={16} strokeWidth={3} aria-hidden />
       </button>
-      <input
-        type="number"
-        inputMode="decimal"
-        step={step}
-        min={0}
-        value={Number.isFinite(value) ? value : 0}
-        onChange={(e) => onChange(clamp(parseFloat(e.target.value) || 0))}
-        onKeyDown={onKey}
-        aria-label={unit}
-        className="num min-w-0 flex-1 bg-transparent pt-3 text-center text-base font-semibold outline-none"
-      />
+      {zeroLabel && value === 0 ? (
+        <button
+          type="button"
+          onClick={() => onChange(step)}
+          aria-label={`${unit}: ${zeroLabel}, tap to add weight`}
+          className="num min-w-0 flex-1 bg-transparent pt-3 text-center text-base font-semibold text-muted outline-none"
+        >
+          {zeroLabel}
+        </button>
+      ) : (
+        <input
+          type="number"
+          inputMode="decimal"
+          step={step}
+          min={0}
+          value={Number.isFinite(value) ? value : 0}
+          onChange={(e) => onChange(clamp(parseFloat(e.target.value) || 0))}
+          onKeyDown={onKey}
+          aria-label={unit}
+          className="num min-w-0 flex-1 bg-transparent pt-3 text-center text-base font-semibold outline-none"
+        />
+      )}
       <button
         type="button"
         aria-label={`increase ${unit}`}
