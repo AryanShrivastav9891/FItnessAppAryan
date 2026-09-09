@@ -148,9 +148,18 @@ export default function SetLogger({
             </>
           ) : (
             <p className="text-xs leading-relaxed text-muted">
-              <span className="font-semibold text-ink">First time</span> — start at{" "}
-              {isTime ? `${target.seconds} s` : loadLabel(config.type, target.kg)}, adjust ±
-              until {isTime ? "the hold" : `${target.reps} reps`} feels hard on the last 2.
+              <span className="font-semibold text-ink">First time</span> —{" "}
+              {isTime ? (
+                <>
+                  start at {target.seconds} s. End the set when your hips drop, not when
+                  the clock says so.
+                </>
+              ) : (
+                <>
+                  start at {loadLabel(config.type, target.kg)}, adjust ± until{" "}
+                  {target.reps} reps feels hard on the last 2.
+                </>
+              )}
             </p>
           )}
 
